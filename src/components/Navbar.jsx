@@ -60,7 +60,7 @@ const Navbar = () => {
             <div className="flex items-center gap-4">
               <button 
                 onClick={() => navigate('/auth')}
-                className="px-5 py-2.5 rounded-full bg-brand-blue text-white font-medium hover:bg-blue-800 transition-all shadow-lg shadow-brand-blue/30 hover:shadow-brand-blue/50"
+                className="px-5 py-2.5 rounded-full bg-brand-blue text-white font-medium hover:bg-brand-blue/90 transition-all shadow-lg shadow-brand-blue/30 hover:shadow-brand-blue/50"
               >
                 Log in
               </button>
@@ -105,7 +105,7 @@ const Navbar = () => {
                     setMobileMenuOpen(false);
                     navigate('/auth');
                   }}
-                  className="w-full px-4 py-2 text-center rounded-full bg-brand-blue text-white font-medium hover:bg-blue-800"
+                  className="w-full px-4 py-2 text-center rounded-full bg-brand-blue text-white font-medium hover:bg-brand-blue/90"
                 >
                   Log in
                 </button>

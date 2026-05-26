@@ -397,11 +397,11 @@ export const mockRecruiters = [
 export const mockAnalytics = {
   Q1: {
     funnelData: [
-      { stage: "Total Uploaded Resumes", count: 1800, percentage: 100, color: "bg-blue-600" },
-      { stage: "AI Screened & Validated", count: 1350, percentage: 75, color: "bg-blue-500" },
-      { stage: "Matched Candidates (>80%)", count: 450, percentage: 25, color: "bg-indigo-500" },
-      { stage: "Shortlisted by Recruiters", count: 162, percentage: 9, color: "bg-purple-500" },
-      { stage: "Offers Extended", count: 31, percentage: 1.7, color: "bg-red-500" }
+      { stage: "Total Uploaded Resumes", count: 1800, percentage: 100, color: "bg-brand-blue" },
+      { stage: "AI Screened & Validated", count: 1350, percentage: 75, color: "bg-brand-blue/80" },
+      { stage: "Matched Candidates (>80%)", count: 450, percentage: 25, color: "bg-brand-blue/60" },
+      { stage: "Shortlisted by Recruiters", count: 162, percentage: 9, color: "bg-brand-purple" },
+      { stage: "Offers Extended", count: 31, percentage: 1.7, color: "bg-brand-red" }
     ],
     processingTimes: {
       avgParsing: "1.5 Seconds",
@@ -421,11 +421,11 @@ export const mockAnalytics = {
   },
   Q2: {
     funnelData: [
-      { stage: "Total Uploaded Resumes", count: 650, percentage: 100, color: "bg-blue-600" },
-      { stage: "AI Screened & Validated", count: 490, percentage: 75, color: "bg-blue-500" },
-      { stage: "Matched Candidates (>80%)", count: 170, percentage: 26, color: "bg-indigo-500" },
-      { stage: "Shortlisted by Recruiters", count: 66, percentage: 10, color: "bg-purple-500" },
-      { stage: "Offers Extended", count: 11, percentage: 1.7, color: "bg-red-500" }
+      { stage: "Total Uploaded Resumes", count: 650, percentage: 100, color: "bg-brand-blue" },
+      { stage: "AI Screened & Validated", count: 490, percentage: 75, color: "bg-brand-blue/80" },
+      { stage: "Matched Candidates (>80%)", count: 170, percentage: 26, color: "bg-brand-blue/60" },
+      { stage: "Shortlisted by Recruiters", count: 66, percentage: 10, color: "bg-brand-purple" },
+      { stage: "Offers Extended", count: 11, percentage: 1.7, color: "bg-brand-red" }
     ],
     processingTimes: {
       avgParsing: "1.0 Seconds",
@@ -444,11 +444,11 @@ export const mockAnalytics = {
   },
   YTD: {
     funnelData: [
-      { stage: "Total Uploaded Resumes", count: 2450, percentage: 100, color: "bg-blue-600" },
-      { stage: "AI Screened & Validated", count: 1840, percentage: 75, color: "bg-blue-500" },
-      { stage: "Matched Candidates (>80%)", count: 620, percentage: 25, color: "bg-indigo-500" },
-      { stage: "Shortlisted by Recruiters", count: 228, percentage: 9, color: "bg-purple-500" },
-      { stage: "Offers Extended", count: 42, percentage: 1.7, color: "bg-red-500" }
+      { stage: "Total Uploaded Resumes", count: 2450, percentage: 100, color: "bg-brand-blue" },
+      { stage: "AI Screened & Validated", count: 1840, percentage: 75, color: "bg-brand-blue/80" },
+      { stage: "Matched Candidates (>80%)", count: 620, percentage: 25, color: "bg-brand-blue/60" },
+      { stage: "Shortlisted by Recruiters", count: 228, percentage: 9, color: "bg-brand-purple" },
+      { stage: "Offers Extended", count: 42, percentage: 1.7, color: "bg-brand-red" }
     ],
     processingTimes: {
       avgParsing: "1.2 Seconds",
@@ -470,11 +470,11 @@ export const mockAnalytics = {
   },
   ALL: {
     funnelData: [
-      { stage: "Total Uploaded Resumes", count: 4820, percentage: 100, color: "bg-blue-600" },
-      { stage: "AI Screened & Validated", count: 3615, percentage: 75, color: "bg-blue-500" },
-      { stage: "Matched Candidates (>80%)", count: 1205, percentage: 25, color: "bg-indigo-500" },
-      { stage: "Shortlisted by Recruiters", count: 433, percentage: 9, color: "bg-purple-500" },
-      { stage: "Offers Extended", count: 82, percentage: 1.7, color: "bg-red-500" }
+      { stage: "Total Uploaded Resumes", count: 4820, percentage: 100, color: "bg-brand-blue" },
+      { stage: "AI Screened & Validated", count: 3615, percentage: 75, color: "bg-brand-blue/80" },
+      { stage: "Matched Candidates (>80%)", count: 1205, percentage: 25, color: "bg-brand-blue/60" },
+      { stage: "Shortlisted by Recruiters", count: 433, percentage: 9, color: "bg-brand-purple" },
+      { stage: "Offers Extended", count: 82, percentage: 1.7, color: "bg-brand-red" }
     ],
     processingTimes: {
       avgParsing: "1.3 Seconds",

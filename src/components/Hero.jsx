@@ -19,7 +19,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-brand-blue font-medium text-sm mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-blue/10 border border-brand-blue/20 text-brand-blue font-medium text-sm mb-6"
           >
             <span className="flex h-2 w-2 rounded-full bg-brand-blue animate-pulse"></span>
             ScanJD AI Engine 2.0 is now live
@@ -50,7 +50,7 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
           >
-            <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-blue text-white font-medium text-lg hover:bg-blue-800 transition-all shadow-lg shadow-brand-blue/30 hover:shadow-brand-blue/50 flex items-center justify-center gap-2 group">
+            <button className="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-blue text-white font-medium text-lg hover:bg-brand-blue/90 transition-all shadow-lg shadow-brand-blue/30 hover:shadow-brand-blue/50 flex items-center justify-center gap-2 group">
               Start Free Trial
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
@@ -96,7 +96,7 @@ const Hero = () => {
             <div className="bg-gray-50 rounded-xl border border-gray-100 p-6 flex flex-col md:flex-row gap-6">
               {/* Fake UI Left panel */}
               <div className="flex-1 space-y-4">
-                <div className="h-40 border-2 border-dashed border-brand-blue/30 rounded-xl bg-blue-50/50 flex flex-col items-center justify-center text-brand-blue/70 relative overflow-hidden group cursor-pointer">
+                <div className="h-40 border-2 border-dashed border-brand-blue/30 rounded-xl bg-brand-blue/5 flex flex-col items-center justify-center text-brand-blue/70 relative overflow-hidden group cursor-pointer">
                   <div className="absolute inset-0 bg-brand-blue/5 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                   <Upload className="w-8 h-8 mb-2" />
                   <span className="font-medium text-sm">Drag & Drop Resumes (PDF, DOCX)</span>
@@ -139,7 +139,7 @@ const Hero = () => {
                       className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 border border-transparent hover:border-gray-100 transition-colors"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-100 to-purple-100 border border-white shadow-sm flex items-center justify-center font-bold text-brand-blue">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-blue/20 to-brand-purple/20 border border-white shadow-sm flex items-center justify-center font-bold text-brand-blue">
                           {candidate.name.charAt(0)}
                         </div>
                         <div>
@@ -168,7 +168,7 @@ const Hero = () => {
                 ease: "linear", 
                 repeat: Infinity 
               }}
-              className="absolute left-0 right-0 h-32 bg-gradient-to-b from-transparent via-brand-blue/5 to-transparent pointer-events-none z-10 border-b border-brand-blue/20 shadow-[0_4px_20px_rgba(2,68,156,0.1)]"
+              className="absolute left-0 right-0 h-32 bg-gradient-to-b from-transparent via-brand-blue/5 to-transparent pointer-events-none z-10 border-b border-brand-blue/20 shadow-[0_4px_20px_rgba(0,133,247,0.1)]"
             />
           </div>
         </motion.div>

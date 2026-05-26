@@ -66,7 +66,7 @@ const RecruiterManagement = () => {
         </div>
         <button 
           onClick={() => setShowAddModal(true)}
-          className="flex items-center gap-2 px-4 py-2.5 bg-brand-blue text-white rounded-xl font-bold text-sm hover:bg-blue-800 transition-all shadow-md shadow-brand-blue/20 self-start sm:self-auto"
+          className="flex items-center gap-2 px-4 py-2.5 bg-brand-blue text-white rounded-xl font-bold text-sm hover:bg-brand-blue/90 transition-all shadow-md shadow-brand-blue/20 self-start sm:self-auto"
         >
           <UserPlus className="w-4 h-4" />
           Add New Recruiter
@@ -191,7 +191,7 @@ const RecruiterManagement = () => {
                       {r.monthlyTrend.map((val, idx) => (
                         <div 
                           key={idx} 
-                          className="w-2 bg-indigo-500/40 hover:bg-indigo-600 rounded-t transition-all"
+                          className="w-2 bg-brand-purple/40 hover:bg-brand-purple rounded-t transition-all"
                           style={{ height: `${Math.min(val * 2, 24)}px` }}
                           title={`Period ${idx + 1}: ${val} Shortlisted`}
                         />
@@ -306,7 +306,7 @@ const RecruiterManagement = () => {
                 </button>
                 <button 
                   type="submit" 
-                  className="px-4 py-2 bg-brand-blue hover:bg-blue-800 text-white font-bold rounded-xl shadow-sm"
+                  className="px-4 py-2 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold rounded-xl shadow-sm"
                 >
                   Confirm Account
                 </button>

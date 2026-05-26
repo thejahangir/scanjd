@@ -13,7 +13,7 @@ const DashboardPreview = () => {
     <section className="py-24 bg-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-brand-red font-semibold tracking-wide uppercase text-sm mb-3">Dashboard</h2>
+          <h2 className="text-brand-purple font-semibold tracking-wide uppercase text-sm mb-3">Dashboard</h2>
           <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             A Recruiter Experience Built for Speed
           </h3>
@@ -43,7 +43,7 @@ const DashboardPreview = () => {
               <button className="flex items-center gap-2 px-3 py-1.5 rounded-md border border-gray-200 bg-white text-sm font-medium text-gray-600 hover:bg-gray-50">
                 <Filter className="w-4 h-4" /> Filters
               </button>
-              <button className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-brand-blue text-white text-sm font-medium hover:bg-blue-800">
+              <button className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-brand-blue text-white text-sm font-medium hover:bg-brand-blue/90">
                 Export List
               </button>
             </div>
@@ -77,7 +77,7 @@ const DashboardPreview = () => {
                     <div className="text-2xl font-bold text-gray-900">142</div>
                     <div className="text-xs text-gray-500">Scanned</div>
                   </div>
-                  <div className="bg-white p-3 rounded-xl border border-brand-blue/20 bg-blue-50/30 shadow-sm text-center">
+                  <div className="bg-white p-3 rounded-xl border border-brand-blue/20 bg-brand-blue/5 shadow-sm text-center">
                     <div className="text-2xl font-bold text-brand-blue">12</div>
                     <div className="text-xs text-brand-blue/70">Shortlisted</div>
                   </div>
@@ -154,7 +154,7 @@ const DashboardPreview = () => {
                         <td className="py-4">
                           <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                             candidate.status === 'Shortlisted' ? 'bg-green-100 text-green-700' :
-                            candidate.status === 'Reviewing' ? 'bg-blue-100 text-blue-700' :
+                            candidate.status === 'Reviewing' ? 'bg-brand-blue/10 text-brand-blue' :
                             candidate.status === 'Rejected' ? 'bg-red-100 text-red-700' :
                             'bg-gray-100 text-gray-700'
                           }`}>

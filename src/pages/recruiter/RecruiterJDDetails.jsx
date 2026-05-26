@@ -299,7 +299,7 @@ const RecruiterJDDetails = () => {
       <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <span className="text-sm font-bold text-gray-800 uppercase tracking-wider block">Candidates</span>
-          <span className="text-xs font-bold text-brand-purple bg-purple-50 px-2.5 py-0.5 rounded-full">
+          <span className="text-xs font-bold text-brand-purple bg-brand-purple/10 px-2.5 py-0.5 rounded-full">
             {filteredCandidates.length} Total
           </span>
         </div>
@@ -343,8 +343,8 @@ const RecruiterJDDetails = () => {
                             setSelectedCandidate(c);
                             setIsPreviewOpen(true);
                           }}
-                          className={`hover:bg-purple-50/10 cursor-pointer transition-all ${
-                            isSelected ? 'bg-purple-50/25' : ''
+                          className={`hover:bg-brand-purple/5 cursor-pointer transition-all ${
+                            isSelected ? 'bg-brand-purple/5' : ''
                           } ${
                             isNew 
                               ? 'bg-amber-50/20 border-l-4 border-amber-500' 
@@ -357,7 +357,7 @@ const RecruiterJDDetails = () => {
                               <div className={`w-9 h-9 rounded-xl font-bold text-xs flex items-center justify-center flex-shrink-0 shadow-sm ${
                                 isNew 
                                   ? 'bg-amber-400 text-gray-900 shadow-amber-400/20' 
-                                  : 'bg-purple-50 text-brand-purple'
+                                  : 'bg-brand-purple/10 text-brand-purple'
                               }`}>
                                 {c.initials}
                               </div>
@@ -383,7 +383,7 @@ const RecruiterJDDetails = () => {
                             <span className={`inline-block px-2.5 py-1.5 rounded-lg text-xs font-black border shadow-sm ${
                               isNew 
                                 ? 'bg-amber-400 text-gray-900 border-amber-300 ring-2 ring-amber-400/10' 
-                                : 'bg-purple-50 text-brand-purple'
+                                : 'bg-brand-purple/10 text-brand-purple'
                             }`}>
                               {c.match}% Fit
                             </span>
@@ -402,7 +402,7 @@ const RecruiterJDDetails = () => {
                                 {c.status}
                               </span>
                               {c.badgeText && (
-                                <span className="px-1.5 py-0.5 bg-purple-100 text-brand-purple rounded text-[9px] font-extrabold tracking-tight border border-purple-200">
+                                <span className="px-1.5 py-0.5 bg-brand-purple/10 text-brand-purple rounded text-[9px] font-extrabold tracking-tight border border-brand-purple/20">
                                   {c.badgeText}
                                 </span>
                               )}
@@ -445,7 +445,7 @@ const RecruiterJDDetails = () => {
                                   setSelectedCandidate(c);
                                   executeAction('SHARE');
                                 }}
-                                className="p-1.5 bg-white border border-gray-200 text-gray-400 hover:text-brand-blue hover:bg-blue-50/50 rounded-lg transition-all cursor-pointer"
+                                className="p-1.5 bg-white border border-gray-200 text-gray-400 hover:text-brand-blue hover:bg-brand-blue/10 rounded-lg transition-all cursor-pointer"
                                 title="Share Profile"
                               >
                                 <Share2 className="w-4 h-4" />
@@ -465,7 +465,7 @@ const RecruiterJDDetails = () => {
                                   setSelectedCandidate(c);
                                   executeAction('DOWNLOAD');
                                 }}
-                                className="p-1.5 bg-brand-purple text-white hover:bg-purple-900 rounded-lg transition-all shadow-sm shadow-brand-purple/10 cursor-pointer"
+                                className="p-1.5 bg-brand-blue text-white hover:bg-brand-blue/90 rounded-lg transition-all shadow-sm shadow-brand-blue/10 cursor-pointer"
                                 title="Download PDF"
                               >
                                 <Download className="w-4 h-4" />
@@ -597,7 +597,7 @@ const RecruiterJDDetails = () => {
                   <span className="text-xs font-bold text-gray-700 block flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 text-brand-purple" /> AI Engine Summary Recommendation
                   </span>
-                  <div className="p-3 bg-gradient-to-br from-purple-50/50 to-indigo-50/30 border border-purple-100/50 rounded-xl text-xs text-gray-700 leading-relaxed italic">
+                  <div className="p-3 bg-gradient-to-br from-brand-purple/5 to-indigo-50/10 border border-brand-purple/20 rounded-xl text-xs text-gray-700 leading-relaxed italic">
                     "{selectedCandidate.aiRecommendation}"
                   </div>
                 </div>
@@ -608,7 +608,7 @@ const RecruiterJDDetails = () => {
                     <span className="font-semibold text-gray-500 block mb-1.5">Skills Extracted & Verified:</span>
                     <div className="flex flex-wrap gap-1">
                       {selectedCandidate.skillsMatch.map(s => (
-                        <span key={s} className="px-2.5 py-1 bg-purple-50/50 text-brand-purple border border-purple-100 rounded-md font-semibold flex items-center gap-1 text-[11px]">
+                        <span key={s} className="px-2.5 py-1 bg-brand-purple/10 text-brand-purple border border-brand-purple/20 rounded-md font-semibold flex items-center gap-1 text-[11px]">
                           <CheckCircle className="w-3 h-3 text-brand-purple" /> {s}
                         </span>
                       ))}
@@ -658,7 +658,7 @@ const RecruiterJDDetails = () => {
                   </button>
                   <button 
                     onClick={() => executeAction('DOWNLOAD')}
-                    className="py-2 px-3 bg-brand-purple hover:bg-purple-900 text-white font-bold text-xs rounded-xl transition-all shadow-sm shadow-brand-purple/20 flex items-center justify-center gap-1 cursor-pointer"
+                    className="py-2 px-3 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold text-xs rounded-xl transition-all shadow-sm shadow-brand-blue/20 flex items-center justify-center gap-1 cursor-pointer"
                   >
                     <FileText className="w-3.5 h-3.5" /> Full CV
                   </button>

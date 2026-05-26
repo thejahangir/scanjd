@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-red: #e81b1c;
-  --color-brand-yellow: #febf10;
-  --color-brand-blue: #02449c;
-  --color-brand-purple: #662e9b;
+  --color-brand-red: #EF4444;
+  --color-brand-yellow: #F59E0B;
+  --color-brand-blue: #0085F7;
+  --color-brand-purple: #00A94B;
   --color-brand-black: #000000;
   --font-sans: 'Inter', sans-serif;
 }
 
 @layer base {
   body {
-    @apply font-sans antialiased bg-gray-50 text-gray-900;
+    @apply font-sans antialiased bg-gray-50 text-brand-black;
   }
 }
 

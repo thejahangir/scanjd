@@ -25,8 +25,8 @@ const NotificationPanel = ({ isOpen, onClose, role = 'admin' }) => {
       time: '12 mins ago', 
       read: false, 
       icon: Sparkles, 
-      iconBg: 'bg-blue-50 text-brand-blue border-blue-100',
-      borderColor: 'border-blue-100/50'
+      iconBg: 'bg-brand-blue/10 text-brand-blue border-brand-blue/20',
+      borderColor: 'border-brand-blue/10'
     },
     { 
       id: 2, 
@@ -36,8 +36,8 @@ const NotificationPanel = ({ isOpen, onClose, role = 'admin' }) => {
       time: '40 mins ago', 
       read: false, 
       icon: Award, 
-      iconBg: 'bg-purple-50 text-brand-purple border-purple-100',
-      borderColor: 'border-purple-100/50'
+      iconBg: 'bg-brand-purple/10 text-brand-purple border-brand-purple/20',
+      borderColor: 'border-brand-purple/10'
     },
     { 
       id: 3, 
@@ -72,8 +72,8 @@ const NotificationPanel = ({ isOpen, onClose, role = 'admin' }) => {
       time: '5 mins ago', 
       read: false, 
       icon: Sparkles, 
-      iconBg: 'bg-purple-50 text-brand-purple border-purple-100',
-      borderColor: 'border-purple-100/50'
+      iconBg: 'bg-brand-purple/10 text-brand-purple border-brand-purple/20',
+      borderColor: 'border-brand-purple/10'
     },
     { 
       id: 2, 
@@ -104,9 +104,8 @@ const NotificationPanel = ({ isOpen, onClose, role = 'admin' }) => {
       desc: 'Candidate "Sarah Jenkins" matched 94% skills alignment for UI Dev.', 
       time: 'Yesterday', 
       read: true, 
-      icon: Award, 
-      iconBg: 'bg-blue-50 text-brand-blue border-blue-100',
-      borderColor: 'border-blue-100/50'
+      iconBg: 'bg-brand-blue/10 text-brand-blue border-brand-blue/20',
+      borderColor: 'border-brand-blue/10'
     }
   ];
 
@@ -141,9 +140,9 @@ const NotificationPanel = ({ isOpen, onClose, role = 'admin' }) => {
   };
 
   // Color scheme based on role
-  const brandColor = role === 'admin' ? 'bg-brand-blue hover:bg-blue-800' : 'bg-brand-purple hover:bg-purple-800';
+  const brandColor = role === 'admin' ? 'bg-brand-blue hover:bg-brand-blue/90' : 'bg-brand-purple hover:bg-brand-purple/90';
   const brandTextColor = role === 'admin' ? 'text-brand-blue' : 'text-brand-purple';
-  const tabActiveBg = role === 'admin' ? 'bg-blue-50 text-brand-blue' : 'bg-purple-50 text-brand-purple';
+  const tabActiveBg = role === 'admin' ? 'bg-brand-blue/10 text-brand-blue' : 'bg-brand-purple/10 text-brand-purple';
 
   return (
     <AnimatePresence>
@@ -216,7 +215,7 @@ const NotificationPanel = ({ isOpen, onClose, role = 'admin' }) => {
                     Unread
                     {unreadCount > 0 && (
                       <span className={`px-1.5 py-0.5 rounded-md text-[9px] font-extrabold ${
-                        role === 'admin' ? 'bg-blue-100 text-brand-blue' : 'bg-purple-100 text-brand-purple'
+                        role === 'admin' ? 'bg-brand-blue/10 text-brand-blue' : 'bg-brand-purple/10 text-brand-purple'
                       }`}>
                         {unreadCount}
                       </span>

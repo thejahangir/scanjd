@@ -4,7 +4,7 @@ import { AlertTriangle, X } from 'lucide-react';
 const ConfirmModal = ({ isOpen, onClose, onConfirm, title, message, theme = 'blue' }) => {
   const isPurple = theme === 'purple';
   const accentBg = isPurple ? 'bg-brand-purple' : 'bg-brand-blue';
-  const accentHoverBg = isPurple ? 'hover:bg-purple-700' : 'hover:bg-blue-700';
+  const accentHoverBg = isPurple ? 'hover:bg-brand-purple/90' : 'hover:bg-brand-blue/90';
   const accentRing = isPurple ? 'focus:ring-brand-purple/20' : 'focus:ring-brand-blue/20';
 
   return (
@@ -38,7 +38,7 @@ const ConfirmModal = ({ isOpen, onClose, onConfirm, title, message, theme = 'blu
 
             {/* Warning Icon and Content */}
             <div className="flex gap-4 items-start pt-2">
-              <div className={`p-3 rounded-xl ${isPurple ? 'bg-purple-50 text-brand-purple' : 'bg-blue-50 text-brand-blue'} flex-shrink-0`}>
+              <div className={`p-3 rounded-xl ${isPurple ? 'bg-brand-purple/10 text-brand-purple' : 'bg-brand-blue/10 text-brand-blue'} flex-shrink-0`}>
                 <AlertTriangle className="w-6 h-6" />
               </div>
               <div className="space-y-1.5 flex-1">

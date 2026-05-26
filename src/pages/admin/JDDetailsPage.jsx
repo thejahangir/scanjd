@@ -110,13 +110,13 @@ const JDDetailsPage = () => {
   const getStatusBadge = (status) => {
     switch(status) {
       case 'Shortlisted': 
-        return <span className="px-2.5 py-1 bg-purple-50 text-brand-purple border border-purple-200 rounded-lg text-xs font-bold">Shortlisted</span>;
+        return <span className="px-2.5 py-1 bg-brand-purple/10 text-brand-purple border border-brand-purple/20 rounded-lg text-xs font-bold">Shortlisted</span>;
       case 'Interview Scheduled': 
         return <span className="px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-lg text-xs font-bold">Interviewing</span>;
       case 'Rejected': 
         return <span className="px-2.5 py-1 bg-red-50 text-brand-red border border-red-200 rounded-lg text-xs font-bold">Rejected</span>;
       default: 
-        return <span className="px-2.5 py-1 bg-blue-50 text-brand-blue border border-blue-200 rounded-lg text-xs font-bold">Screening</span>;
+        return <span className="px-2.5 py-1 bg-brand-blue/10 text-brand-blue border border-brand-blue/20 rounded-lg text-xs font-bold">Screening</span>;
     }
   };
 
@@ -221,11 +221,11 @@ const JDDetailsPage = () => {
                             setSelectedCandidate(c);
                             setIsPreviewOpen(true);
                           }}
-                          className={`hover:bg-blue-50/30 cursor-pointer transition-colors ${isSelected ? 'bg-blue-50/50' : ''}`}
+                          className={`hover:bg-brand-blue/5 cursor-pointer transition-colors ${isSelected ? 'bg-brand-blue/10 shadow-sm' : ''}`}
                         >
                           <td className="p-4 pl-6 font-semibold text-gray-900">
                             <div className="flex items-center gap-2.5">
-                              <div className="w-8 h-8 rounded-lg bg-gray-100 font-bold text-brand-blue flex items-center justify-center flex-shrink-0">
+                              <div className="w-8 h-8 rounded-lg bg-brand-blue/10 font-bold text-brand-blue flex items-center justify-center flex-shrink-0">
                                 {c.initials}
                               </div>
                               <div>
@@ -361,7 +361,7 @@ const JDDetailsPage = () => {
                 <span className="text-xs font-bold text-gray-700 block flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-brand-purple" /> AI Engine Summary Recommendation
                 </span>
-                <div className="p-3 bg-gradient-to-br from-blue-50 to-purple-50/50 border border-blue-100 rounded-xl text-xs text-gray-700 leading-relaxed italic">
+                <div className="p-3 bg-gradient-to-br from-brand-blue/5 to-brand-purple/5 border border-brand-blue/20 rounded-xl text-xs text-gray-700 leading-relaxed italic">
                   "{selectedCandidate.aiRecommendation}"
                 </div>
               </div>
@@ -414,7 +414,7 @@ const JDDetailsPage = () => {
                   onClick={() => handleShortlistToggle(selectedCandidate.id)}
                   className={`py-2 px-3 rounded-xl font-bold text-xs text-center border transition-all ${
                     selectedCandidate.status === 'Shortlisted'
-                      ? 'bg-brand-purple text-white border-brand-purple shadow-sm shadow-purple-500/20'
+                      ? 'bg-brand-purple text-white border-brand-purple shadow-sm shadow-brand-purple/20'
                       : 'bg-white hover:bg-gray-50 text-gray-700 border-gray-200'
                   }`}
                 >
@@ -422,7 +422,7 @@ const JDDetailsPage = () => {
                 </button>
                 <button 
                   onClick={() => alert(`Simulated API call: Executing shareable PDF bundle view for ${selectedCandidate.name}`)}
-                  className="py-2 px-3 bg-brand-blue hover:bg-blue-800 text-white font-bold text-xs rounded-xl transition-all shadow-sm shadow-brand-blue/20 flex items-center justify-center gap-1"
+                  className="py-2 px-3 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold text-xs rounded-xl transition-all shadow-sm shadow-brand-blue/20 flex items-center justify-center gap-1"
                 >
                   <FileText className="w-3.5 h-3.5" /> Full CV
                 </button>

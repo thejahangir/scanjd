@@ -23,8 +23,8 @@ const AdminDashboard = () => {
   const [jds] = useState(initialJobDescriptions);
 
   const statsCards = [
-    { title: 'Total Job Descriptions', value: '24', change: '+12% this month', icon: FileText, color: 'from-blue-600 to-indigo-600', bgLight: 'bg-blue-50', textAccent: 'text-brand-blue' },
-    { title: 'Total Candidates', value: '1,840', change: '+240 parsed recently', icon: Users, color: 'from-purple-600 to-indigo-600', bgLight: 'bg-purple-50', textAccent: 'text-brand-purple' },
+    { title: 'Total Job Descriptions', value: '24', change: '+12% this month', icon: FileText, color: 'from-blue-600 to-indigo-600', bgLight: 'bg-brand-blue/10', textAccent: 'text-brand-blue' },
+    { title: 'Total Candidates', value: '1,840', change: '+240 parsed recently', icon: Users, color: 'from-purple-600 to-indigo-600', bgLight: 'bg-brand-purple/10', textAccent: 'text-brand-purple' },
     { title: 'Active Recruiters', value: '12', change: '3 internal, 9 agency', icon: Briefcase, color: 'from-emerald-600 to-teal-600', bgLight: 'bg-emerald-50', textAccent: 'text-emerald-600' },
     { title: 'AI Match Accuracy', value: '94.2%', change: '+1.4% engine update', icon: Target, color: 'from-amber-500 to-orange-500', bgLight: 'bg-amber-50', textAccent: 'text-brand-yellow' },
     { title: 'Shortlisted Candidates', value: '228', change: '12.4% conversion', icon: Award, color: 'from-brand-red to-orange-600', bgLight: 'bg-red-50', textAccent: 'text-brand-red' },
@@ -35,7 +35,7 @@ const AdminDashboard = () => {
     switch(status) {
       case 'Active': return 'bg-emerald-50 text-emerald-700 border-emerald-100';
       case 'Reviewing': return 'bg-amber-50 text-amber-700 border-amber-100';
-      case 'Interviewing': return 'bg-blue-50 text-brand-blue border-blue-100';
+      case 'Interviewing': return 'bg-brand-blue/10 text-brand-blue border-brand-blue/20';
       case 'Closed': return 'bg-gray-50 text-gray-600 border-gray-200';
       default: return 'bg-gray-50 text-gray-700 border-gray-100';
     }
@@ -113,7 +113,7 @@ const AdminDashboard = () => {
                   <span className={`px-2.5 py-1 rounded-lg text-xs font-bold border ${getStatusColor(jd.status)}`}>
                     {jd.status}
                   </span>
-                  <span className="px-2.5 py-1 bg-blue-50 text-brand-blue rounded-lg text-[11px] font-bold flex items-center gap-1">
+                  <span className="px-2.5 py-1 bg-brand-blue/10 text-brand-blue rounded-lg text-[11px] font-bold flex items-center gap-1">
                     <Sparkles className="w-3 h-3 text-brand-yellow" />
                     {jd.badge}
                   </span>
@@ -160,7 +160,7 @@ const AdminDashboard = () => {
                   {jd.uploadDate}
                 </span>
 
-                <span className="flex items-center gap-1 text-xs font-bold text-brand-blue group-hover:text-blue-800 transition-colors group-hover:translate-x-1 cursor-pointer">
+                <span className="flex items-center gap-1 text-xs font-bold text-brand-blue group-hover:text-brand-blue/90 transition-colors group-hover:translate-x-1 cursor-pointer">
                   View JD Details
                   <ChevronRight className="w-4 h-4" />
                 </span>

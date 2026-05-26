@@ -43,7 +43,7 @@ const LoginForm = ({ onToggleMode }) => {
       </div>
 
       {/* Quick Demo Pre-fill helpers */}
-      <div className="mb-6 p-3 bg-blue-50/50 border border-blue-100 rounded-xl flex flex-col gap-2">
+      <div className="mb-6 p-3 bg-brand-blue/5 border border-brand-blue/10 rounded-xl flex flex-col gap-2">
         <div className="text-xs font-semibold text-brand-blue uppercase tracking-wider text-center">
           Quick Demo Access
         </div>
@@ -51,7 +51,7 @@ const LoginForm = ({ onToggleMode }) => {
           <button
             type="button"
             onClick={() => fillDemo('admin')}
-            className="flex items-center justify-center gap-1.5 py-2 px-3 bg-white hover:bg-blue-50 border border-blue-200 rounded-lg text-xs font-medium text-gray-700 hover:text-brand-blue transition-all shadow-sm cursor-pointer"
+            className="flex items-center justify-center gap-1.5 py-2 px-3 bg-white hover:bg-brand-blue/10 border border-brand-blue/20 rounded-lg text-xs font-medium text-gray-700 hover:text-brand-blue transition-all shadow-sm cursor-pointer"
           >
             <ShieldCheck className="w-3.5 h-3.5 text-brand-red" />
             Admin Login
@@ -59,7 +59,7 @@ const LoginForm = ({ onToggleMode }) => {
           <button
             type="button"
             onClick={() => fillDemo('recruiter')}
-            className="flex items-center justify-center gap-1.5 py-2 px-3 bg-white hover:bg-blue-50 border border-blue-200 rounded-lg text-xs font-medium text-gray-700 hover:text-brand-blue transition-all shadow-sm cursor-pointer"
+            className="flex items-center justify-center gap-1.5 py-2 px-3 bg-white hover:bg-brand-purple/10 border border-brand-purple/20 rounded-lg text-xs font-medium text-gray-700 hover:text-brand-purple transition-all shadow-sm cursor-pointer"
           >
             <UserCheck className="w-3.5 h-3.5 text-brand-purple" />
             Recruiter Login
@@ -91,7 +91,7 @@ const LoginForm = ({ onToggleMode }) => {
             <button 
               type="button" 
               onClick={() => onToggleMode('forgot_password')}
-              className="text-sm font-semibold text-brand-blue hover:text-blue-800 transition-colors cursor-pointer"
+              className="text-sm font-semibold text-brand-blue hover:text-brand-blue/90 transition-colors cursor-pointer"
             >
               Forgot password?
             </button>
@@ -113,7 +113,7 @@ const LoginForm = ({ onToggleMode }) => {
 
         <button
           type="submit"
-          className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl shadow-md shadow-brand-blue/20 text-sm font-bold text-white bg-brand-blue hover:bg-blue-800 hover:shadow-lg hover:shadow-brand-blue/30 focus:outline-none focus:ring-4 focus:ring-brand-blue/20 transition-all duration-200 hover:-translate-y-0.5 mt-2 cursor-pointer"
+          className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl shadow-md shadow-brand-blue/20 text-sm font-bold text-white bg-brand-blue hover:bg-brand-blue/90 hover:shadow-lg hover:shadow-brand-blue/30 focus:outline-none focus:ring-4 focus:ring-brand-blue/20 transition-all duration-200 hover:-translate-y-0.5 mt-2 cursor-pointer"
         >
           Sign in
           <ArrowRight className="w-4 h-4" />
@@ -124,7 +124,7 @@ const LoginForm = ({ onToggleMode }) => {
         Don't have an account?{' '}
         <button 
           onClick={() => onToggleMode('register')}
-          className="font-medium text-brand-blue hover:text-blue-800 cursor-pointer"
+          className="font-medium text-brand-blue hover:text-brand-blue/90 cursor-pointer"
         >
           Request access
         </button>

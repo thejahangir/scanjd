@@ -7,19 +7,19 @@ const HowItWorks = () => {
       icon: <FileText className="w-8 h-8 text-white" />,
       title: "1. Upload Job Description",
       description: "Paste your JD or upload a file. Our AI instantly extracts the core requirements, skills, and experience needed.",
-      color: "from-brand-blue to-blue-400"
+      color: "from-brand-blue to-brand-blue/80"
     },
     {
       icon: <Cpu className="w-8 h-8 text-white" />,
       title: "2. Scan Candidate Resumes",
       description: "Upload resumes in bulk. The AI Engine scans and cross-references them against the JD using semantic analysis.",
-      color: "from-brand-purple to-purple-400"
+      color: "from-brand-purple to-brand-purple/80"
     },
     {
       icon: <ListChecks className="w-8 h-8 text-white" />,
       title: "3. Get Ranked Candidates",
       description: "Instantly receive a shortlist of top candidates ranked by ATS score, match percentage, and relevance.",
-      color: "from-brand-red to-red-400"
+      color: "from-brand-red to-brand-red/80"
     }
   ];
 
@@ -38,7 +38,7 @@ const HowItWorks = () => {
 
         <div className="relative">
           {/* Connecting Line */}
-          <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-blue-100 via-purple-100 to-red-100 transform -translate-y-1/2 -z-10"></div>
+          <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-brand-blue/20 via-brand-purple/20 to-brand-red/20 transform -translate-y-1/2 -z-10"></div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {steps.map((step, index) => (

@@ -25,7 +25,7 @@ const RecruiterDashboard = () => {
     switch(status) {
       case 'Active': return 'bg-emerald-50 text-emerald-700 border-emerald-100';
       case 'Reviewing': return 'bg-amber-50 text-amber-700 border-amber-100';
-      default: return 'bg-blue-50 text-brand-blue border-blue-100';
+      default: return 'bg-brand-blue/10 text-brand-blue border-brand-blue/20';
     }
   };
 
@@ -40,13 +40,13 @@ const RecruiterDashboard = () => {
         <div className="flex items-center gap-3 self-start sm:self-auto">
           <button 
             onClick={() => navigate('/recruiter/upload-jd')}
-            className="px-4 py-2.5 bg-white border border-purple-200 text-brand-purple rounded-xl font-bold text-sm hover:bg-purple-50 transition-all shadow-sm"
+            className="px-4 py-2.5 bg-white border border-brand-purple/20 text-brand-purple rounded-xl font-bold text-sm hover:bg-brand-purple/10 transition-all shadow-sm"
           >
             Upload Job Post
           </button>
           <button 
             onClick={() => navigate('/recruiter/upload-resume')}
-            className="flex items-center gap-2 px-4 py-2.5 bg-brand-purple text-white rounded-xl font-bold text-sm hover:bg-purple-900 transition-all shadow-md shadow-brand-purple/20"
+            className="flex items-center gap-2 px-4 py-2.5 bg-brand-blue text-white rounded-xl font-bold text-sm hover:bg-brand-blue/90 transition-all shadow-md shadow-brand-blue/20"
           >
             <Sparkles className="w-4 h-4 text-brand-yellow" />
             Bulk Screen Resumes
@@ -57,8 +57,8 @@ const RecruiterDashboard = () => {
       {/* Stats summary pipeline overview */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {[
-          { title: "Assigned Job Posts", count: "4 Active", subtitle: "Parsing workflows enabled", icon: FileText, color: "text-brand-purple", bg: "bg-purple-50" },
-          { title: "Candidate Pipeline", count: "112 Intakes", subtitle: "Bulk parsers completed", icon: Users, color: "text-blue-600", bg: "bg-blue-50" },
+          { title: "Assigned Job Posts", count: "4 Active", subtitle: "Parsing workflows enabled", icon: FileText, color: "text-brand-purple", bg: "bg-brand-purple/10" },
+          { title: "Candidate Pipeline", count: "112 Intakes", subtitle: "Bulk parsers completed", icon: Users, color: "text-brand-blue", bg: "bg-brand-blue/10" },
           { title: "Shortlisted Total", count: "34 Approved", subtitle: "Ready for client view", icon: Award, color: "text-emerald-600", bg: "bg-emerald-50" },
           { title: "AI Priority Matches", count: "8 Urgent", subtitle: ">95% skill threshold", icon: Sparkles, color: "text-brand-yellow", bg: "bg-amber-50" }
         ].map((item, idx) => {
@@ -132,7 +132,7 @@ const RecruiterDashboard = () => {
                 </div>
 
                 {/* Score indicators */}
-                <div className="mt-5 p-3 bg-purple-50/40 rounded-xl border border-purple-100/50 space-y-2">
+                <div className="mt-5 p-3 bg-brand-purple/5 rounded-xl border border-brand-purple/10 space-y-2">
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-semibold text-gray-700">AI Priority Screening Eval</span>
                     <span className="font-bold text-brand-purple">{jd.matchAccuracy}% Coherence</span>
@@ -178,7 +178,7 @@ const RecruiterDashboard = () => {
           {mockCandidates.slice(0, 3).map((c) => (
             <div key={c.id} className="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-gray-50/50 px-2 rounded-xl transition-all">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-purple-50 text-brand-purple font-bold flex items-center justify-center flex-shrink-0 border border-purple-100">
+                <div className="w-10 h-10 rounded-xl bg-brand-purple/10 text-brand-purple font-bold flex items-center justify-center flex-shrink-0 border border-brand-purple/20">
                   {c.initials}
                 </div>
                 <div>
@@ -194,7 +194,7 @@ const RecruiterDashboard = () => {
                 </div>
                 <button 
                   onClick={() => navigate(`/recruiter/jd/${c.jdId}`)}
-                  className="px-3 py-1.5 bg-gray-50 hover:bg-purple-50 hover:text-brand-purple border border-gray-200 rounded-lg text-xs font-bold text-gray-700 transition-all"
+                  className="px-3 py-1.5 bg-gray-50 hover:bg-brand-purple/10 hover:text-brand-purple border border-gray-200 rounded-lg text-xs font-bold text-gray-700 transition-all"
                 >
                   Review Application
                 </button>

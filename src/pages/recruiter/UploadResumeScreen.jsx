@@ -127,10 +127,10 @@ const UploadResumeScreen = () => {
           onDragLeave={() => setIsDragging(false)}
           onDrop={handleDrop}
           className={`border-2 border-dashed rounded-2xl p-8 flex flex-col items-center justify-center text-center transition-all ${
-            isDragging ? 'border-brand-purple bg-purple-50/50' : 'border-gray-200 hover:border-brand-purple/40 bg-gray-50/30'
+            isDragging ? 'border-brand-purple bg-brand-purple/5' : 'border-gray-200 hover:border-brand-purple/40 bg-gray-50/30'
           }`}
         >
-          <div className="w-14 h-14 rounded-xl bg-purple-50 text-brand-purple flex items-center justify-center mb-3 border border-purple-100">
+          <div className="w-14 h-14 rounded-xl bg-brand-purple/10 text-brand-purple flex items-center justify-center mb-3 border border-brand-purple/20">
             <UploadCloud className="w-7 h-7" />
           </div>
           <span className="text-sm font-bold text-gray-900 block">Drag & Drop multi-page Candidate PDF / DOCX archives</span>
@@ -171,7 +171,7 @@ const UploadResumeScreen = () => {
                   className="pt-2.5 flex items-start justify-between gap-3 text-xs"
                 >
                   {/* File icon preview */}
-                  <div className="w-8 h-8 rounded-lg bg-purple-50 text-brand-purple flex items-center justify-center flex-shrink-0 font-bold text-[10px]">
+                  <div className="w-8 h-8 rounded-lg bg-brand-purple/10 text-brand-purple flex items-center justify-center flex-shrink-0 font-bold text-[10px]">
                     PDF
                   </div>
 
@@ -231,7 +231,7 @@ const UploadResumeScreen = () => {
           <button
             disabled={parsedCount === 0}
             onClick={() => navigate('/recruiter/jd/JD-2026-001')}
-            className="w-full sm:w-auto px-6 py-3 bg-brand-purple hover:bg-purple-900 text-white font-bold text-xs rounded-xl transition-all shadow-md shadow-brand-purple/20 flex items-center justify-center gap-1.5 disabled:opacity-50"
+            className="w-full sm:w-auto px-6 py-3 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold text-xs rounded-xl transition-all shadow-md shadow-brand-blue/20 flex items-center justify-center gap-1.5 disabled:opacity-50"
           >
             Review Extracted Matches ({parsedCount})
             <ArrowRight className="w-4 h-4" />

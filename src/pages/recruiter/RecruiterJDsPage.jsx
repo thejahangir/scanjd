@@ -35,7 +35,7 @@ const RecruiterJDsPage = () => {
     switch(status) {
       case 'Active': return 'bg-emerald-50 text-emerald-700 border-emerald-100';
       case 'Reviewing': return 'bg-amber-50 text-amber-700 border-amber-100';
-      default: return 'bg-blue-50 text-brand-blue border-blue-100';
+      default: return 'bg-brand-blue/10 text-brand-blue border-brand-blue/20';
     }
   };
 
@@ -120,7 +120,7 @@ const RecruiterJDsPage = () => {
                 </div>
 
                 {/* Score weights */}
-                <div className="mt-4 p-3 bg-purple-50/40 rounded-xl border border-purple-100/50 space-y-2">
+                <div className="mt-4 p-3 bg-brand-purple/5 rounded-xl border border-brand-purple/10 space-y-2">
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-semibold text-gray-700">AI Screening Eval</span>
                     <span className="font-bold text-brand-purple">{jd.matchAccuracy}% Coherence</span>

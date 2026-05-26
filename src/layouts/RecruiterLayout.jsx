@@ -64,7 +64,7 @@ const RecruiterLayout = () => {
       <aside className="hidden md:flex w-64 bg-white border-r border-gray-200 flex-col fixed inset-y-0 z-30">
         {/* Header */}
         <div className="p-6 border-b border-gray-100 flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-purple to-indigo-600 flex items-center justify-center shadow-md shadow-brand-purple/20">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-blue to-brand-purple flex items-center justify-center shadow-md shadow-brand-blue/20">
             <FileSearch className="text-white w-5 h-5" />
           </div>
           <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700">
@@ -88,7 +88,7 @@ const RecruiterLayout = () => {
                     active
                       ? 'bg-brand-purple text-white shadow-md shadow-brand-purple/20'
                       : isUpload 
-                        ? 'text-brand-purple hover:bg-purple-50 font-bold border border-purple-100/50 my-1'
+                        ? 'text-brand-purple hover:bg-brand-purple/10 font-bold border border-brand-purple/20 my-1'
                         : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                   }`
                 }
@@ -137,7 +137,7 @@ const RecruiterLayout = () => {
             {/* Quick action triggers */}
             <button 
               onClick={() => navigate('/recruiter/upload-resume')}
-              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 hover:bg-purple-100 text-brand-purple border border-purple-200 rounded-lg text-xs font-bold transition-all"
+              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-brand-purple/10 hover:bg-brand-purple/20 text-brand-purple border border-brand-purple/30 rounded-lg text-xs font-bold transition-all"
             >
               <UploadCloud className="w-3.5 h-3.5" /> Bulk Parse Resumes
             </button>
@@ -229,12 +229,12 @@ const RecruiterLayout = () => {
         isOpen={logoutConfirmOpen}
         onClose={() => setLogoutConfirmOpen(false)}
         onConfirm={() => {
-          setLogoutConfirmOpen(false);
+          logoutConfirmOpen && setLogoutConfirmOpen(false);
           navigate('/auth');
         }}
         title="Confirm Logout"
         message="Are you sure you want to log out? Any unsaved changes in your session will be discarded."
-        theme="purple"
+        theme="blue"
       />
     </div>
   );

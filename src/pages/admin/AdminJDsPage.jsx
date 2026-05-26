@@ -234,9 +234,9 @@ const AdminJDsPage = () => {
     switch(status) {
       case 'Active': return 'bg-emerald-50 text-emerald-700 border-emerald-100';
       case 'Reviewing': return 'bg-amber-50 text-amber-700 border-amber-100';
-      case 'Interviewing': return 'bg-purple-50 text-brand-purple border-purple-100';
+      case 'Interviewing': return 'bg-brand-purple/10 text-brand-purple border-brand-purple/20';
       case 'Closed': return 'bg-gray-50 text-gray-500 border-gray-200';
-      default: return 'bg-blue-50 text-brand-blue border-blue-100';
+      default: return 'bg-brand-blue/10 text-brand-blue border-brand-blue/20';
     }
   };
 
@@ -258,7 +258,7 @@ const AdminJDsPage = () => {
 
         {/* Global Operational Counters */}
         <div className="flex items-center gap-3 bg-white p-2 rounded-2xl border border-gray-200/80 shadow-sm self-start sm:self-auto">
-          <div className="px-3 py-1.5 bg-blue-50/50 rounded-xl">
+          <div className="px-3 py-1.5 bg-brand-blue/5 rounded-xl">
             <span className="text-[10px] text-gray-400 block font-bold uppercase">Mandates</span>
             <span className="text-sm font-extrabold text-brand-blue">{jds.length} Loaded</span>
           </div>
@@ -266,7 +266,7 @@ const AdminJDsPage = () => {
             <span className="text-[10px] text-gray-400 block font-bold uppercase">Active Flow</span>
             <span className="text-sm font-extrabold text-emerald-700">{activeCount} Jobs</span>
           </div>
-          <div className="px-3 py-1.5 bg-purple-50/50 rounded-xl">
+          <div className="px-3 py-1.5 bg-brand-purple/5 rounded-xl">
             <span className="text-[10px] text-gray-400 block font-bold uppercase">Avg Coherence</span>
             <span className="text-sm font-extrabold text-brand-purple">{avgAccuracy}%</span>
           </div>
@@ -387,7 +387,7 @@ const AdminJDsPage = () => {
                     <span className={`px-2.5 py-1 rounded-lg text-xs font-bold border ${getStatusColor(jd.status)}`}>
                       {jd.status}
                     </span>
-                    <span className="px-2.5 py-1 bg-blue-50/80 text-brand-blue rounded-lg text-[10px] font-bold flex items-center gap-1 border border-blue-100/50">
+                    <span className="px-2.5 py-1 bg-brand-blue/10 text-brand-blue rounded-lg text-[10px] font-bold flex items-center gap-1 border border-brand-blue/20">
                       <Sparkles className="w-3 h-3 text-brand-yellow" />
                       {jd.badge}
                     </span>
@@ -421,7 +421,7 @@ const AdminJDsPage = () => {
                   </div>
 
                   {/* AI Metric Score bar */}
-                  <div className="mt-4 p-3 bg-gradient-to-br from-gray-50 to-blue-50/20 rounded-xl border border-gray-100/80 space-y-2">
+                  <div className="mt-4 p-3 bg-gradient-to-br from-gray-50 to-brand-blue/5 rounded-xl border border-brand-blue/10 space-y-2">
                     <div className="flex items-center justify-between text-xs">
                       <span className="font-semibold text-gray-700">AI Coherence Co-efficient</span>
                       <span className="font-bold text-brand-blue">{jd.matchAccuracy}% Fit</span>
@@ -447,7 +447,7 @@ const AdminJDsPage = () => {
                     {jd.uploadDate}
                   </span>
 
-                  <span className="flex items-center gap-1 text-xs font-bold text-brand-blue group-hover:text-blue-800 transition-colors group-hover:translate-x-1 cursor-pointer">
+                  <span className="flex items-center gap-1 text-xs font-bold text-brand-blue group-hover:text-brand-blue/90 transition-colors group-hover:translate-x-1 cursor-pointer">
                     View JD Details
                     <ChevronRight className="w-4 h-4" />
                   </span>
@@ -484,7 +484,7 @@ const AdminJDsPage = () => {
                     <tr 
                       key={jd.id}
                       onClick={() => navigate(`/admin/jd/${jd.id}`)}
-                      className="hover:bg-blue-50/20 cursor-pointer transition-colors group"
+                      className="hover:bg-brand-blue/5 cursor-pointer transition-colors group"
                     >
                       <td className="p-4 pl-6">
                         <div className="font-bold text-gray-900 group-hover:text-brand-blue transition-colors text-sm">

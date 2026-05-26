@@ -69,7 +69,7 @@ const AdminLayout = () => {
           </div>
           <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700">
             Scan<span className="text-brand-blue">JD</span>
-            <span className="text-[10px] ml-1.5 px-1.5 py-0.5 bg-brand-red/10 text-brand-red rounded-md font-bold uppercase tracking-wider">Admin</span>
+            <span className="text-[10px] ml-1.5 px-1.5 py-0.5 bg-brand-blue/10 text-brand-blue rounded-md font-bold uppercase tracking-wider">Admin</span>
           </span>
         </div>
 

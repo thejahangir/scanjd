@@ -79,8 +79,8 @@ const Pricing = () => {
               <button 
                 className={`w-full py-3 rounded-full font-bold transition-all ${
                   plan.isPopular 
-                    ? 'bg-brand-blue text-white hover:bg-blue-800 shadow-lg shadow-brand-blue/30' 
-                    : 'bg-blue-50 text-brand-blue hover:bg-blue-100'
+                    ? 'bg-brand-blue text-white hover:bg-brand-blue/90 shadow-lg shadow-brand-blue/30' 
+                    : 'bg-brand-blue/10 text-brand-blue hover:bg-brand-blue/20'
                 }`}
               >
                 {plan.price === 'Custom' ? 'Contact Sales' : 'Start Free Trial'}

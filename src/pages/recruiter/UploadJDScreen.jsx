@@ -125,10 +125,10 @@ Must possess multi-year expertise consuming TypeScript guidelines, optimizing Ta
                 onDragLeave={() => setIsDragging(false)}
                 onDrop={handleFileDrop}
                 className={`border-2 border-dashed rounded-2xl p-6 flex flex-col items-center justify-center text-center transition-all ${
-                  isDragging ? 'border-brand-purple bg-purple-50/50' : 'border-gray-200 hover:border-brand-purple/40 bg-gray-50/30'
+                  isDragging ? 'border-brand-purple bg-brand-purple/5' : 'border-gray-200 hover:border-brand-purple/40 bg-gray-50/30'
                 }`}
               >
-                <div className="w-12 h-12 rounded-xl bg-purple-50 text-brand-purple flex items-center justify-center mb-3">
+                <div className="w-12 h-12 rounded-xl bg-brand-purple/10 text-brand-purple flex items-center justify-center mb-3">
                   <UploadCloud className="w-6 h-6" />
                 </div>
                 <span className="text-xs font-bold text-gray-700 block">Drag & Drop JD payload Document</span>
@@ -147,7 +147,7 @@ Must possess multi-year expertise consuming TypeScript guidelines, optimizing Ta
                 </label>
 
                 {uploadedFileName && (
-                  <div className="mt-3 p-2 bg-purple-50 border border-purple-100 rounded-lg text-xs font-bold text-brand-purple flex items-center gap-1.5 max-w-full">
+                  <div className="mt-3 p-2 bg-brand-purple/10 border border-brand-purple/20 rounded-lg text-xs font-bold text-brand-purple flex items-center gap-1.5 max-w-full">
                     <FileText className="w-3.5 h-3.5 flex-shrink-0" />
                     <span className="truncate">{uploadedFileName}</span>
                     <button type="button" onClick={() => setUploadedFileName('')} className="hover:text-red-500">
@@ -174,7 +174,7 @@ Must possess multi-year expertise consuming TypeScript guidelines, optimizing Ta
             <button
               type="submit"
               disabled={isParsing || isSuccess}
-              className="px-6 py-3 bg-brand-purple hover:bg-purple-900 text-white font-bold text-xs rounded-xl transition-all shadow-md shadow-brand-purple/20 flex items-center gap-2 disabled:opacity-50"
+              className="px-6 py-3 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold text-xs rounded-xl transition-all shadow-md shadow-brand-blue/20 flex items-center gap-2 disabled:opacity-50"
             >
               {isParsing ? (
                 <>
@@ -202,7 +202,7 @@ Must possess multi-year expertise consuming TypeScript guidelines, optimizing Ta
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="p-6 bg-purple-50/50 border border-purple-100 rounded-2xl space-y-4 pt-4 mt-6"
+              className="p-6 bg-brand-purple/5 border border-brand-purple/20 rounded-2xl space-y-4 pt-4 mt-6"
             >
               <div className="flex items-center justify-between">
                 <div>
@@ -223,7 +223,7 @@ Must possess multi-year expertise consuming TypeScript guidelines, optimizing Ta
               {/* Tags grid array */}
               <div className="flex flex-wrap items-center gap-2 pt-2">
                 {parsedSkills.map(s => (
-                  <span key={s} className="px-3 py-1.5 bg-white border border-purple-200 text-brand-purple rounded-xl font-bold text-xs shadow-sm flex items-center gap-1">
+                  <span key={s} className="px-3 py-1.5 bg-white border border-brand-purple/20 text-brand-purple rounded-xl font-bold text-xs shadow-sm flex items-center gap-1">
                     {s}
                   </span>
                 ))}
@@ -241,14 +241,14 @@ Must possess multi-year expertise consuming TypeScript guidelines, optimizing Ta
               </div>
 
               {/* Next step confirmation panel linking directly to resume search trigger */}
-              <div className="pt-4 border-t border-purple-100/60 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <div className="pt-4 border-t border-brand-purple/20 flex flex-col sm:flex-row items-center justify-between gap-3">
                 <span className="text-xs text-gray-600 font-medium">
                   Mandate setup operational. Ready to scan existing workspace resume storage buckets.
                 </span>
                 
                 <button
                   onClick={() => navigate('/recruiter/jd/JD-2026-001')}
-                  className="w-full sm:w-auto px-5 py-2.5 bg-brand-blue hover:bg-blue-800 text-white font-bold text-xs rounded-xl transition-all shadow-md shadow-brand-blue/20 flex items-center justify-center gap-1.5"
+                  className="w-full sm:w-auto px-5 py-2.5 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold text-xs rounded-xl transition-all shadow-md shadow-brand-blue/20 flex items-center justify-center gap-1.5"
                 >
                   Trigger Resume Scan Loop
                   <ArrowRight className="w-4 h-4" />

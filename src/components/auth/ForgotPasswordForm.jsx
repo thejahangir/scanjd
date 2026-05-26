@@ -54,7 +54,7 @@ const ForgotPasswordForm = ({ onToggleMode }) => {
 
           <button
             type="submit"
-            className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl shadow-md shadow-brand-blue/20 text-sm font-bold text-white bg-brand-blue hover:bg-blue-800 hover:shadow-lg hover:shadow-brand-blue/30 focus:outline-none focus:ring-4 focus:ring-brand-blue/20 transition-all duration-200 hover:-translate-y-0.5 mt-2 cursor-pointer"
+            className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl shadow-md shadow-brand-blue/20 text-sm font-bold text-white bg-brand-blue hover:bg-brand-blue/90 hover:shadow-lg hover:shadow-brand-blue/30 focus:outline-none focus:ring-4 focus:ring-brand-blue/20 transition-all duration-200 hover:-translate-y-0.5 mt-2 cursor-pointer"
           >
             Send reset link
             <Send className="w-4 h-4" />

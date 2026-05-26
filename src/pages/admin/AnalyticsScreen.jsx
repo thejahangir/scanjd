@@ -132,7 +132,7 @@ const AnalyticsScreen = () => {
             transition={{ delay: 0.2 }}
             className="p-5 bg-gradient-to-br from-brand-purple to-brand-blue text-white rounded-2xl shadow-md relative overflow-hidden"
           >
-            <span className="text-xs font-bold text-purple-200 uppercase tracking-wider block">Exported PDF File Yield</span>
+            <span className="text-xs font-bold text-white/90 uppercase tracking-wider block">Exported PDF File Yield</span>
             <div className="text-3xl font-bold mt-2 tracking-tight">98.4% Accuracy</div>
             <p className="text-[11px] text-brand-yellow font-bold mt-1 flex items-center gap-1">
               <Sparkles className="w-3 h-3" /> Fully verified vector output compliance
@@ -222,7 +222,7 @@ const AnalyticsScreen = () => {
                 type="button"
                 disabled={isGenerating}
                 onClick={handleGenerateReport}
-                className="w-full py-2.5 bg-brand-blue hover:bg-blue-800 text-white font-bold text-xs rounded-xl shadow-md shadow-brand-blue/20 flex items-center justify-center gap-1.5 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+                className="w-full py-2.5 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold text-xs rounded-xl shadow-md shadow-brand-blue/20 flex items-center justify-center gap-1.5 transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 <Sparkles className="w-3.5 h-3.5" />
                 {isGenerating ? 'Compiling Dataset...' : 'Compile Executive Data'}
@@ -249,7 +249,7 @@ const AnalyticsScreen = () => {
                   <div key={idx} className="p-4 bg-gray-50/50 border border-gray-200 rounded-xl hover:border-brand-blue/20 transition-all flex flex-col justify-between group">
                     <div className="space-y-1.5">
                       <div className="flex items-center gap-2">
-                        <span className="p-1.5 bg-white border border-gray-100 rounded-lg text-brand-blue flex-shrink-0 group-hover:bg-blue-50 transition-colors">
+                        <span className="p-1.5 bg-white border border-gray-100 rounded-lg text-brand-blue flex-shrink-0 group-hover:bg-brand-blue/10 transition-colors">
                           <item.icon className="w-4 h-4 text-brand-blue" />
                         </span>
                         <h4 className="text-xs font-bold text-gray-900 group-hover:text-brand-blue transition-colors line-clamp-1">{item.title}</h4>
@@ -301,7 +301,7 @@ const AnalyticsScreen = () => {
               </thead>
               <tbody className="divide-y divide-gray-100 text-xs">
                 {generatedReports.map((report) => (
-                  <tr key={report.id} className="hover:bg-blue-50/20 transition-colors">
+                  <tr key={report.id} className="hover:bg-brand-blue/5 transition-colors">
                     <td className="p-4 pl-6 font-bold text-gray-900 flex items-center gap-2">
                       <FileSpreadsheet className="w-4 h-4 text-brand-blue flex-shrink-0" />
                       <span className="truncate max-w-[280px]">{report.name}</span>
@@ -315,7 +315,7 @@ const AnalyticsScreen = () => {
                           ? 'bg-red-50 text-brand-red border-red-100' 
                           : report.format === 'EXCEL' 
                             ? 'bg-emerald-50 text-emerald-700 border-emerald-100' 
-                            : 'bg-blue-50 text-brand-blue border-blue-100'
+                            : 'bg-brand-blue/10 text-brand-blue border-brand-blue/20'
                       }`}>
                         {report.format}
                       </span>
@@ -422,7 +422,7 @@ const AnalyticsScreen = () => {
           transition={{ delay: 0.2 }}
           className="p-5 bg-gradient-to-br from-brand-blue to-brand-purple text-white rounded-2xl shadow-md relative overflow-hidden"
         >
-          <span className="text-xs font-bold text-blue-200 uppercase tracking-wider block">Total Recruiter Hours Saved</span>
+          <span className="text-xs font-bold text-white/80 uppercase tracking-wider block">Total Recruiter Hours Saved</span>
           <div className="text-3xl font-bold mt-2 tracking-tight overflow-hidden h-9 flex items-center">
             <motion.span
               key={timeRange + "-timeSaved"}
@@ -550,7 +550,7 @@ const AnalyticsScreen = () => {
                       initial={{ height: 0 }}
                       animate={{ height: `${parsedHeightPercent}%` }}
                       transition={{ type: 'spring', stiffness: 90, damping: 14 }}
-                      className="w-4 bg-blue-100 hover:bg-blue-200 rounded-t relative group-hover:opacity-90 cursor-pointer"
+                      className="w-4 bg-brand-blue/20 hover:bg-brand-blue/35 rounded-t relative group-hover:opacity-90 cursor-pointer"
                       title={`Total Uploaded: ${m.processed}`}
                     />
                     {/* Matched candidates bar */}
@@ -559,7 +559,7 @@ const AnalyticsScreen = () => {
                       initial={{ height: 0 }}
                       animate={{ height: `${matchedHeightPercent}%` }}
                       transition={{ type: 'spring', stiffness: 90, damping: 14 }}
-                      className="w-4 bg-brand-blue hover:bg-blue-800 rounded-t relative group-hover:opacity-90 cursor-pointer"
+                      className="w-4 bg-brand-blue hover:bg-brand-blue/90 rounded-t relative group-hover:opacity-90 cursor-pointer"
                       title={`AI Matched: ${m.matches}`}
                     />
                   </div>
@@ -574,7 +574,7 @@ const AnalyticsScreen = () => {
           {/* Chart Legend */}
           <div className="flex items-center justify-center gap-6 pt-2 text-xs">
             <span className="flex items-center gap-2 text-gray-600">
-              <span className="w-3 h-3 bg-blue-100 rounded flex-shrink-0" /> Total Uploaded Resumes
+              <span className="w-3 h-3 bg-brand-blue/20 rounded flex-shrink-0" /> Total Uploaded Resumes
             </span>
             <span className="flex items-center gap-2 text-gray-600 font-semibold">
               <span className="w-3 h-3 bg-brand-blue rounded flex-shrink-0" /> AI Screened Matches (&gt;80%)
