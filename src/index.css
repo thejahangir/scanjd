@@ -36,3 +36,23 @@
 .bg-gradient-red {
   @apply bg-gradient-to-r from-brand-red to-brand-yellow;
 }
+
+.logo-scanjd {
+  width: 175px;
+}
+
+.logo-scanjd-inner {
+  width: 120px;
+}
+
+/* Ensure interactive elements show the pointer cursor */
+button, 
+a, 
+select, 
+input[type="button"], 
+input[type="submit"], 
+input[type="reset"], 
+input[type="file"],
+[role="button"] {
+  cursor: pointer;
+}

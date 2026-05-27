@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { 
-  FileText, 
-  Users, 
-  Award, 
-  Sparkles, 
-  Clock, 
-  Building2, 
-  ChevronRight, 
+import {
+  FileText,
+  Users,
+  Award,
+  Sparkles,
+  Clock,
+  Building2,
+  ChevronRight,
   Calendar,
   Layers
 } from 'lucide-react';
@@ -16,13 +16,13 @@ import { initialJobDescriptions, mockCandidates } from '../../data/mockData';
 
 const RecruiterDashboard = () => {
   const navigate = useNavigate();
-  // Filter JDs to represent those assigned to current logged demo user "Marcus Vance" or similar
+  // Filter JDs to represent those assigned to current logged demo user "Jahangir A" or similar
   const [assignedJDs] = useState(() => {
     return initialJobDescriptions.slice(0, 4);
   });
 
   const getStatusBadge = (status) => {
-    switch(status) {
+    switch (status) {
       case 'Active': return 'bg-emerald-50 text-emerald-700 border-emerald-100';
       case 'Reviewing': return 'bg-amber-50 text-amber-700 border-amber-100';
       default: return 'bg-brand-blue/10 text-brand-blue border-brand-blue/20';
@@ -38,13 +38,13 @@ const RecruiterDashboard = () => {
           <p className="text-sm text-gray-500 mt-1">Review active screening pipelines, trigger resume processing, and send shortlisted matches to clients.</p>
         </div>
         <div className="flex items-center gap-3 self-start sm:self-auto">
-          <button 
+          <button
             onClick={() => navigate('/recruiter/upload-jd')}
             className="px-4 py-2.5 bg-white border border-brand-purple/20 text-brand-purple rounded-xl font-bold text-sm hover:bg-brand-purple/10 transition-all shadow-sm"
           >
             Upload Job Post
           </button>
-          <button 
+          <button
             onClick={() => navigate('/recruiter/upload-resume')}
             className="flex items-center gap-2 px-4 py-2.5 bg-brand-blue text-white rounded-xl font-bold text-sm hover:bg-brand-blue/90 transition-all shadow-md shadow-brand-blue/20"
           >
@@ -192,7 +192,7 @@ const RecruiterDashboard = () => {
                   <span className="text-xs font-bold text-brand-purple block">{c.match}% Fit</span>
                   <span className="text-[10px] text-gray-400 block">{c.resumeScore} ATS Eval</span>
                 </div>
-                <button 
+                <button
                   onClick={() => navigate(`/recruiter/jd/${c.jdId}`)}
                   className="px-3 py-1.5 bg-gray-50 hover:bg-brand-purple/10 hover:text-brand-purple border border-gray-200 rounded-lg text-xs font-bold text-gray-700 transition-all"
                 >

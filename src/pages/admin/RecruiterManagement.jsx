@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Users, 
-  UserPlus, 
-  TrendingUp, 
-  Briefcase, 
-  Award, 
-  CheckCircle2, 
-  Clock, 
+import {
+  Users,
+  UserPlus,
+  TrendingUp,
+  Briefcase,
+  Award,
+  CheckCircle2,
+  Clock,
   Sparkles,
   Search,
   SlidersHorizontal
@@ -17,7 +17,7 @@ import { mockRecruiters } from '../../data/mockData';
 const RecruiterManagement = () => {
   const [recruiters, setRecruiters] = useState(mockRecruiters);
   const [searchQuery, setSearchQuery] = useState('');
-  
+
   // State for simulated modal adding new recruiter
   const [showAddModal, setShowAddModal] = useState(false);
   const [newRecruiter, setNewRecruiter] = useState({
@@ -51,7 +51,7 @@ const RecruiterManagement = () => {
     setNewRecruiter({ name: '', email: '', role: 'Technical Talent Partner', activeJDs: 1 });
   };
 
-  const filteredRecruiters = recruiters.filter(r => 
+  const filteredRecruiters = recruiters.filter(r =>
     r.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     r.role.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -64,7 +64,7 @@ const RecruiterManagement = () => {
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">Recruiter Management</h1>
           <p className="text-sm text-gray-500 mt-1">Assign parsing mandates, observe team leaderboard trends, and track shortlisting volume.</p>
         </div>
-        <button 
+        <button
           onClick={() => setShowAddModal(true)}
           className="flex items-center gap-2 px-4 py-2.5 bg-brand-blue text-white rounded-xl font-bold text-sm hover:bg-brand-blue/90 transition-all shadow-md shadow-brand-blue/20 self-start sm:self-auto"
         >
@@ -122,9 +122,9 @@ const RecruiterManagement = () => {
         <div className="p-5 border-b border-gray-100 flex flex-col sm:flex-row gap-3 items-center justify-between">
           <div className="relative w-full sm:w-72">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <input 
-              type="text" 
-              placeholder="Search team members..." 
+            <input
+              type="text"
+              placeholder="Search team members..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-9 pr-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-xs focus:outline-none focus:bg-white transition-all"
@@ -189,8 +189,8 @@ const RecruiterManagement = () => {
                     {/* Simulated SVG Trendline sparkline */}
                     <div className="flex items-end gap-1 h-6 pt-1">
                       {r.monthlyTrend.map((val, idx) => (
-                        <div 
-                          key={idx} 
+                        <div
+                          key={idx}
                           className="w-2 bg-brand-purple/40 hover:bg-brand-purple rounded-t transition-all"
                           style={{ height: `${Math.min(val * 2, 24)}px` }}
                           title={`Period ${idx + 1}: ${val} Shortlisted`}
@@ -221,7 +221,7 @@ const RecruiterManagement = () => {
 
         <div className="space-y-3 pt-2">
           {[
-            { rec: "Marcus Vance", act: "Auto-shortlisted 12 candidates matching Stripe Staff parameters.", time: "10 mins ago" },
+            { rec: "Jahangir A", act: "Auto-shortlisted 12 candidates matching Stripe Staff parameters.", time: "10 mins ago" },
             { rec: "Clara Oswald", act: "Uploaded JD-2026-006 trigger parameters. System extracted 5 skills.", time: "1 hour ago" },
             { rec: "Elena Rostova", act: "Closed manual verification cycle for candidate David Chen.", time: "3 hours ago" }
           ].map((item, idx) => (
@@ -251,24 +251,24 @@ const RecruiterManagement = () => {
             <form onSubmit={handleAddSubmit} className="space-y-3 pt-2 text-xs">
               <div>
                 <label className="block font-semibold text-gray-700 mb-1">Full Name</label>
-                <input 
-                  type="text" 
-                  required 
+                <input
+                  type="text"
+                  required
                   value={newRecruiter.name}
                   onChange={(e) => setNewRecruiter({ ...newRecruiter, name: e.target.value })}
-                  placeholder="e.g. Sarah Jenkins" 
+                  placeholder="e.g. Sarah Jenkins"
                   className="w-full p-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:bg-white"
                 />
               </div>
 
               <div>
                 <label className="block font-semibold text-gray-700 mb-1">Email Address</label>
-                <input 
-                  type="email" 
-                  required 
+                <input
+                  type="email"
+                  required
                   value={newRecruiter.email}
                   onChange={(e) => setNewRecruiter({ ...newRecruiter, email: e.target.value })}
-                  placeholder="sarah@scanjd.com" 
+                  placeholder="sarah@scanjd.com"
                   className="w-full p-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:bg-white"
                 />
               </div>
@@ -276,8 +276,8 @@ const RecruiterManagement = () => {
               <div className="grid grid-cols-2 gap-2">
                 <div>
                   <label className="block font-semibold text-gray-700 mb-1">Role Title</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     value={newRecruiter.role}
                     onChange={(e) => setNewRecruiter({ ...newRecruiter, role: e.target.value })}
                     className="w-full p-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none"
@@ -285,8 +285,8 @@ const RecruiterManagement = () => {
                 </div>
                 <div>
                   <label className="block font-semibold text-gray-700 mb-1">Initial Assign Count</label>
-                  <input 
-                    type="number" 
+                  <input
+                    type="number"
                     min={0}
                     max={10}
                     value={newRecruiter.activeJDs}
@@ -297,15 +297,15 @@ const RecruiterManagement = () => {
               </div>
 
               <div className="pt-4 flex items-center justify-end gap-2">
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   onClick={() => setShowAddModal(false)}
                   className="px-3 py-2 text-gray-500 hover:text-gray-700 font-semibold"
                 >
                   Cancel
                 </button>
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   className="px-4 py-2 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold rounded-xl shadow-sm"
                 >
                   Confirm Account

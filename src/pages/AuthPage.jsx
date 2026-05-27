@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import LoginForm from '../components/auth/LoginForm';
 import RegisterForm from '../components/auth/RegisterForm';
 import ForgotPasswordForm from '../components/auth/ForgotPasswordForm';
+import Logo from '../assets/scanjd-logo.png'
 
 const AuthPage = () => {
   const [authMode, setAuthMode] = useState('login'); // 'login' | 'register' | 'forgot_password'
@@ -16,16 +17,17 @@ const AuthPage = () => {
       <div className="w-full lg:w-1/2 flex flex-col relative z-10 bg-white">
         {/* Header */}
         <div className="p-8">
-          <div 
+          <div
             onClick={() => navigate('/')}
             className="flex items-center gap-2 cursor-pointer w-max"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center shadow-lg shadow-brand-blue/20">
+            {/* <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center shadow-lg shadow-brand-blue/20">
               <FileSearch className="text-white w-6 h-6" />
             </div>
             <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700">
               Scan<span className="text-brand-blue">JD</span>
-            </span>
+            </span> */}
+            <img src={Logo} alt="ScanJD Logo" className='logo-scanjd' />
           </div>
         </div>
 
@@ -67,14 +69,14 @@ const AuthPage = () => {
               "Identify top talent instantly with AI matching",
               "Share shortlisted candidates securely with clients",
             ].map((feature, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5 + (i * 0.1) }}
                 className="flex items-center gap-3 text-blue-50"
               >
-                <CheckCircle2 className="w-6 h-6 text-brand-yellow flex-shrink-0" />
+                <CheckCircle2 className="w-6 h-6 text-emerald-400 flex-shrink-0" />
                 <span className="text-lg">{feature}</span>
               </motion.div>
             ))}
@@ -82,7 +84,7 @@ const AuthPage = () => {
         </div>
 
         {/* Dashboard floating mockup piece */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}

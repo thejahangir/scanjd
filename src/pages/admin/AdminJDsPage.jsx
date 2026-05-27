@@ -1,14 +1,14 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { 
-  Search, 
-  Building2, 
-  Clock, 
-  Sparkles, 
-  ChevronRight, 
+import {
+  Search,
+  Building2,
+  Clock,
+  Sparkles,
+  ChevronRight,
   ChevronLeft,
-  Filter, 
+  Filter,
   FileText,
   SlidersHorizontal,
   LayoutGrid,
@@ -42,7 +42,7 @@ const extendedJDs = [
     experienceRequired: "5-8 Years",
     matchingResumesCount: 88,
     matchAccuracy: 94,
-    recruiterAssigned: "Marcus Vance",
+    recruiterAssigned: "Jahangir A",
     status: "Active",
     uploadDate: "Yesterday",
     skillsRequired: ["PyTorch", "LLM Fine-tuning", "Transformers", "Python", "CUDA"],
@@ -94,7 +94,7 @@ const extendedJDs = [
     experienceRequired: "6-10 Years",
     matchingResumesCount: 95,
     matchAccuracy: 93,
-    recruiterAssigned: "Marcus Vance",
+    recruiterAssigned: "Jahangir A",
     status: "Active",
     uploadDate: "1 week ago",
     skillsRequired: ["Docker", "GitHub Actions", "ArgoCD", "AWS EKS", "Python"],
@@ -146,7 +146,7 @@ const extendedJDs = [
     experienceRequired: "6+ Years",
     matchingResumesCount: 18,
     matchAccuracy: 95,
-    recruiterAssigned: "Marcus Vance",
+    recruiterAssigned: "Jahangir A",
     status: "Active",
     uploadDate: "3 weeks ago",
     skillsRequired: ["Zero Knowledge Proofs", "Rust", "Cryptography", "Consensus Algos"],
@@ -183,13 +183,13 @@ const extendedJDs = [
 const AdminJDsPage = () => {
   const navigate = useNavigate();
   const [jds] = useState(extendedJDs);
-  
+
   // Search and query parameters
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('ALL');
   const [sortBy, setSortBy] = useState('SCORE_DESC');
   const [viewMode, setViewMode] = useState('GRID'); // GRID | TABLE
-  
+
   // Pagination boundary triggers
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = viewMode === 'GRID' ? 6 : 10;
@@ -197,13 +197,13 @@ const AdminJDsPage = () => {
   // Granular multidimensional map handling
   const processedJDs = useMemo(() => {
     let result = jds.filter(jd => {
-      const matchesSearch = jd.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                            jd.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                            jd.skillsRequired.some(s => s.toLowerCase().includes(searchQuery.toLowerCase())) ||
-                            jd.recruiterAssigned.toLowerCase().includes(searchQuery.toLowerCase());
-      
+      const matchesSearch = jd.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        jd.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        jd.skillsRequired.some(s => s.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        jd.recruiterAssigned.toLowerCase().includes(searchQuery.toLowerCase());
+
       const matchesStatus = statusFilter === 'ALL' || jd.status.toUpperCase() === statusFilter.toUpperCase();
-      
+
       return matchesSearch && matchesStatus;
     });
 
@@ -231,7 +231,7 @@ const AdminJDsPage = () => {
   }, [processedJDs, currentPage, itemsPerPage]);
 
   const getStatusColor = (status) => {
-    switch(status) {
+    switch (status) {
       case 'Active': return 'bg-emerald-50 text-emerald-700 border-emerald-100';
       case 'Reviewing': return 'bg-amber-50 text-amber-700 border-amber-100';
       case 'Interviewing': return 'bg-brand-purple/10 text-brand-purple border-brand-purple/20';
@@ -279,9 +279,9 @@ const AdminJDsPage = () => {
         <div className="flex flex-col lg:flex-row gap-3 items-center justify-between">
           <div className="relative w-full lg:w-96">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <input 
-              type="text" 
-              placeholder="Search titles, clients, tag patterns, or assignees..." 
+            <input
+              type="text"
+              placeholder="Search titles, clients, tag patterns, or assignees..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs focus:outline-none focus:bg-white transition-all font-medium text-gray-800 placeholder-gray-400"
@@ -292,7 +292,7 @@ const AdminJDsPage = () => {
             {/* Sort Criteria */}
             <div className="flex items-center gap-1.5 bg-gray-50 px-3 py-2 rounded-xl border border-gray-200">
               <ArrowUpDown className="w-3.5 h-3.5 text-gray-400" />
-              <select 
+              <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
                 className="bg-transparent text-xs font-semibold text-gray-700 focus:outline-none cursor-pointer"
@@ -306,7 +306,7 @@ const AdminJDsPage = () => {
             {/* Status Dropdown */}
             <div className="flex items-center gap-1.5 bg-gray-50 px-3 py-2 rounded-xl border border-gray-200">
               <SlidersHorizontal className="w-3.5 h-3.5 text-gray-400" />
-              <select 
+              <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
                 className="bg-transparent text-xs font-semibold text-gray-700 focus:outline-none cursor-pointer"
@@ -321,26 +321,24 @@ const AdminJDsPage = () => {
 
             {/* View Switcher Pill segment */}
             <div className="flex items-center p-1 bg-gray-100 rounded-xl border border-gray-200/60">
-              <button 
+              <button
                 onClick={() => setViewMode('GRID')}
                 title="Rich Cards Grid View"
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                  viewMode === 'GRID' 
-                    ? 'bg-white text-brand-blue shadow-sm' 
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${viewMode === 'GRID'
+                    ? 'bg-white text-brand-blue shadow-sm'
                     : 'text-gray-500 hover:text-gray-900'
-                }`}
+                  }`}
               >
                 <LayoutGrid className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">Cards</span>
               </button>
-              <button 
+              <button
                 onClick={() => setViewMode('TABLE')}
                 title="High-Density Scannable Rows"
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                  viewMode === 'TABLE' 
-                    ? 'bg-white text-brand-blue shadow-sm' 
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${viewMode === 'TABLE'
+                    ? 'bg-white text-brand-blue shadow-sm'
                     : 'text-gray-500 hover:text-gray-900'
-                }`}
+                  }`}
               >
                 <List className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">List</span>
@@ -427,7 +425,7 @@ const AdminJDsPage = () => {
                       <span className="font-bold text-brand-blue">{jd.matchAccuracy}% Fit</span>
                     </div>
                     <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                      <div 
+                      <div
                         className="h-full bg-gradient-to-r from-brand-blue to-brand-purple rounded-full transition-all duration-500"
                         style={{ width: `${jd.matchAccuracy}%` }}
                       />
@@ -481,7 +479,7 @@ const AdminJDsPage = () => {
                   </tr>
                 ) : (
                   paginatedJDs.map((jd) => (
-                    <tr 
+                    <tr
                       key={jd.id}
                       onClick={() => navigate(`/admin/jd/${jd.id}`)}
                       className="hover:bg-brand-blue/5 cursor-pointer transition-colors group"
@@ -542,7 +540,7 @@ const AdminJDsPage = () => {
           </div>
 
           <div className="flex items-center gap-1.5">
-            <button 
+            <button
               disabled={currentPage === 1}
               onClick={() => setCurrentPage(p => Math.max(p - 1, 1))}
               className="flex items-center gap-1 px-3 py-1.5 border border-gray-200 rounded-xl font-bold text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
@@ -559,11 +557,10 @@ const AdminJDsPage = () => {
                   <button
                     key={pageNum}
                     onClick={() => setCurrentPage(pageNum)}
-                    className={`w-7 h-7 rounded-lg font-bold text-xs flex items-center justify-center transition-all cursor-pointer ${
-                      currentPage === pageNum 
-                        ? 'bg-brand-blue text-white shadow-sm' 
+                    className={`w-7 h-7 rounded-lg font-bold text-xs flex items-center justify-center transition-all cursor-pointer ${currentPage === pageNum
+                        ? 'bg-brand-blue text-white shadow-sm'
                         : 'text-gray-600 hover:bg-gray-100'
-                    }`}
+                      }`}
                   >
                     {pageNum}
                   </button>
@@ -571,7 +568,7 @@ const AdminJDsPage = () => {
               })}
             </div>
 
-            <button 
+            <button
               disabled={currentPage === totalPages}
               onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))}
               className="flex items-center gap-1 px-3 py-1.5 border border-gray-200 rounded-xl font-bold text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"

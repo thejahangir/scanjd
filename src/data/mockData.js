@@ -8,7 +8,7 @@ export const initialJobDescriptions = [
     experienceRequired: "5-7 Years",
     matchingResumesCount: 42,
     matchAccuracy: 94,
-    recruiterAssigned: "Marcus Vance",
+    recruiterAssigned: "Jahangir A",
     status: "Active",
     uploadDate: "May 10, 2026",
     progress: 78,
@@ -42,7 +42,7 @@ export const initialJobDescriptions = [
     experienceRequired: "10+ Years",
     matchingResumesCount: 29,
     matchAccuracy: 91,
-    recruiterAssigned: "Marcus Vance",
+    recruiterAssigned: "Jahangir A",
     status: "Active",
     uploadDate: "May 05, 2026",
     progress: 60,
@@ -348,14 +348,14 @@ export const mockCandidates = [
     aiRecommendation: "Reliable, performance-oriented developer. Demonstrates high rigor in client state flows and Next.js static generation pipelines.",
     skillGapText: "Lacks Tailwind style efficiency; prefers traditional preprocessors.",
     interviewQuestions: ["When do you prefer static site generation vs incremental static regeneration?"],
-    timeline: [{ date: "May 16, 2026", action: "Assigned to recruitment pool by Marcus Vance." }]
+    timeline: [{ date: "May 16, 2026", action: "Assigned to recruitment pool by Jahangir A." }]
   }
 ];
 
 export const mockRecruiters = [
   {
     id: "REC-001",
-    name: "Marcus Vance",
+    name: "Jahangir A",
     email: "marcus.v@scanjd.com",
     role: "Senior Tech Recruiter",
     activeJDs: 4,

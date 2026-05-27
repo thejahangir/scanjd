@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, FileSearch } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import Logo from '../assets/scanjd-logo.png';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,22 +27,22 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/80 backdrop-blur-md border-b border-gray-200 py-3 shadow-sm'
-          : 'bg-transparent py-5'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-white/80 backdrop-blur-md border-b border-gray-200 py-3 shadow-sm'
+        : 'bg-transparent py-5'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer">
-            <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center shadow-lg shadow-brand-blue/20">
+            {/* <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center shadow-lg shadow-brand-blue/20">
               <FileSearch className="text-white w-6 h-6" />
             </div>
             <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700">
               Scan<span className="text-brand-blue">JD</span>
-            </span>
+            </span> */}
+            <img src={Logo} alt="ScanJD Logo" className='logo-scanjd' />
           </div>
 
           {/* Desktop Nav */}
@@ -58,7 +59,7 @@ const Navbar = () => {
               ))}
             </div>
             <div className="flex items-center gap-4">
-              <button 
+              <button
                 onClick={() => navigate('/auth')}
                 className="px-5 py-2.5 rounded-full bg-brand-blue text-white font-medium hover:bg-brand-blue/90 transition-all shadow-lg shadow-brand-blue/30 hover:shadow-brand-blue/50"
               >
@@ -100,7 +101,7 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="border-t border-gray-100 pt-4 flex flex-col gap-3">
-                <button 
+                <button
                   onClick={() => {
                     setMobileMenuOpen(false);
                     navigate('/auth');

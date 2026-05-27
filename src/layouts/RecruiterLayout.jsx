@@ -2,15 +2,16 @@ import { useState } from 'react';
 import { NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import NotificationPanel from '../components/NotificationPanel';
 import ConfirmModal from '../components/ConfirmModal';
-import { 
-  LayoutDashboard, 
-  FileText, 
-  Users, 
-  Award, 
-  LogOut, 
-  Bell, 
-  Search, 
-  FileSearch, 
+import Logo from '../assets/scanjd-logo.png';
+import {
+  LayoutDashboard,
+  FileText,
+  Users,
+  Award,
+  LogOut,
+  Bell,
+  Search,
+  FileSearch,
   UploadCloud,
   Menu,
   X,
@@ -43,16 +44,16 @@ const RecruiterLayout = () => {
     if (item.path === '/recruiter') {
       return location.pathname === '/recruiter';
     }
-    
+
     const hasSearchParams = item.path.includes('?');
     if (hasSearchParams) {
       const [basePath, searchPart] = item.path.split('?');
       return location.pathname.includes(basePath) && location.search.includes(searchPart);
     } else {
       if (item.name === 'Job Description') {
-        return (location.pathname.includes('/recruiter/jd') || location.pathname.includes('/recruiter/jds')) && 
-               !location.search.includes('view=candidates') && 
-               !location.search.includes('filter=shortlisted');
+        return (location.pathname.includes('/recruiter/jd') || location.pathname.includes('/recruiter/jds')) &&
+          !location.search.includes('view=candidates') &&
+          !location.search.includes('filter=shortlisted');
       }
       return location.pathname.includes(item.path);
     }
@@ -64,11 +65,8 @@ const RecruiterLayout = () => {
       <aside className="hidden md:flex w-64 bg-white border-r border-gray-200 flex-col fixed inset-y-0 z-30">
         {/* Header */}
         <div className="p-6 border-b border-gray-100 flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-blue to-brand-purple flex items-center justify-center shadow-md shadow-brand-blue/20">
-            <FileSearch className="text-white w-5 h-5" />
-          </div>
+          <img src={Logo} alt="ScanJD Logo" className='logo-scanjd-inner' />
           <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700">
-            Scan<span className="text-brand-purple">JD</span>
             <span className="text-[10px] ml-1.5 px-1.5 py-0.5 bg-brand-purple/10 text-brand-purple rounded-md font-bold uppercase tracking-wider">Recruiter</span>
           </span>
         </div>
@@ -77,19 +75,15 @@ const RecruiterLayout = () => {
         <nav className="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
           {menuItems.map((item) => {
             const Icon = item.icon;
-            const isUpload = item.path.includes('upload');
             const active = checkIsActive(item);
             return (
               <NavLink
                 key={item.name}
                 to={item.path}
                 className={() =>
-                  `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${
-                    active
-                      ? 'bg-brand-purple text-white shadow-md shadow-brand-purple/20'
-                      : isUpload 
-                        ? 'text-brand-purple hover:bg-brand-purple/10 font-bold border border-brand-purple/20 my-1'
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all whitespace-nowrap ${active
+                    ? 'bg-brand-purple text-white shadow-md shadow-brand-purple/20'
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                   }`
                 }
               >
@@ -117,7 +111,7 @@ const RecruiterLayout = () => {
         {/* Sticky Header */}
         <header className="sticky top-0 z-20 bg-white/80 backdrop-blur-md border-b border-gray-200 h-16 flex items-center justify-between px-4 sm:px-8">
           <div className="flex items-center gap-3 flex-1 max-w-md">
-            <button 
+            <button
               onClick={() => setMobileMenu(!mobileMenu)}
               className="md:hidden text-gray-500 hover:text-gray-900"
             >
@@ -125,9 +119,9 @@ const RecruiterLayout = () => {
             </button>
             <div className="relative w-full hidden sm:block">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-              <input 
-                type="text" 
-                placeholder="Search assigned JDs or active talent pipelines..." 
+              <input
+                type="text"
+                placeholder="Search assigned JDs or active talent pipelines..."
                 className="w-full pl-9 pr-4 py-2 bg-gray-50/50 hover:bg-gray-50 focus:bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-purple/20 transition-all"
               />
             </div>
@@ -135,14 +129,14 @@ const RecruiterLayout = () => {
 
           <div className="flex items-center gap-4">
             {/* Quick action triggers */}
-            <button 
+            <button
               onClick={() => navigate('/recruiter/upload-resume')}
               className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-brand-purple/10 hover:bg-brand-purple/20 text-brand-purple border border-brand-purple/30 rounded-lg text-xs font-bold transition-all"
             >
               <UploadCloud className="w-3.5 h-3.5" /> Bulk Parse Resumes
             </button>
 
-            <button 
+            <button
               onClick={() => setNotificationsOpen(true)}
               className="relative p-2 text-gray-500 hover:text-brand-purple hover:bg-gray-50 rounded-xl transition-all"
             >
@@ -156,7 +150,7 @@ const RecruiterLayout = () => {
                 R
               </div>
               <div className="hidden lg:block text-left">
-                <div className="text-sm font-bold text-gray-900 leading-tight">Marcus Vance</div>
+                <div className="text-sm font-bold text-gray-900 leading-tight">Jahangir A</div>
                 <div className="text-xs text-gray-500">recruiter@scanjd.com</div>
               </div>
             </div>
@@ -184,8 +178,7 @@ const RecruiterLayout = () => {
                       to={item.path}
                       onClick={() => setMobileMenu(false)}
                       className={() =>
-                        `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
-                          active ? 'bg-brand-purple text-white' : 'text-gray-600'
+                        `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${active ? 'bg-brand-purple text-white' : 'text-gray-600'
                         }`
                       }
                     >
@@ -218,10 +211,10 @@ const RecruiterLayout = () => {
       </div>
 
       {/* Slide-over Notifications Panel */}
-      <NotificationPanel 
-        isOpen={notificationsOpen} 
-        onClose={() => setNotificationsOpen(false)} 
-        role="recruiter" 
+      <NotificationPanel
+        isOpen={notificationsOpen}
+        onClose={() => setNotificationsOpen(false)}
+        role="recruiter"
       />
 
       {/* Brand-styled Custom Confirm Modal */}

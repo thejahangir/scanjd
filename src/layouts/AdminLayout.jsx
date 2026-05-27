@@ -2,16 +2,17 @@ import { useState } from 'react';
 import { NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import NotificationPanel from '../components/NotificationPanel';
 import ConfirmModal from '../components/ConfirmModal';
-import { 
-  LayoutDashboard, 
-  FileText, 
-  Users, 
-  UserCheck, 
-  BarChart3, 
-  FileSpreadsheet, 
-  LogOut, 
-  Bell, 
-  Search, 
+import Logo from '../assets/scanjd-logo.png';
+import {
+  LayoutDashboard,
+  FileText,
+  Users,
+  UserCheck,
+  BarChart3,
+  FileSpreadsheet,
+  LogOut,
+  Bell,
+  Search,
   FileSearch,
   Menu,
   X
@@ -42,7 +43,7 @@ const AdminLayout = () => {
     if (item.path === '/admin') {
       return location.pathname === '/admin';
     }
-    
+
     const hasSearchParams = item.path.includes('?');
     if (hasSearchParams) {
       const [basePath, searchPart] = item.path.split('?');
@@ -64,11 +65,8 @@ const AdminLayout = () => {
       <aside className="hidden md:flex w-64 bg-white border-r border-gray-200 flex-col fixed inset-y-0 z-30">
         {/* Brand Header */}
         <div className="p-6 border-b border-gray-100 flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-gradient-primary flex items-center justify-center shadow-md shadow-brand-blue/20">
-            <FileSearch className="text-white w-5 h-5" />
-          </div>
+          <img src={Logo} alt="ScanJD Logo" className='logo-scanjd-inner' />
           <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700">
-            Scan<span className="text-brand-blue">JD</span>
             <span className="text-[10px] ml-1.5 px-1.5 py-0.5 bg-brand-blue/10 text-brand-blue rounded-md font-bold uppercase tracking-wider">Admin</span>
           </span>
         </div>
@@ -83,10 +81,9 @@ const AdminLayout = () => {
                 key={item.name}
                 to={item.path}
                 className={() =>
-                  `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
-                    active
-                      ? 'bg-brand-blue text-white shadow-md shadow-brand-blue/20'
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                  `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${active
+                    ? 'bg-brand-blue text-white shadow-md shadow-brand-blue/20'
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                   }`
                 }
               >
@@ -114,7 +111,7 @@ const AdminLayout = () => {
         {/* Sticky Header */}
         <header className="sticky top-0 z-20 bg-white/80 backdrop-blur-md border-b border-gray-200 h-16 flex items-center justify-between px-4 sm:px-8">
           <div className="flex items-center gap-3 flex-1 max-w-md">
-            <button 
+            <button
               onClick={() => setMobileMenu(!mobileMenu)}
               className="md:hidden text-gray-500 hover:text-gray-900"
             >
@@ -122,9 +119,9 @@ const AdminLayout = () => {
             </button>
             <div className="relative w-full hidden sm:block">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-              <input 
-                type="text" 
-                placeholder="Search candidates, JDs, recruiters..." 
+              <input
+                type="text"
+                placeholder="Search candidates, JDs, recruiters..."
                 className="w-full pl-9 pr-4 py-2 bg-gray-50/50 hover:bg-gray-50 focus:bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/20 transition-all"
               />
             </div>
@@ -132,7 +129,7 @@ const AdminLayout = () => {
 
           <div className="flex items-center gap-4">
             {/* Realtime Notifications Simulation */}
-            <button 
+            <button
               onClick={() => setNotificationsOpen(true)}
               className="relative p-2 text-gray-500 hover:text-brand-blue hover:bg-gray-50 rounded-xl transition-all"
             >
@@ -174,10 +171,9 @@ const AdminLayout = () => {
                       to={item.path}
                       onClick={() => setMobileMenu(false)}
                       className={() =>
-                        `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
-                          active
-                            ? 'bg-brand-blue text-white'
-                            : 'text-gray-600'
+                        `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${active
+                          ? 'bg-brand-blue text-white'
+                          : 'text-gray-600'
                         }`
                       }
                     >
@@ -210,10 +206,10 @@ const AdminLayout = () => {
       </div>
 
       {/* Slide-over Notifications Panel */}
-      <NotificationPanel 
-        isOpen={notificationsOpen} 
-        onClose={() => setNotificationsOpen(false)} 
-        role="admin" 
+      <NotificationPanel
+        isOpen={notificationsOpen}
+        onClose={() => setNotificationsOpen(false)}
+        role="admin"
       />
 
       {/* Brand-styled Custom Confirm Modal */}
