@@ -15,12 +15,53 @@
   <meta name="robots" content="index, follow" />
   <meta name="language" content="English" />
   <meta name="revisit-after" content="7 days" />
-  <script type="module" crossorigin src="/scanjd/assets/index-CyPv5krd.js"></script>
-  <link rel="stylesheet" crossorigin href="/scanjd/assets/index-fZMd7BGd.css">
+  <script type="module" crossorigin src="/scanjd/assets/index-DcL1cBC5.js"></script>
+  <link rel="stylesheet" crossorigin href="/scanjd/assets/index-C6uuZxJW.css">
 </head>
 
 <body>
   <div id="root"></div>
+  <script>
+    // Dynamically ensure cursor: pointer is applied to any element with a click handler
+    document.addEventListener('mouseover', function(e) {
+      let target = e.target;
+      let depth = 0;
+      while (target && target !== document.documentElement && depth < 4) {
+        const tag = target.tagName;
+        // Stop immediately at layout containers to prevent polluting high-level wrappers
+        if (target.id === 'root' || tag === 'BODY' || tag === 'HTML' || tag === 'MAIN' || tag === 'ASIDE' || tag === 'NAV') {
+          break;
+        }
+
+        // Skip elements that already have cursor pointer set
+        if (target.style.cursor === 'pointer') break;
+
+        // Check for vanilla onclick attribute or property
+        if (target.onclick || target.getAttribute('onclick')) {
+          target.style.cursor = 'pointer';
+          break;
+        }
+
+        // Check for React internal click event properties (starts with __reactProps or __reactEventHandlers)
+        const keys = Object.keys(target);
+        const reactKey = keys.find(key => key.startsWith('__reactProps') || key.startsWith('__reactEventHandlers'));
+        if (reactKey && target[reactKey] && (target[reactKey].onClick || target[reactKey].onclick)) {
+          target.style.cursor = 'pointer';
+          break;
+        }
+
+        // Also fallback for accessibility elements
+        const role = target.getAttribute('role');
+        if (role === 'button' || role === 'link' || role === 'menuitem' || role === 'tab') {
+          target.style.cursor = 'pointer';
+          break;
+        }
+
+        target = target.parentElement;
+        depth++;
+      }
+    });
+  </script>
 </body>
 
 </html>
