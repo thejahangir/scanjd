@@ -23,7 +23,7 @@ const ReviewMatchesScreen = () => {
 
   // Load the initial set of parsed candidate profiles
   const [candidates, setCandidates] = useState(() => {
-    // Take Sarah Jenkins, David Chen, Amina Yusuf, and Alex Mercer as the mock uploads
+    // Take Shreya Joshi, Devendra Chaudhary, Aditi Yadav, and Dr. Amit Mishra as the mock uploads
     const selectedIds = ['CAND-001', 'CAND-002', 'CAND-003', 'CAND-004'];
     return mockCandidates
       .filter(c => selectedIds.includes(c.id))

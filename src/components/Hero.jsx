@@ -127,9 +127,9 @@ const Hero = () => {
                 </h3>
                 <div className="space-y-3">
                   {[
-                    { name: 'Sarah Jenkins', role: 'Senior Frontend Dev', match: 98 },
-                    { name: 'Michael Chen', role: 'Frontend Engineer', match: 94 },
-                    { name: 'Emily Rodriguez', role: 'React Developer', match: 89 },
+                    { name: 'Shreya Joshi', role: 'Senior Frontend Dev', match: 98 },
+                    { name: 'Manoj Chaudhary', role: 'Frontend Engineer', match: 94 },
+                    { name: 'Ekta Rao', role: 'React Developer', match: 89 },
                   ].map((candidate, i) => (
                     <motion.div 
                       key={i}

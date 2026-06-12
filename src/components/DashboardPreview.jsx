@@ -3,10 +3,10 @@ import { Search, Filter, MoreVertical, Star, TrendingUp, CheckCircle, AlertCircl
 
 const DashboardPreview = () => {
   const candidates = [
-    { id: 1, name: 'Alex Johnson', role: 'Product Designer', match: 96, status: 'Shortlisted', skills: ['Figma', 'UX Research', 'Prototyping'] },
-    { id: 2, name: 'David Lee', role: 'UX Designer', match: 91, status: 'Reviewing', skills: ['UI Design', 'Wireframing', 'User Testing'] },
-    { id: 3, name: 'Sophia Martinez', role: 'UI Engineer', match: 84, status: 'Pending', skills: ['React', 'CSS', 'Figma'] },
-    { id: 4, name: 'James Wilson', role: 'Graphic Designer', match: 62, status: 'Rejected', skills: ['Photoshop', 'Illustrator', 'Branding'] },
+    { id: 1, name: 'Alok Joshi', role: 'Product Designer', match: 96, status: 'Shortlisted', skills: ['Figma', 'UX Research', 'Prototyping'] },
+    { id: 2, name: 'Deepak Lal', role: 'UX Designer', match: 91, status: 'Reviewing', skills: ['UI Design', 'Wireframing', 'User Testing'] },
+    { id: 3, name: 'Sonal Mehta', role: 'UI Engineer', match: 84, status: 'Pending', skills: ['React', 'CSS', 'Figma'] },
+    { id: 4, name: 'Jaideep Wadhwa', role: 'Graphic Designer', match: 62, status: 'Rejected', skills: ['Photoshop', 'Illustrator', 'Branding'] },
   ];
 
   return (

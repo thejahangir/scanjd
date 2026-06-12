@@ -101,7 +101,7 @@ const NotificationPanel = ({ isOpen, onClose, role = 'admin' }) => {
       id: 4,
       type: 'matching',
       title: 'Golden Candidate Matched',
-      desc: 'Candidate "Sarah Jenkins" matched 94% skills alignment for UI Dev.',
+      desc: 'Candidate "Shreya Joshi" matched 94% skills alignment for UI Dev.',
       time: 'Yesterday',
       read: true,
       icon: Award,

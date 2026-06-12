@@ -19,8 +19,8 @@ const UploadResumeScreen = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [files, setFiles] = useState([
     // Default simulated initial sample file
-    { id: '1', name: 'Sarah_Jenkins_Senior_Frontend_CV.pdf', size: '2.4 MB', progress: 100, status: 'PARSED', error: null },
-    { id: '2', name: 'David_Chen_UI_Developer.docx', size: '1.8 MB', progress: 100, status: 'PARSED', error: null },
+    { id: '1', name: 'Shreya_Joshi_Senior_Frontend_CV.pdf', size: '2.4 MB', progress: 100, status: 'PARSED', error: null },
+    { id: '2', name: 'Devendra_Chaudhary_UI_Developer.docx', size: '1.8 MB', progress: 100, status: 'PARSED', error: null },
   ]);
 
   const handleDrop = (e) => {
@@ -90,8 +90,8 @@ const UploadResumeScreen = () => {
   // Trigger bulk parse simulator helper
   const injectDummyCandidates = () => {
     const dummy = [
-      { id: `sim-${Date.now()}-1`, name: 'Dr. Alex Mercer_Research_LLM.pdf', size: '4.1 MB', progress: 0, status: 'QUEUED', error: null },
-      { id: `sim-${Date.now()}-2`, name: 'Amina_Yusuf_React_Developer.pdf', size: '1.2 MB', progress: 0, status: 'QUEUED', error: null }
+      { id: `sim-${Date.now()}-1`, name: 'Dr. Amit Mishra_Research_LLM.pdf', size: '4.1 MB', progress: 0, status: 'QUEUED', error: null },
+      { id: `sim-${Date.now()}-2`, name: 'Aditi_Yadav_React_Developer.pdf', size: '1.2 MB', progress: 0, status: 'QUEUED', error: null }
     ];
     setFiles(prev => [...prev, ...dummy]);
   };

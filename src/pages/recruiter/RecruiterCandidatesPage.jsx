@@ -99,7 +99,12 @@ const RecruiterCandidatesPage = () => {
     const updated = mockCandidates.filter(c => c.jdId === selectedJdId);
     setCandidates(updated);
 
-    if (selectedCandidate && !draftAssignments[selectedCandidate.id]) {
+    if (updated.length > 0) {
+      if (!selectedCandidate || !draftAssignments[selectedCandidate.id]) {
+        setSelectedCandidate(updated[0]);
+        setIsPreviewOpen(true);
+      }
+    } else {
       setSelectedCandidate(null);
       setIsPreviewOpen(false);
     }
@@ -113,10 +118,16 @@ const RecruiterCandidatesPage = () => {
     if (cand) {
       cand.jdId = null;
     }
-    setCandidates(prev => prev.filter(c => c.id !== candidateId));
+    const updated = candidates.filter(c => c.id !== candidateId);
+    setCandidates(updated);
     if (selectedCandidate?.id === candidateId) {
-      setSelectedCandidate(null);
-      setIsPreviewOpen(false);
+      if (updated.length > 0) {
+        setSelectedCandidate(updated[0]);
+        setIsPreviewOpen(true);
+      } else {
+        setSelectedCandidate(null);
+        setIsPreviewOpen(false);
+      }
     }
     showToast(`Removed candidate from this Job Description.`);
   };
@@ -124,12 +135,18 @@ const RecruiterCandidatesPage = () => {
   // When JD changes, update candidate list
   const handleJdChange = (jdId) => {
     setSelectedJdId(jdId);
-    setCandidates(mockCandidates.filter(c => c.jdId === jdId));
+    const newCandidates = mockCandidates.filter(c => c.jdId === jdId);
+    setCandidates(newCandidates);
     setJdDropdownOpen(false);
     setJdSearchQuery('');
     setCurrentPage(1);
-    setSelectedCandidate(null);
-    setIsPreviewOpen(false);
+    if (newCandidates.length > 0) {
+      setSelectedCandidate(newCandidates[0]);
+      setIsPreviewOpen(true);
+    } else {
+      setSelectedCandidate(null);
+      setIsPreviewOpen(false);
+    }
   };
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -138,8 +155,14 @@ const RecruiterCandidatesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  const [selectedCandidate, setSelectedCandidate] = useState(null);
-  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const [selectedCandidate, setSelectedCandidate] = useState(() => {
+    const initialCandidates = mockCandidates.filter(c => c.jdId === (activeJDs[0]?.id || extendedJDs[0]?.id));
+    return initialCandidates[0] || null;
+  });
+  const [isPreviewOpen, setIsPreviewOpen] = useState(() => {
+    const initialCandidates = mockCandidates.filter(c => c.jdId === (activeJDs[0]?.id || extendedJDs[0]?.id));
+    return initialCandidates.length > 0;
+  });
 
   const processedCandidates = useMemo(() => {
     let result = [...candidates];

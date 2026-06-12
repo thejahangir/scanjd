@@ -92,7 +92,7 @@ const AuthPage = () => {
         >
           <div className="flex items-center justify-between mb-4 pb-4 border-b border-white/10">
             <div>
-              <div className="text-white font-bold">Top Match: Sarah Jenkins</div>
+              <div className="text-white font-bold">Top Match: Shreya Joshi</div>
               <div className="text-blue-200 text-sm">Senior Frontend Developer</div>
             </div>
             <div className="bg-green-500/20 border border-green-400/30 text-green-300 px-3 py-1 rounded-lg font-bold">
