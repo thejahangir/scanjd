@@ -12,6 +12,7 @@ import {
   X,
   Plus
 } from 'lucide-react';
+import { extendedJDs, mockRecruiters } from '../../data/mockData';
 
 const UploadJDScreen = () => {
   const navigate = useNavigate();
@@ -25,6 +26,48 @@ const UploadJDScreen = () => {
   const [isParsing, setIsParsing] = useState(false);
   const [parsedSkills, setParsedSkills] = useState([]);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [assignedRecruiter, setAssignedRecruiter] = useState('');
+
+  const handleSaveJD = (e) => {
+    e.preventDefault();
+    // Generate a unique ID (e.g. JD-[abbreviation]2026-[increment])
+    const count = extendedJDs.length + 1;
+    const countStr = String(count).padStart(3, '0');
+    
+    // Abbreviate title
+    const words = jdTitle.trim().split(/\s+/);
+    let deptAbbr = 'JD';
+    if (words.length >= 2) {
+      deptAbbr = (words[0][0] + words[words.length - 1][0]).toUpperCase();
+    } else if (words.length === 1 && words[0].length >= 2) {
+      deptAbbr = words[0].substring(0, 2).toUpperCase();
+    }
+    const newId = `JD-${deptAbbr}2026-${countStr}`;
+
+    const newJD = {
+      id: newId,
+      title: jdTitle,
+      company: company || "ScanJD Partner",
+      experienceRequired: "5-7 Years", // Default/mock value
+      matchingResumesCount: Math.floor(Math.random() * 20) + 5, // Simulated processed CVs
+      matchAccuracy: Math.floor(Math.random() * 15) + 82, // Simulated AI coherence
+      recruiterAssigned: assignedRecruiter,
+      status: "Active",
+      uploadDate: "Just now",
+      skillsRequired: parsedSkills,
+      badge: "Newly Added"
+    };
+
+    // Save/Push to the shared in-memory array
+    extendedJDs.push(newJD);
+
+    // Redirect to the JDs page
+    navigate('/admin/jds');
+  };
+
+  const handleRemoveSkill = (skillToRemove) => {
+    setParsedSkills(prev => prev.filter(s => s !== skillToRemove));
+  };
 
   // Simulated extraction dictionary
   const sampleTechKeywords = ['React', 'TypeScript', 'Node.js', 'GraphQL', 'Tailwind CSS', 'AWS', 'Docker', 'Next.js', 'Python', 'Kubernetes'];
@@ -75,15 +118,15 @@ Must possess multi-year expertise consuming TypeScript guidelines, optimizing Ta
       {/* Main interactive viewport container */}
       <div className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
         <div className="flex items-center justify-between pb-4 border-b border-gray-100">
-          <span className="text-xs font-bold text-brand-purple uppercase tracking-wider block flex items-center gap-1.5">
-            <Layers className="w-4 h-4" /> Step 1: Mandatory Meta Variables
+          <span className="text-xs font-bold text-brand-blue uppercase tracking-wider block flex items-center gap-1.5">
+            <Layers className="w-4 h-4" /> Step 1: Basic Job Details
           </span>
           <button 
             type="button" 
             onClick={fillSampleJD}
-            className="text-xs font-bold text-brand-purple hover:underline"
+            className="text-xs font-bold text-brand-blue hover:underline"
           >
-            Load Example Spec
+            Try a Sample Job
           </button>
         </div>
 
@@ -125,17 +168,17 @@ Must possess multi-year expertise consuming TypeScript guidelines, optimizing Ta
                 onDragLeave={() => setIsDragging(false)}
                 onDrop={handleFileDrop}
                 className={`border-2 border-dashed rounded-2xl p-6 flex flex-col items-center justify-center text-center transition-all ${
-                  isDragging ? 'border-brand-purple bg-brand-purple/5' : 'border-gray-200 hover:border-brand-purple/40 bg-gray-50/30'
+                  isDragging ? 'border-brand-blue bg-brand-blue/5' : 'border-gray-200 hover:border-brand-blue/40 bg-gray-50/30'
                 }`}
               >
-                <div className="w-12 h-12 rounded-xl bg-brand-purple/10 text-brand-purple flex items-center justify-center mb-3">
+                <div className="w-12 h-12 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center mb-3">
                   <UploadCloud className="w-6 h-6" />
                 </div>
-                <span className="text-xs font-bold text-gray-700 block">Drag & Drop JD payload Document</span>
+                <span className="text-xs font-bold text-gray-700 block">Drag & Drop JD Document</span>
                 <span className="text-[10px] text-gray-400 block mt-1">Supports standard PDF, DOCX, or pure TXT format</span>
                 
                 {/* Simulated file selector button */}
-                <label className="mt-4 px-3 py-1.5 bg-white border border-gray-200 text-gray-700 hover:text-brand-purple rounded-lg text-xs font-bold cursor-pointer transition-all shadow-sm">
+                <label className="mt-4 px-3 py-1.5 bg-white border border-gray-200 text-gray-700 hover:text-brand-blue rounded-lg text-xs font-bold cursor-pointer transition-all shadow-sm">
                   Browse Local Files
                   <input 
                     type="file" 
@@ -147,12 +190,12 @@ Must possess multi-year expertise consuming TypeScript guidelines, optimizing Ta
                 </label>
 
                 {uploadedFileName && (
-                  <div className="mt-3 p-2 bg-brand-purple/10 border border-brand-purple/20 rounded-lg text-xs font-bold text-brand-purple flex items-center gap-1.5 max-w-full">
-                    <FileText className="w-3.5 h-3.5 flex-shrink-0" />
-                    <span className="truncate">{uploadedFileName}</span>
-                    <button type="button" onClick={() => setUploadedFileName('')} className="hover:text-red-500">
-                      <X className="w-3.5 h-3.5" />
-                    </button>
+                  <div className="mt-3 p-2 bg-brand-blue/10 border border-brand-blue/20 rounded-lg text-xs font-bold text-brand-blue flex items-center gap-1.5 max-w-full">
+                     <FileText className="w-3.5 h-3.5 flex-shrink-0" />
+                     <span className="truncate">{uploadedFileName}</span>
+                     <button type="button" onClick={() => setUploadedFileName('')} className="hover:text-red-500">
+                       <X className="w-3.5 h-3.5" />
+                     </button>
                   </div>
                 )}
               </div>
@@ -189,7 +232,7 @@ Must possess multi-year expertise consuming TypeScript guidelines, optimizing Ta
               ) : (
                 <>
                   <Sparkles className="w-4 h-4 text-brand-yellow" />
-                  Trigger AI Skill Extraction
+                  Extract Skills with AI
                 </>
               )}
             </button>
@@ -202,11 +245,11 @@ Must possess multi-year expertise consuming TypeScript guidelines, optimizing Ta
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="p-6 bg-brand-purple/5 border border-brand-purple/20 rounded-2xl space-y-4 pt-4 mt-6"
+              className="p-6 bg-brand-blue/5 border border-brand-blue/20 rounded-2xl space-y-4 pt-4 mt-6"
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-sm font-bold text-brand-purple flex items-center gap-1.5">
+                  <h3 className="text-sm font-bold text-brand-blue flex items-center gap-1.5">
                     <Sparkles className="w-4 h-4 text-brand-yellow" /> Simulated Extraction Results Validated
                   </h3>
                   <p className="text-xs text-gray-500 mt-0.5">Core automatically structured these targeted parameters for initial candidate scoring weights.</p>
@@ -223,8 +266,16 @@ Must possess multi-year expertise consuming TypeScript guidelines, optimizing Ta
               {/* Tags grid array */}
               <div className="flex flex-wrap items-center gap-2 pt-2">
                 {parsedSkills.map(s => (
-                  <span key={s} className="px-3 py-1.5 bg-white border border-brand-purple/20 text-brand-purple rounded-xl font-bold text-xs shadow-sm flex items-center gap-1">
+                  <span key={s} className="px-3 py-1.5 bg-white border border-brand-blue/20 text-brand-blue rounded-xl font-bold text-xs shadow-sm flex items-center gap-1.5 group">
                     {s}
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveSkill(s)}
+                      className="text-gray-400 hover:text-brand-red transition-colors cursor-pointer flex items-center justify-center"
+                      title={`Remove ${s}`}
+                    >
+                      <X className="w-3 h-3" />
+                    </button>
                   </span>
                 ))}
                 <button 
@@ -233,26 +284,42 @@ Must possess multi-year expertise consuming TypeScript guidelines, optimizing Ta
                     const extra = prompt("Specify custom parameter requirement:");
                     if (extra) setParsedSkills([...parsedSkills, extra]);
                   }} 
-                  className="p-1.5 border border-dashed border-gray-300 rounded-xl text-gray-400 hover:text-brand-purple hover:border-brand-purple transition-colors"
+                  className="p-1.5 border border-dashed border-gray-300 rounded-xl text-gray-400 hover:text-brand-blue hover:border-brand-blue transition-colors"
                   title="Inject manual tag constraint"
                 >
                   <Plus className="w-4 h-4" />
                 </button>
               </div>
 
-              {/* Next step confirmation panel linking directly to resume search trigger */}
-              <div className="pt-4 border-t border-brand-purple/20 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <span className="text-xs text-gray-600 font-medium">
-                  Mandate setup operational. Ready to scan existing workspace resume storage buckets.
-                </span>
-                
-                <button
-                  onClick={() => navigate('/recruiter/jd/JD-2026-001')}
-                  className="w-full sm:w-auto px-5 py-2.5 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold text-xs rounded-xl transition-all shadow-md shadow-brand-blue/20 flex items-center justify-center gap-1.5"
-                >
-                  Trigger Resume Scan Loop
-                  <ArrowRight className="w-4 h-4" />
-                </button>
+              {/* Recruiter Assignment Panel */}
+              <div className="pt-4 border-t border-brand-blue/20 space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="space-y-1">
+                    <label className="block text-xs font-bold text-gray-700">Assign Recruiter *</label>
+                    <p className="text-[11px] text-gray-400">Select a recruiter to manage the screening and client communication pipeline.</p>
+                  </div>
+                  
+                  <select
+                    value={assignedRecruiter}
+                    onChange={(e) => setAssignedRecruiter(e.target.value)}
+                    className="w-full sm:w-64 p-2.5 bg-white border border-gray-200 rounded-xl text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-brand-blue/20 transition-all cursor-pointer text-gray-800"
+                  >
+                    <option value="">Unassigned (Choose Later)</option>
+                    {mockRecruiters.map(r => (
+                      <option key={r.id} value={r.name}>{r.name} ({r.role})</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="flex justify-end pt-2">
+                  <button
+                    onClick={handleSaveJD}
+                    className="w-full sm:w-auto px-6 py-2.5 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold text-xs rounded-xl transition-all shadow-md shadow-brand-blue/20 hover:shadow-lg hover:shadow-brand-blue/30 active:scale-95 flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    {assignedRecruiter ? 'Publish Job Description & Assign' : 'Publish Job Description'}
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
             </motion.div>
           )}

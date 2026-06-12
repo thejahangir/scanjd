@@ -102,7 +102,7 @@ const UploadResumeScreen = () => {
     <div className="max-w-4xl mx-auto space-y-8 pb-12">
       {/* Upper header */}
       <div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">Bulk ATS Resume Ingestion</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">Upload Candidate Resumes</h1>
         <p className="text-sm text-gray-500 mt-1">Simultaneously parse multi-file candidate pipelines, extract standard skill sets, and assign compatibility score weights.</p>
       </div>
 
@@ -110,14 +110,14 @@ const UploadResumeScreen = () => {
       <div className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
         <div className="flex items-center justify-between pb-4 border-b border-gray-100">
           <span className="text-xs font-bold text-brand-purple uppercase tracking-wider block flex items-center gap-1.5">
-            <Layers className="w-4 h-4" /> Intake Dropzone Handler
+            <Layers className="w-4 h-4" /> Resume Upload Area
           </span>
           <button 
             type="button" 
             onClick={injectDummyCandidates}
             className="text-xs font-bold text-brand-purple hover:underline"
           >
-            Simulate Agency Intake Drop
+            Load Sample Resumes
           </button>
         </div>
 
@@ -134,10 +134,10 @@ const UploadResumeScreen = () => {
             <UploadCloud className="w-7 h-7" />
           </div>
           <span className="text-sm font-bold text-gray-900 block">Drag & Drop multi-page Candidate PDF / DOCX archives</span>
-          <span className="text-xs text-gray-400 block mt-1">Core parses standard fields, contacts, timelines, and formats instantly</span>
+          <span className="text-xs text-gray-400 block mt-1">Reads name, contact details, work history and skills from each file automatically</span>
 
           <label className="mt-5 px-4 py-2 bg-white border border-gray-200 text-gray-700 hover:text-brand-purple rounded-xl text-xs font-bold cursor-pointer transition-all shadow-sm">
-            Select Files From System
+            Browse Resume
             <input 
               type="file" 
               multiple 
@@ -150,7 +150,7 @@ const UploadResumeScreen = () => {
         {/* Dynamic processing files array container */}
         <div className="space-y-3 pt-4">
           <div className="flex items-center justify-between text-xs font-semibold text-gray-500">
-            <span>Parsing Pipeline Queue: <strong>{files.length} Document items</strong></span>
+            <span>Uploaded Resumes: <strong>{files.length} files</strong></span>
             {parsedCount > 0 && (
               <span className="text-emerald-600 font-bold">{parsedCount} Successfully Verified ✓</span>
             )}
@@ -184,7 +184,7 @@ const UploadResumeScreen = () => {
 
                     {/* Live Processing status feedback bars */}
                     <div className="flex items-center gap-2">
-                      <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
                         <div 
                           className={`h-full rounded-full transition-all duration-500 ${
                             f.status === 'ERROR' ? 'bg-red-500' : f.status === 'PARSED' ? 'bg-emerald-500' : 'bg-brand-purple'
@@ -192,6 +192,11 @@ const UploadResumeScreen = () => {
                           style={{ width: `${f.progress}%` }}
                         />
                       </div>
+                      
+                      {/* Percentage indicator */}
+                      <span className="text-[10px] font-mono font-bold text-gray-500 w-10 text-right flex-shrink-0">
+                        {f.progress}%
+                      </span>
 
                       {/* Explicit text stage status indicator */}
                       <span className="text-[10px] font-bold uppercase tracking-wider w-20 text-right flex-shrink-0">
@@ -225,15 +230,15 @@ const UploadResumeScreen = () => {
         <div className="pt-4 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-1.5 text-xs text-gray-500">
             <FileCheck className="w-4 h-4 text-emerald-600" />
-            <span>Extracted data syncs directly with active <strong>JD Match algorithms</strong>.</span>
+            <span>Candidate profiles are automatically matched against the active <strong>Job Description</strong>.</span>
           </div>
 
           <button
             disabled={parsedCount === 0}
-            onClick={() => navigate('/recruiter/jd/JD-2026-001')}
+            onClick={() => navigate('/recruiter/review-matches')}
             className="w-full sm:w-auto px-6 py-3 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold text-xs rounded-xl transition-all shadow-md shadow-brand-blue/20 flex items-center justify-center gap-1.5 disabled:opacity-50"
           >
-            Review Extracted Matches ({parsedCount})
+            Review Candidate Matches ({parsedCount})
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

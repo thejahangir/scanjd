@@ -15,178 +15,27 @@ import {
   List,
   ArrowUpDown,
   Briefcase,
-  Users
+  Users,
+  Plus
 } from 'lucide-react';
-import { initialJobDescriptions } from '../../data/mockData';
-
-// Generate a rich supplemental list to demonstrate massive pipeline UI handling perfectly
-const extendedJDs = [
-  ...initialJobDescriptions,
-  {
-    id: "JD-2026-004",
-    title: "Principal Cloud Security Architect",
-    company: "ApexGuard Networks",
-    experienceRequired: "8-12 Years",
-    matchingResumesCount: 142,
-    matchAccuracy: 96,
-    recruiterAssigned: "Elena Rostova",
-    status: "Active",
-    uploadDate: "2 hours ago",
-    skillsRequired: ["AWS IAM", "Kubernetes Sec", "Zero Trust", "Terraform", "Go"],
-    badge: "Urgent Priority"
-  },
-  {
-    id: "JD-2026-005",
-    title: "Lead AI/ML Research Scientist",
-    company: "NexusGen Intelligence",
-    experienceRequired: "5-8 Years",
-    matchingResumesCount: 88,
-    matchAccuracy: 94,
-    recruiterAssigned: "Jahangir A",
-    status: "Active",
-    uploadDate: "Yesterday",
-    skillsRequired: ["PyTorch", "LLM Fine-tuning", "Transformers", "Python", "CUDA"],
-    badge: "High Fit"
-  },
-  {
-    id: "JD-2026-006",
-    title: "Staff Backend Systems Developer",
-    company: "HyperScale Core",
-    experienceRequired: "7+ Years",
-    matchingResumesCount: 210,
-    matchAccuracy: 89,
-    recruiterAssigned: "Sarah Jenkins",
-    status: "Reviewing",
-    uploadDate: "3 days ago",
-    skillsRequired: ["Rust", "Distributed Systems", "gRPC", "Kafka", "PostgreSQL"],
-    badge: "Standard"
-  },
-  {
-    id: "JD-2026-007",
-    title: "VP of Engineering Operations",
-    company: "GlobalTrade Matrix",
-    experienceRequired: "12+ Years",
-    matchingResumesCount: 34,
-    matchAccuracy: 91,
-    recruiterAssigned: "David Kim",
-    status: "Interviewing",
-    uploadDate: "5 days ago",
-    skillsRequired: ["Engineering Strategy", "Agile Scaling", "Budgeting", "Team Org"],
-    badge: "Executive"
-  },
-  {
-    id: "JD-2026-008",
-    title: "Senior React Native Architect",
-    company: "PulseMobile App",
-    experienceRequired: "5-7 Years",
-    matchingResumesCount: 165,
-    matchAccuracy: 85,
-    recruiterAssigned: "Elena Rostova",
-    status: "Active",
-    uploadDate: "1 week ago",
-    skillsRequired: ["React Native", "Redux Toolkit", "iOS/Android Native Modules", "Jest"],
-    badge: "Standard"
-  },
-  {
-    id: "JD-2026-009",
-    title: "DevOps Infrastructure Manager",
-    company: "CloudNative Labs",
-    experienceRequired: "6-10 Years",
-    matchingResumesCount: 95,
-    matchAccuracy: 93,
-    recruiterAssigned: "Jahangir A",
-    status: "Active",
-    uploadDate: "1 week ago",
-    skillsRequired: ["Docker", "GitHub Actions", "ArgoCD", "AWS EKS", "Python"],
-    badge: "High Fit"
-  },
-  {
-    id: "JD-2026-010",
-    title: "Senior Data Analytics Consultant",
-    company: "InsightData Partners",
-    experienceRequired: "4-6 Years",
-    matchingResumesCount: 120,
-    matchAccuracy: 88,
-    recruiterAssigned: "Sarah Jenkins",
-    status: "Reviewing",
-    uploadDate: "2 weeks ago",
-    skillsRequired: ["SQL", "Tableau", "Snowflake", "dbt", "ETL Pipelines"],
-    badge: "Standard"
-  },
-  {
-    id: "JD-2026-011",
-    title: "Director of Product Design (UI/UX)",
-    company: "StudioVibe Media",
-    experienceRequired: "8+ Years",
-    matchingResumesCount: 75,
-    matchAccuracy: 92,
-    recruiterAssigned: "David Kim",
-    status: "Interviewing",
-    uploadDate: "2 weeks ago",
-    skillsRequired: ["Figma Systems", "Design Strategy", "User Prototyping", "SaaS Aesthetics"],
-    badge: "Executive"
-  },
-  {
-    id: "JD-2026-012",
-    title: "Lead QA Automation Engineer",
-    company: "AssureQuality Systems",
-    experienceRequired: "5-8 Years",
-    matchingResumesCount: 110,
-    matchAccuracy: 87,
-    recruiterAssigned: "Elena Rostova",
-    status: "Closed",
-    uploadDate: "3 weeks ago",
-    skillsRequired: ["Cypress", "Selenium", "CI/CD Gates", "TypeScript", "API Testing"],
-    badge: "Archived"
-  },
-  {
-    id: "JD-2026-013",
-    title: "Core Protocol Cryptographer",
-    company: "CipherChain Ledger",
-    experienceRequired: "6+ Years",
-    matchingResumesCount: 18,
-    matchAccuracy: 95,
-    recruiterAssigned: "Jahangir A",
-    status: "Active",
-    uploadDate: "3 weeks ago",
-    skillsRequired: ["Zero Knowledge Proofs", "Rust", "Cryptography", "Consensus Algos"],
-    badge: "Urgent Priority"
-  },
-  {
-    id: "JD-2026-014",
-    title: "Enterprise Solutions Architect",
-    company: "CloudScale Connect",
-    experienceRequired: "10+ Years",
-    matchingResumesCount: 52,
-    matchAccuracy: 90,
-    recruiterAssigned: "David Kim",
-    status: "Active",
-    uploadDate: "1 month ago",
-    skillsRequired: ["Cloud Migrations", "B2B Delivery", "System Topologies", "Client Facing"],
-    badge: "High Fit"
-  },
-  {
-    id: "JD-2026-015",
-    title: "Fullstack Web3 Developer",
-    company: "MetaDecentral DAO",
-    experienceRequired: "3-5 Years",
-    matchingResumesCount: 180,
-    matchAccuracy: 82,
-    recruiterAssigned: "Sarah Jenkins",
-    status: "Reviewing",
-    uploadDate: "1 month ago",
-    skillsRequired: ["Solidity", "Ethers.js", "Next.js", "Hardhat", "Node.js"],
-    badge: "Standard"
-  }
-];
+import { extendedJDs, mockRecruiters } from '../../data/mockData';
 
 const AdminJDsPage = () => {
   const navigate = useNavigate();
-  const [jds] = useState(extendedJDs);
+  const [jds, setJds] = useState(extendedJDs);
+  const [activeAssignJdId, setActiveAssignJdId] = useState(null);
+
+  const handleUpdateRecruiter = (jdId, newRecruiter) => {
+    const jdIndex = extendedJDs.findIndex(j => j.id === jdId);
+    if (jdIndex !== -1) {
+      extendedJDs[jdIndex].recruiterAssigned = newRecruiter;
+    }
+    setJds([...extendedJDs]);
+  };
 
   // Search and query parameters
   const [searchQuery, setSearchQuery] = useState('');
-  const [statusFilter, setStatusFilter] = useState('ALL');
+  const [statusFilter, setStatusFilter] = useState('Active');
   const [sortBy, setSortBy] = useState('SCORE_DESC');
   const [viewMode, setViewMode] = useState('GRID'); // GRID | TABLE
 
@@ -200,7 +49,7 @@ const AdminJDsPage = () => {
       const matchesSearch = jd.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         jd.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
         jd.skillsRequired.some(s => s.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        jd.recruiterAssigned.toLowerCase().includes(searchQuery.toLowerCase());
+        (jd.recruiterAssigned || '').toLowerCase().includes(searchQuery.toLowerCase());
 
       const matchesStatus = statusFilter === 'ALL' || jd.status.toUpperCase() === statusFilter.toUpperCase();
 
@@ -252,24 +101,34 @@ const AdminJDsPage = () => {
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">List of Job Description</h1>
           <p className="text-sm text-gray-500 mt-1">
-            Enterprise index displaying high-density parsing pipelines, AI coherence scores, and task owner mapping.
+            Enterprise index displaying high-density parsing pipelines, AI coherence scores, and task recruiter mapping.
           </p>
         </div>
 
-        {/* Global Operational Counters */}
-        <div className="flex items-center gap-3 bg-white p-2 rounded-2xl border border-gray-200/80 shadow-sm self-start sm:self-auto">
-          <div className="px-3 py-1.5 bg-brand-blue/5 rounded-xl">
-            <span className="text-[10px] text-gray-400 block font-bold uppercase">Mandates</span>
-            <span className="text-sm font-extrabold text-brand-blue">{jds.length} Loaded</span>
+        {/* Global Operational Counters & CTA */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 self-stretch sm:self-auto">
+          <div className="flex items-center gap-3 bg-white p-2 rounded-2xl border border-gray-200/80 shadow-sm">
+            <div className="px-3 py-1.5 bg-brand-blue/5 rounded-xl">
+              <span className="text-[10px] text-gray-400 block font-bold uppercase">Mandates</span>
+              <span className="text-sm font-extrabold text-brand-blue">{jds.length} Loaded</span>
+            </div>
+            <div className="px-3 py-1.5 bg-emerald-50/50 rounded-xl">
+              <span className="text-[10px] text-gray-400 block font-bold uppercase">Active Flow</span>
+              <span className="text-sm font-extrabold text-emerald-700">{activeCount} Jobs</span>
+            </div>
+            <div className="px-3 py-1.5 bg-brand-purple/5 rounded-xl">
+              <span className="text-[10px] text-gray-400 block font-bold uppercase">Avg Coherence</span>
+              <span className="text-sm font-extrabold text-brand-purple">{avgAccuracy}%</span>
+            </div>
           </div>
-          <div className="px-3 py-1.5 bg-emerald-50/50 rounded-xl">
-            <span className="text-[10px] text-gray-400 block font-bold uppercase">Active Flow</span>
-            <span className="text-sm font-extrabold text-emerald-700">{activeCount} Jobs</span>
-          </div>
-          <div className="px-3 py-1.5 bg-brand-purple/5 rounded-xl">
-            <span className="text-[10px] text-gray-400 block font-bold uppercase">Avg Coherence</span>
-            <span className="text-sm font-extrabold text-brand-purple">{avgAccuracy}%</span>
-          </div>
+
+          <button
+            onClick={() => navigate('/admin/upload-jd')}
+            className="flex items-center justify-center gap-2 px-5 py-3.5 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold text-xs rounded-2xl transition-all shadow-md shadow-brand-blue/20 hover:shadow-lg hover:shadow-brand-blue/30 active:scale-95 cursor-pointer"
+          >
+            <Plus className="w-4 h-4" />
+            Add Job Description
+          </button>
         </div>
       </div>
 
@@ -374,8 +233,7 @@ const AdminJDsPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.25, delay: index * 0.04 }}
-                onClick={() => navigate(`/admin/jd/${jd.id}`)}
-                className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-brand-blue/30 transition-all flex flex-col justify-between group cursor-pointer relative overflow-hidden"
+                className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-brand-blue/30 transition-all flex flex-col justify-between group relative overflow-hidden"
               >
                 {/* Visual top indicator glow */}
                 <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-brand-blue/10 via-transparent to-brand-purple/10 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -400,6 +258,8 @@ const AdminJDsPage = () => {
                       <Building2 className="w-3.5 h-3.5 text-gray-400" />
                       {jd.company}
                     </span>
+                    <span>•</span>
+                    <span className="font-mono font-bold text-gray-900 bg-gray-100 px-1.5 py-0.5 rounded border border-gray-200">{jd.id}</span>
                     <span>•</span>
                     <span>{jd.experienceRequired}</span>
                   </div>
@@ -430,11 +290,113 @@ const AdminJDsPage = () => {
                         style={{ width: `${jd.matchAccuracy}%` }}
                       />
                     </div>
-
-                    <div className="pt-1 flex items-center justify-between text-[11px] text-gray-500">
-                      <span className="truncate max-w-[120px]">Owner: <strong className="text-gray-700">{jd.recruiterAssigned.split(' ')[0]}</strong></span>
-                      <span className="text-emerald-600 font-bold flex-shrink-0">{jd.matchingResumesCount} CVs Processed</span>
+                    <div className="flex items-center justify-between text-[11px] text-gray-500 pt-1">
+                      <span>CV Matching Status</span>
+                      <span className="text-emerald-600 font-bold">{jd.matchingResumesCount} CVs Processed</span>
                     </div>
+                  </div>
+
+                  {/* Recruiter Assignment Row */}
+                  <div className="mt-4 pt-3.5 border-t border-gray-100 flex items-center justify-between relative">
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      {jd.recruiterAssigned ? (
+                        <>
+                          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-blue/20 to-brand-purple/20 text-brand-blue font-bold text-[10px] flex items-center justify-center border border-brand-blue/30 shadow-sm flex-shrink-0">
+                            {(() => {
+                              const r = mockRecruiters.find(rec => rec.name === jd.recruiterAssigned);
+                              return r ? r.avatar : jd.recruiterAssigned.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+                            })()}
+                          </div>
+                          <div className="min-w-0">
+                            <div className="text-xs font-bold text-gray-800 truncate leading-tight">
+                              {jd.recruiterAssigned}
+                            </div>
+                            <div className="text-[10px] text-gray-400 font-medium leading-none mt-0.5">
+                              {(() => {
+                                const r = mockRecruiters.find(rec => rec.name === jd.recruiterAssigned);
+                                return r ? r.role : 'Technical Recruiter';
+                              })()}
+                            </div>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="w-8 h-8 rounded-full border border-dashed border-gray-300 bg-gray-50/50 flex items-center justify-center text-gray-400 font-bold text-sm flex-shrink-0">
+                            +
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-gray-400 leading-tight font-bold">Unassigned</div>
+                            <div className="text-[10px] text-gray-400 font-medium leading-none mt-0.5">No owner assigned</div>
+                          </div>
+                        </>
+                      )}
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActiveAssignJdId(activeAssignJdId === jd.id ? null : jd.id);
+                      }}
+                      className="px-2.5 py-1.5 bg-gray-50 border border-gray-200 hover:bg-brand-blue/5 hover:border-brand-blue/30 text-gray-500 hover:text-brand-blue rounded-lg text-[10px] font-bold transition-all select-none cursor-pointer flex-shrink-0"
+                    >
+                      {jd.recruiterAssigned ? 'Reassign' : 'Assign'}
+                    </button>
+
+                    {activeAssignJdId === jd.id && (
+                      <>
+                        <div 
+                          className="fixed inset-0 z-10" 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveAssignJdId(null);
+                          }}
+                        />
+                        
+                        <div 
+                          className="absolute bottom-full right-0 mb-2 z-20 w-56 bg-white border border-gray-200 rounded-xl shadow-xl py-1.5 text-xs text-gray-800"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <div className="px-3 py-1.5 text-[9px] font-extrabold text-gray-400 uppercase tracking-wider border-b border-gray-50 pb-1 mb-1.5">
+                            Assign Recruiter
+                          </div>
+                          {mockRecruiters.map(r => (
+                            <button
+                              key={r.id}
+                              type="button"
+                              onClick={() => {
+                                handleUpdateRecruiter(jd.id, r.name);
+                                setActiveAssignJdId(null);
+                              }}
+                              className="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-brand-blue/5 hover:text-brand-blue text-left transition-colors cursor-pointer"
+                            >
+                              <div className="w-6.5 h-6.5 rounded-full bg-brand-blue/10 text-brand-blue font-extrabold text-[10px] flex items-center justify-center flex-shrink-0 border border-brand-blue/20">
+                                {r.avatar}
+                              </div>
+                              <div className="min-w-0 flex-1">
+                                <div className="font-bold text-xs leading-tight text-gray-900 truncate">{r.name}</div>
+                                <div className="text-[9px] text-gray-400 leading-tight mt-0.5 truncate">{r.role}</div>
+                              </div>
+                            </button>
+                          ))}
+                          {jd.recruiterAssigned && (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                handleUpdateRecruiter(jd.id, '');
+                                setActiveAssignJdId(null);
+                              }}
+                              className="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-red-50 text-red-600 text-left border-t border-gray-100 transition-colors cursor-pointer mt-1"
+                            >
+                              <div className="w-6.5 h-6.5 rounded-full bg-red-100 text-red-600 font-extrabold text-[10px] flex items-center justify-center flex-shrink-0 border border-red-200">
+                                ✕
+                              </div>
+                              <span className="font-bold text-xs">Unassign Recruiter</span>
+                            </button>
+                          )}
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
 
@@ -445,7 +407,10 @@ const AdminJDsPage = () => {
                     {jd.uploadDate}
                   </span>
 
-                  <span className="flex items-center gap-1 text-xs font-bold text-brand-blue group-hover:text-brand-blue/90 transition-colors group-hover:translate-x-1 cursor-pointer">
+                  <span 
+                    onClick={() => navigate(`/admin/jd/${jd.id}`)}
+                    className="flex items-center gap-1 text-xs font-bold text-brand-blue hover:text-brand-blue/90 transition-colors hover:translate-x-1 cursor-pointer"
+                  >
                     View JD Details
                     <ChevronRight className="w-4 h-4" />
                   </span>
@@ -464,7 +429,7 @@ const AdminJDsPage = () => {
                   <th className="p-4 pl-6">Mandate Title & Client</th>
                   <th className="p-4">Engine Fit</th>
                   <th className="p-4">Exp Baseline</th>
-                  <th className="p-4">Assigned Owner</th>
+                  <th className="p-4">Assigned Recruiter</th>
                   <th className="p-4">Ingested Payload</th>
                   <th className="p-4">Status</th>
                   <th className="p-4 pr-6 text-right">Action Forward</th>
@@ -481,11 +446,10 @@ const AdminJDsPage = () => {
                   paginatedJDs.map((jd) => (
                     <tr
                       key={jd.id}
-                      onClick={() => navigate(`/admin/jd/${jd.id}`)}
-                      className="hover:bg-brand-blue/5 cursor-pointer transition-colors group"
+                      className="hover:bg-brand-blue/5 transition-colors group text-gray-900"
                     >
                       <td className="p-4 pl-6">
-                        <div className="font-bold text-gray-900 group-hover:text-brand-blue transition-colors text-sm">
+                        <div className="font-bold text-gray-900 text-sm">
                           {jd.title}
                         </div>
                         <div className="flex items-center gap-2 text-[11px] text-gray-500 mt-0.5">
@@ -506,8 +470,82 @@ const AdminJDsPage = () => {
                         {jd.experienceRequired}
                       </td>
 
-                      <td className="p-4 text-gray-700 font-medium">
-                        {jd.recruiterAssigned}
+                      <td className="p-4 text-gray-700 font-medium relative" onClick={(e) => e.stopPropagation()}>
+                        <div className="flex items-center gap-2">
+                          <div 
+                            onClick={() => {
+                              setActiveAssignJdId(activeAssignJdId === jd.id ? null : jd.id);
+                            }}
+                            className={`flex items-center gap-2 px-2.5 py-1 rounded-full border transition-all cursor-pointer select-none max-w-[170px] ${
+                              jd.recruiterAssigned 
+                                ? 'bg-brand-blue/5 border-brand-blue/10 hover:border-brand-blue/30 text-brand-blue' 
+                                : 'bg-gray-50 border-gray-200 hover:border-brand-blue/30 text-gray-500 border-dashed'
+                            }`}
+                          >
+                            <div className={`w-5 h-5 rounded-full font-extrabold text-[8px] flex items-center justify-center flex-shrink-0 ${
+                              jd.recruiterAssigned ? 'bg-brand-blue text-white' : 'bg-gray-200 text-gray-500'
+                            }`}>
+                              {jd.recruiterAssigned 
+                                ? (mockRecruiters.find(r => r.name === jd.recruiterAssigned)?.avatar || jd.recruiterAssigned.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()) 
+                                : '+'}
+                            </div>
+                            <span className="font-bold text-[11px] truncate">
+                              {jd.recruiterAssigned || 'Assign'}
+                            </span>
+                          </div>
+                        </div>
+
+                        {activeAssignJdId === jd.id && (
+                          <>
+                            <div 
+                              className="fixed inset-0 z-10" 
+                              onClick={() => setActiveAssignJdId(null)}
+                            />
+                            
+                            <div 
+                              className="absolute top-full left-4 mt-1 z-20 w-56 bg-white border border-gray-200 rounded-xl shadow-xl py-1.5 text-xs text-gray-800"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <div className="px-3 py-1.5 text-[9px] font-extrabold text-gray-400 uppercase tracking-wider border-b border-gray-50 pb-1 mb-1.5">
+                                Assign Recruiter
+                              </div>
+                              {mockRecruiters.map(r => (
+                                <button
+                                  key={r.id}
+                                  type="button"
+                                  onClick={() => {
+                                    handleUpdateRecruiter(jd.id, r.name);
+                                    setActiveAssignJdId(null);
+                                  }}
+                                  className="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-brand-blue/5 hover:text-brand-blue text-left transition-colors cursor-pointer"
+                                >
+                                  <div className="w-6.5 h-6.5 rounded-full bg-brand-blue/10 text-brand-blue font-extrabold text-[10px] flex items-center justify-center flex-shrink-0 border border-brand-blue/20">
+                                    {r.avatar}
+                                  </div>
+                                  <div className="min-w-0 flex-1">
+                                    <div className="font-bold text-xs leading-tight text-gray-900 truncate">{r.name}</div>
+                                    <div className="text-[9px] text-gray-400 leading-tight mt-0.5 truncate">{r.role}</div>
+                                  </div>
+                                </button>
+                              ))}
+                              {jd.recruiterAssigned && (
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    handleUpdateRecruiter(jd.id, '');
+                                    setActiveAssignJdId(null);
+                                  }}
+                                  className="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-red-50 text-red-600 text-left border-t border-gray-100 transition-colors cursor-pointer mt-1"
+                                >
+                                  <div className="w-6.5 h-6.5 rounded-full bg-red-100 text-red-600 font-extrabold text-[10px] flex items-center justify-center flex-shrink-0 border border-red-200">
+                                    ✕
+                                  </div>
+                                  <span className="font-bold text-xs">Unassign Recruiter</span>
+                                </button>
+                              )}
+                            </div>
+                          </>
+                        )}
                       </td>
 
                       <td className="p-4 font-bold text-emerald-600">
@@ -520,8 +558,13 @@ const AdminJDsPage = () => {
                         </span>
                       </td>
 
-                      <td className="p-4 pr-6 text-right font-bold text-brand-blue group-hover:underline">
-                        View JD Details →
+                      <td className="p-4 pr-6 text-right">
+                        <span
+                          onClick={() => navigate(`/admin/jd/${jd.id}`)}
+                          className="font-bold text-brand-blue hover:underline cursor-pointer inline-block"
+                        >
+                          View JD Details →
+                        </span>
                       </td>
                     </tr>
                   ))

@@ -116,6 +116,8 @@ const RecruiterJDsPage = () => {
                     {jd.company}
                   </span>
                   <span>•</span>
+                  <span className="font-mono font-bold text-gray-900 bg-gray-100 px-1.5 py-0.5 rounded border border-gray-200">{jd.id}</span>
+                  <span>•</span>
                   <span>{jd.experienceRequired}</span>
                 </div>
 

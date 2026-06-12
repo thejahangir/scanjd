@@ -221,9 +221,9 @@ const RecruiterManagement = () => {
 
         <div className="space-y-3 pt-2">
           {[
-            { rec: "Jahangir A", act: "Auto-shortlisted 12 candidates matching Stripe Staff parameters.", time: "10 mins ago" },
-            { rec: "Clara Oswald", act: "Uploaded JD-2026-006 trigger parameters. System extracted 5 skills.", time: "1 hour ago" },
-            { rec: "Elena Rostova", act: "Closed manual verification cycle for candidate David Chen.", time: "3 hours ago" }
+            { rec: "Vikram Mehta", act: "Auto-shortlisted 12 candidates matching TCS Staff parameters.", time: "10 mins ago" },
+            { rec: "Pooja Sharma", act: "Uploaded JD-FS2026-006 trigger parameters. System extracted 5 skills.", time: "1 hour ago" },
+            { rec: "Priya Patel", act: "Closed manual verification cycle for candidate David Chen.", time: "3 hours ago" }
           ].map((item, idx) => (
             <div key={idx} className="flex items-start gap-3 text-xs pb-3 border-b border-gray-50 last:border-0">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-blue mt-1.5 flex-shrink-0" />

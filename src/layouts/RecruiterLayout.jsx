@@ -34,10 +34,9 @@ const RecruiterLayout = () => {
   const menuItems = [
     { name: 'Dashboard', path: '/recruiter', icon: LayoutDashboard },
     { name: 'Job Description', path: '/recruiter/jds', icon: FileText },
-    { name: 'Upload Job Description', path: '/recruiter/upload-jd', icon: UploadCloud },
     { name: 'Upload Resumes', path: '/recruiter/upload-resume', icon: FileUp },
-    { name: 'Candidates', path: '/recruiter/jd/JD-2026-001?view=candidates', icon: Users },
-    { name: 'Shortlisted', path: '/recruiter/jd/JD-2026-001?filter=shortlisted', icon: Award },
+    { name: 'Candidates', path: '/recruiter/candidates', icon: Users },
+    { name: 'Shortlisted', path: '/recruiter/jd/JD-UX2026-001?filter=shortlisted', icon: Award },
   ];
 
   const checkIsActive = (item) => {
@@ -133,7 +132,7 @@ const RecruiterLayout = () => {
               onClick={() => navigate('/recruiter/upload-resume')}
               className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-brand-purple/10 hover:bg-brand-purple/20 text-brand-purple border border-brand-purple/30 rounded-lg text-xs font-bold transition-all"
             >
-              <UploadCloud className="w-3.5 h-3.5" /> Bulk Parse Resumes
+              <UploadCloud className="w-3.5 h-3.5" /> Upload Resumes
             </button>
 
             <button
@@ -147,11 +146,11 @@ const RecruiterLayout = () => {
             {/* Profile Dropdown */}
             <div className="flex items-center gap-3 pl-4 border-l border-gray-200">
               <div className="w-9 h-9 rounded-xl bg-brand-purple text-white font-bold flex items-center justify-center text-sm shadow-sm">
-                R
+                V
               </div>
               <div className="hidden lg:block text-left">
-                <div className="text-sm font-bold text-gray-900 leading-tight">Jahangir A</div>
-                <div className="text-xs text-gray-500">recruiter@scanjd.com</div>
+                <div className="text-sm font-bold text-gray-900 leading-tight">Vikram Mehta</div>
+                <div className="text-xs text-gray-500">vikram.m@scanjd.com</div>
               </div>
             </div>
           </div>

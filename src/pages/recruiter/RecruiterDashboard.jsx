@@ -16,7 +16,7 @@ import { initialJobDescriptions, mockCandidates } from '../../data/mockData';
 
 const RecruiterDashboard = () => {
   const navigate = useNavigate();
-  // Filter JDs to represent those assigned to current logged demo user "Jahangir A" or similar
+  // Filter JDs to represent those assigned to current logged demo user "Vikram Mehta" or similar
   const [assignedJDs] = useState(() => {
     return initialJobDescriptions.slice(0, 4);
   });
@@ -38,12 +38,6 @@ const RecruiterDashboard = () => {
           <p className="text-sm text-gray-500 mt-1">Review active screening pipelines, trigger resume processing, and send shortlisted matches to clients.</p>
         </div>
         <div className="flex items-center gap-3 self-start sm:self-auto">
-          <button
-            onClick={() => navigate('/recruiter/upload-jd')}
-            className="px-4 py-2.5 bg-white border border-brand-purple/20 text-brand-purple rounded-xl font-bold text-sm hover:bg-brand-purple/10 transition-all shadow-sm"
-          >
-            Upload Job Post
-          </button>
           <button
             onClick={() => navigate('/recruiter/upload-resume')}
             className="flex items-center gap-2 px-4 py-2.5 bg-brand-blue text-white rounded-xl font-bold text-sm hover:bg-brand-blue/90 transition-all shadow-md shadow-brand-blue/20"
@@ -128,6 +122,8 @@ const RecruiterDashboard = () => {
                     {jd.company}
                   </span>
                   <span>•</span>
+                  <span className="font-mono font-bold text-gray-900 bg-gray-100 px-1.5 py-0.5 rounded border border-gray-200">{jd.id}</span>
+                  <span>•</span>
                   <span>{jd.experienceRequired}</span>
                 </div>
 
@@ -164,45 +160,7 @@ const RecruiterDashboard = () => {
         </div>
       </div>
 
-      {/* Suggested Candidate Pipeline spot */}
-      <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm space-y-4">
-        <div>
-          <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-brand-yellow" />
-            AI Priority Matching Candidates Spotlight
-          </h3>
-          <p className="text-xs text-gray-500">Auto-extracted intakes clearing your standard technical baseline parameters.</p>
-        </div>
-
-        <div className="divide-y divide-gray-100 border-t border-gray-100 pt-2">
-          {mockCandidates.slice(0, 3).map((c) => (
-            <div key={c.id} className="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-gray-50/50 px-2 rounded-xl transition-all">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-brand-purple/10 text-brand-purple font-bold flex items-center justify-center flex-shrink-0 border border-brand-purple/20">
-                  {c.initials}
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-900 leading-tight">{c.name}</h4>
-                  <p className="text-xs text-gray-400">{c.currentRole}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4 justify-between sm:justify-end">
-                <div className="text-right">
-                  <span className="text-xs font-bold text-brand-purple block">{c.match}% Fit</span>
-                  <span className="text-[10px] text-gray-400 block">{c.resumeScore} ATS Eval</span>
-                </div>
-                <button
-                  onClick={() => navigate(`/recruiter/jd/${c.jdId}`)}
-                  className="px-3 py-1.5 bg-gray-50 hover:bg-brand-purple/10 hover:text-brand-purple border border-gray-200 rounded-lg text-xs font-bold text-gray-700 transition-all"
-                >
-                  Review Application
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+    
     </div>
   );
 };

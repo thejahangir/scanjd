@@ -2,13 +2,13 @@
 
 export const initialJobDescriptions = [
   {
-    id: "JD-2026-001",
+    id: "JD-UX2026-001",
     title: "Senior Frontend Developer (React/TS)",
-    company: "Stripe",
+    company: "TCS",
     experienceRequired: "5-7 Years",
     matchingResumesCount: 42,
     matchAccuracy: 94,
-    recruiterAssigned: "Jahangir A",
+    recruiterAssigned: "Vikram Mehta",
     status: "Active",
     uploadDate: "May 10, 2026",
     progress: 78,
@@ -19,13 +19,13 @@ export const initialJobDescriptions = [
     department: "Core Engineering",
   },
   {
-    id: "JD-2026-002",
+    id: "JD-ML2026-002",
     title: "Staff Machine Learning Engineer",
-    company: "OpenAI",
+    company: "Wipro",
     experienceRequired: "8+ Years",
     matchingResumesCount: 18,
     matchAccuracy: 88,
-    recruiterAssigned: "Elena Rostova",
+    recruiterAssigned: "Priya Patel",
     status: "Active",
     uploadDate: "May 08, 2026",
     progress: 45,
@@ -36,13 +36,13 @@ export const initialJobDescriptions = [
     department: "Applied AI",
   },
   {
-    id: "JD-2026-003",
+    id: "JD-CL2026-003",
     title: "Lead Cloud Infrastructure Architect",
-    company: "AWS",
+    company: "Infosys",
     experienceRequired: "10+ Years",
     matchingResumesCount: 29,
     matchAccuracy: 91,
-    recruiterAssigned: "Jahangir A",
+    recruiterAssigned: "Vikram Mehta",
     status: "Active",
     uploadDate: "May 05, 2026",
     progress: 60,
@@ -53,13 +53,13 @@ export const initialJobDescriptions = [
     department: "Cloud Infra",
   },
   {
-    id: "JD-2026-004",
+    id: "JD-DE2026-004",
     title: "Principal DevOps Engineer",
-    company: "HashiCorp",
+    company: "HCLTech",
     experienceRequired: "7+ Years",
     matchingResumesCount: 35,
     matchAccuracy: 89,
-    recruiterAssigned: "Clara Oswald",
+    recruiterAssigned: "Pooja Sharma",
     status: "Reviewing",
     uploadDate: "Apr 28, 2026",
     progress: 90,
@@ -70,13 +70,13 @@ export const initialJobDescriptions = [
     department: "Platform Eng",
   },
   {
-    id: "JD-2026-005",
+    id: "JD-PD2026-005",
     title: "VP of Product Management",
-    company: "Rippling",
+    company: "Tech Mahindra",
     experienceRequired: "12+ Years",
     matchingResumesCount: 12,
     matchAccuracy: 85,
-    recruiterAssigned: "Elena Rostova",
+    recruiterAssigned: "Priya Patel",
     status: "Interviewing",
     uploadDate: "Apr 20, 2026",
     progress: 30,
@@ -87,13 +87,13 @@ export const initialJobDescriptions = [
     department: "Product",
   },
   {
-    id: "JD-2026-006",
+    id: "JD-FS2026-006",
     title: "Senior Full Stack Engineer",
-    company: "Linear",
+    company: "LTIMindtree",
     experienceRequired: "4-6 Years",
     matchingResumesCount: 55,
     matchAccuracy: 96,
-    recruiterAssigned: "Clara Oswald",
+    recruiterAssigned: "Pooja Sharma",
     status: "Closed",
     uploadDate: "Apr 15, 2026",
     progress: 100,
@@ -105,10 +105,170 @@ export const initialJobDescriptions = [
   }
 ];
 
+export const extendedJDs = [
+  ...initialJobDescriptions,
+  {
+    id: "JD-SE2026-004",
+    title: "Principal Cloud Security Architect",
+    company: "Cognizant India",
+    experienceRequired: "8-12 Years",
+    matchingResumesCount: 142,
+    matchAccuracy: 96,
+    recruiterAssigned: "Priya Patel",
+    status: "Active",
+    uploadDate: "2 hours ago",
+    skillsRequired: ["AWS IAM", "Kubernetes Sec", "Zero Trust", "Terraform", "Go"],
+    badge: "Urgent Priority"
+  },
+  {
+    id: "JD-ML2026-005",
+    title: "Lead AI/ML Research Scientist",
+    company: "Tata Elxsi",
+    experienceRequired: "5-8 Years",
+    matchingResumesCount: 88,
+    matchAccuracy: 94,
+    recruiterAssigned: "Vikram Mehta",
+    status: "Active",
+    uploadDate: "Yesterday",
+    skillsRequired: ["PyTorch", "LLM Fine-tuning", "Transformers", "Python", "CUDA"],
+    badge: "High Fit"
+  },
+  {
+    id: "JD-BE2026-006",
+    title: "Staff Backend Systems Developer",
+    company: "Reliance Jio",
+    experienceRequired: "7+ Years",
+    matchingResumesCount: 210,
+    matchAccuracy: 89,
+    recruiterAssigned: "Kiran Devi",
+    status: "Reviewing",
+    uploadDate: "3 days ago",
+    skillsRequired: ["Rust", "Distributed Systems", "gRPC", "Kafka", "PostgreSQL"],
+    badge: "Standard"
+  },
+  {
+    id: "JD-OP2026-007",
+    title: "VP of Engineering Operations",
+    company: "Adani Enterprises",
+    experienceRequired: "12+ Years",
+    matchingResumesCount: 34,
+    matchAccuracy: 91,
+    recruiterAssigned: "Rahul Kumar",
+    status: "Interviewing",
+    uploadDate: "5 days ago",
+    skillsRequired: ["Engineering Strategy", "Agile Scaling", "Budgeting", "Team Org"],
+    badge: "Executive"
+  },
+  {
+    id: "JD-MO2026-008",
+    title: "Senior React Native Architect",
+    company: "Airtel Digital",
+    experienceRequired: "5-7 Years",
+    matchingResumesCount: 165,
+    matchAccuracy: 85,
+    recruiterAssigned: "Priya Patel",
+    status: "Active",
+    uploadDate: "1 week ago",
+    skillsRequired: ["React Native", "Redux Toolkit", "iOS/Android Native Modules", "Jest"],
+    badge: "Standard"
+  },
+  {
+    id: "JD-DE2026-009",
+    title: "DevOps Infrastructure Manager",
+    company: "Paytm",
+    experienceRequired: "6-10 Years",
+    matchingResumesCount: 95,
+    matchAccuracy: 93,
+    recruiterAssigned: "Vikram Mehta",
+    status: "Active",
+    uploadDate: "1 week ago",
+    skillsRequired: ["Docker", "GitHub Actions", "ArgoCD", "AWS EKS", "Python"],
+    badge: "High Fit"
+  },
+  {
+    id: "JD-DA2026-010",
+    title: "Senior Data Analytics Consultant",
+    company: "Ola Cabs",
+    experienceRequired: "4-6 Years",
+    matchingResumesCount: 120,
+    matchAccuracy: 88,
+    recruiterAssigned: "Kiran Devi",
+    status: "Reviewing",
+    uploadDate: "2 weeks ago",
+    skillsRequired: ["SQL", "Tableau", "Snowflake", "dbt", "ETL Pipelines"],
+    badge: "Standard"
+  },
+  {
+    id: "JD-UX2026-011",
+    title: "Director of Product Design (UI/UX)",
+    company: "Wipro Digital",
+    experienceRequired: "8+ Years",
+    matchingResumesCount: 75,
+    matchAccuracy: 92,
+    recruiterAssigned: "Rahul Kumar",
+    status: "Interviewing",
+    uploadDate: "2 weeks ago",
+    skillsRequired: ["Figma Systems", "Design Strategy", "User Prototyping", "SaaS Aesthetics"],
+    badge: "Executive"
+  },
+  {
+    id: "JD-QA2026-012",
+    title: "Lead QA Automation Engineer",
+    company: "TCS Quality Labs",
+    experienceRequired: "5-8 Years",
+    matchingResumesCount: 110,
+    matchAccuracy: 87,
+    recruiterAssigned: "Priya Patel",
+    status: "Closed",
+    uploadDate: "3 weeks ago",
+    skillsRequired: ["Cypress", "Selenium", "CI/CD Gates", "TypeScript", "API Testing"],
+    badge: "Archived"
+  },
+  {
+    id: "JD-CR2026-013",
+    title: "Core Protocol Cryptographer",
+    company: "Polygon Labs",
+    experienceRequired: "6+ Years",
+    matchingResumesCount: 18,
+    matchAccuracy: 95,
+    recruiterAssigned: "Vikram Mehta",
+    status: "Active",
+    uploadDate: "3 weeks ago",
+    skillsRequired: ["Zero Knowledge Proofs", "Rust", "Cryptography", "Consensus Algos"],
+    badge: "Urgent Priority"
+  },
+  {
+    id: "JD-SA2026-014",
+    title: "Enterprise Solutions Architect",
+    company: "Infosys BPM",
+    experienceRequired: "10+ Years",
+    matchingResumesCount: 52,
+    matchAccuracy: 90,
+    recruiterAssigned: "Rahul Kumar",
+    status: "Active",
+    uploadDate: "1 month ago",
+    skillsRequired: ["Cloud Migrations", "B2B Delivery", "System Topologies", "Client Facing"],
+    badge: "High Fit"
+  },
+  {
+    id: "JD-W32026-015",
+    title: "Fullstack Web3 Developer",
+    company: "Zomato",
+    experienceRequired: "3-5 Years",
+    matchingResumesCount: 180,
+    matchAccuracy: 82,
+    recruiterAssigned: "Kiran Devi",
+    status: "Reviewing",
+    uploadDate: "1 month ago",
+    skillsRequired: ["Solidity", "Ethers.js", "Next.js", "Hardhat", "Node.js"],
+    badge: "Standard"
+  }
+];
+
 export const mockCandidates = [
   {
     id: "CAND-001",
-    jdId: "JD-2026-001",
+    jdId: "JD-UX2026-001",
     name: "Sarah Jenkins",
     initials: "SJ",
     email: "sarah.j@example.com",
@@ -120,7 +280,7 @@ export const mockCandidates = [
     status: "Shortlisted",
     phone: "+1 (555) 234-5678",
     currentRole: "Lead Frontend Engineer at DevCorp",
-    aiRecommendation: "Highly Recommended. Sarah demonstrates exemplary expertise in modern component frameworks and custom design systems. Her direct enterprise SaaS track record aligns perfectly with Stripe's scaling expectations.",
+    aiRecommendation: "Highly Recommended. Sarah demonstrates exemplary expertise in modern component frameworks and custom design systems. Her direct enterprise SaaS track record aligns perfectly with TCS's scaling expectations.",
     skillGapText: "Lacks advanced Redux middleware experience, but possesses proficient state management expertise using Recoil and Zustand.",
     interviewQuestions: [
       "How would you approach migrating a legacy React app to Server Components without disrupting live customer traffic?",
@@ -133,7 +293,7 @@ export const mockCandidates = [
   },
   {
     id: "CAND-002",
-    jdId: "JD-2026-001",
+    jdId: "JD-UX2026-001",
     name: "David Chen",
     initials: "DC",
     email: "david.c@example.com",
@@ -156,7 +316,7 @@ export const mockCandidates = [
   },
   {
     id: "CAND-003",
-    jdId: "JD-2026-001",
+    jdId: "JD-UX2026-001",
     name: "Amina Yusuf",
     initials: "AY",
     email: "amina.y@example.com",
@@ -177,7 +337,7 @@ export const mockCandidates = [
   },
   {
     id: "CAND-004",
-    jdId: "JD-2026-002",
+    jdId: "JD-ML2026-002",
     name: "Dr. Alex Mercer",
     initials: "AM",
     email: "alex.m@example.com",
@@ -189,7 +349,7 @@ export const mockCandidates = [
     status: "Interview Scheduled",
     phone: "+1 (555) 999-8888",
     currentRole: "Research Scientist at DeepNet",
-    aiRecommendation: "Exceptional candidate with direct LLM fine-tuning publication history. Fits OpenAI staff requirement profile instantly.",
+    aiRecommendation: "Exceptional candidate with direct LLM fine-tuning publication history. Fits Wipro staff requirement profile instantly.",
     skillGapText: "Low-level CUDA optimization experience is optional but advantageous.",
     interviewQuestions: [
       "Explain your strategy for implementing Speculative Decoding to improve inference latency for 70B parameter models."
@@ -200,7 +360,7 @@ export const mockCandidates = [
   },
   {
     id: "CAND-005",
-    jdId: "JD-2026-001",
+    jdId: "JD-UX2026-001",
     name: "Liam Vance",
     initials: "LV",
     email: "liam.v@example.com",
@@ -219,7 +379,7 @@ export const mockCandidates = [
   },
   {
     id: "CAND-006",
-    jdId: "JD-2026-001",
+    jdId: "JD-UX2026-001",
     name: "Elena Rostova",
     initials: "ER",
     email: "elena.ros@example.com",
@@ -238,7 +398,7 @@ export const mockCandidates = [
   },
   {
     id: "CAND-007",
-    jdId: "JD-2026-001",
+    jdId: "JD-UX2026-001",
     name: "Arthur Pendragon",
     initials: "AP",
     email: "arthur.p@example.com",
@@ -257,7 +417,7 @@ export const mockCandidates = [
   },
   {
     id: "CAND-008",
-    jdId: "JD-2026-001",
+    jdId: "JD-UX2026-001",
     name: "Guinevere Du Lac",
     initials: "GD",
     email: "guin.dl@example.com",
@@ -272,11 +432,11 @@ export const mockCandidates = [
     aiRecommendation: "Solid product-driven developer. Outstanding product empathy and high UX iteration metrics.",
     skillGapText: "Ramp up required for heavy serverside streaming systems.",
     interviewQuestions: ["How do you measure and report Core Web Vitals in a live product environment?"],
-    timeline: [{ date: "May 14, 2026", action: "Screened and assigned to Stripe frontend mandate pipeline." }]
+    timeline: [{ date: "May 14, 2026", action: "Screened and assigned to TCS frontend mandate pipeline." }]
   },
   {
     id: "CAND-009",
-    jdId: "JD-2026-001",
+    jdId: "JD-UX2026-001",
     name: "Lancelot Cole",
     initials: "LC",
     email: "lance.c@example.com",
@@ -295,7 +455,7 @@ export const mockCandidates = [
   },
   {
     id: "CAND-010",
-    jdId: "JD-2026-001",
+    jdId: "JD-UX2026-001",
     name: "Gawain Orkney",
     initials: "GO",
     email: "gawain.o@example.com",
@@ -307,14 +467,14 @@ export const mockCandidates = [
     status: "Rejected",
     phone: "+1 (555) 654-3210",
     currentRole: "Web Developer at GreenChapel",
-    aiRecommendation: "Solid base developer but lacks multi-layered frameworks and typing standards needed for Stripe core systems.",
+    aiRecommendation: "Solid base developer but lacks multi-layered frameworks and typing standards needed for TCS core systems.",
     skillGapText: "Exhibits significant gaps in TypeScript type validation paradigms.",
     interviewQuestions: [],
     timeline: [{ date: "May 15, 2026", action: "Flagged by AI pre-screener due to core parameter mismatch." }]
   },
   {
     id: "CAND-011",
-    jdId: "JD-2026-001",
+    jdId: "JD-UX2026-001",
     name: "Galahad Pure",
     initials: "GP",
     email: "galahad.p@example.com",
@@ -333,7 +493,7 @@ export const mockCandidates = [
   },
   {
     id: "CAND-012",
-    jdId: "JD-2026-001",
+    jdId: "JD-UX2026-001",
     name: "Tristan Lyonesse",
     initials: "TL",
     email: "tristan.l@example.com",
@@ -348,47 +508,47 @@ export const mockCandidates = [
     aiRecommendation: "Reliable, performance-oriented developer. Demonstrates high rigor in client state flows and Next.js static generation pipelines.",
     skillGapText: "Lacks Tailwind style efficiency; prefers traditional preprocessors.",
     interviewQuestions: ["When do you prefer static site generation vs incremental static regeneration?"],
-    timeline: [{ date: "May 16, 2026", action: "Assigned to recruitment pool by Jahangir A." }]
+    timeline: [{ date: "May 16, 2026", action: "Assigned to recruitment pool by Vikram Mehta." }]
   }
 ];
 
 export const mockRecruiters = [
   {
     id: "REC-001",
-    name: "Jahangir A",
-    email: "marcus.v@scanjd.com",
+    name: "Vikram Mehta",
+    email: "vikram.m@scanjd.com",
     role: "Senior Tech Recruiter",
     activeJDs: 4,
     shortlistedTotal: 84,
     placementRate: "92%",
     efficiencyScore: 96,
-    avatar: "MV",
+    avatar: "VM",
     status: "Active",
     monthlyTrend: [4, 8, 12, 18, 22, 29]
   },
   {
     id: "REC-002",
-    name: "Elena Rostova",
-    email: "elena.r@scanjd.com",
+    name: "Priya Patel",
+    email: "priya.p@scanjd.com",
     role: "Executive Talent Partner",
     activeJDs: 3,
     shortlistedTotal: 32,
     placementRate: "88%",
     efficiencyScore: 91,
-    avatar: "ER",
+    avatar: "PP",
     status: "Active",
     monthlyTrend: [2, 5, 8, 14, 19, 24]
   },
   {
     id: "REC-003",
-    name: "Clara Oswald",
-    email: "clara.o@scanjd.com",
+    name: "Pooja Sharma",
+    email: "pooja.s@scanjd.com",
     role: "Technical Sourcing Specialist",
     activeJDs: 5,
     shortlistedTotal: 112,
     placementRate: "95%",
     efficiencyScore: 98,
-    avatar: "CO",
+    avatar: "PS",
     status: "Active",
     monthlyTrend: [10, 20, 35, 55, 80, 112]
   }

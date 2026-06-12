@@ -34,9 +34,9 @@ const AnalyticsScreen = () => {
   const [generationProgress, setGenerationProgress] = useState(0);
   const [generationStatus, setGenerationStatus] = useState('');
   const [generatedReports, setGeneratedReports] = useState([
-    { id: 1, name: 'ScanJD_Q2_CandidateMatch_Audit_Stripe.pdf', category: 'AI Screening Performance', time: '2 hours ago', size: '2.4 MB', format: 'PDF', status: 'Completed' },
-    { id: 2, name: 'ScanJD_TalentFunnel_Yield_OpenAI.xlsx', category: 'Placement Funnel', time: 'Yesterday', size: '1.1 MB', format: 'EXCEL', status: 'Completed' },
-    { id: 3, name: 'ScanJD_Recruiter_LoadBalancer_AWS.pdf', category: 'Recruiter Productivity', time: '3 days ago', size: '820 KB', format: 'PDF', status: 'Completed' }
+    { id: 1, name: 'ScanJD_Q2_CandidateMatch_Audit_TCS.pdf', category: 'AI Screening Performance', time: '2 hours ago', size: '2.4 MB', format: 'PDF', status: 'Completed' },
+    { id: 2, name: 'ScanJD_TalentFunnel_Yield_Wipro.xlsx', category: 'Placement Funnel', time: 'Yesterday', size: '1.1 MB', format: 'EXCEL', status: 'Completed' },
+    { id: 3, name: 'ScanJD_Recruiter_LoadBalancer_Infosys.pdf', category: 'Recruiter Productivity', time: '3 days ago', size: '820 KB', format: 'PDF', status: 'Completed' }
   ]);
 
   const handleGenerateReport = () => {
@@ -96,7 +96,7 @@ const AnalyticsScreen = () => {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">Executive Intelligence & Exportable Reports</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">Analytics & Downloadable Reports</h1>
             <p className="text-sm text-gray-500 mt-1">Configure, render, and download print-ready summaries of AI placement pipelines, recruiter loads, and ATS database audits.</p>
           </div>
         </div>
@@ -147,7 +147,7 @@ const AnalyticsScreen = () => {
             <div>
               <h3 className="text-base font-bold text-gray-900 flex items-center gap-2">
                 <FileSpreadsheet className="w-4 h-4 text-brand-blue" />
-                AI Report Compiler Engine
+                AI Report Generator
               </h3>
               <p className="text-xs text-gray-500 mt-1">Assemble tailored business datasets dynamically below.</p>
             </div>
@@ -234,17 +234,17 @@ const AnalyticsScreen = () => {
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm space-y-4">
               <div>
-                <h3 className="text-base font-bold text-gray-900">Pre-Configured Analytical Report Sheets</h3>
+                <h3 className="text-base font-bold text-gray-900">Ready-made Report Templates</h3>
                 <p className="text-xs text-gray-500 mt-1">Download immediate print-optimized records with standard formatting presets.</p>
               </div>
 
               {/* Templates Listing */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { title: "AI Resume Screening Coherence Ledger", desc: "Cross-checks AI scores against manual evaluations to verify model alignment.", icon: Layers, formats: ["PDF", "CSV"] },
-                  { title: "Recruiter Productivity & Load Balancer", desc: "Monitors parsing volumes, candidate processing times, and caseloads.", icon: TrendingUp, formats: ["PDF", "EXCEL"] },
-                  { title: "Mandate Placement Rates & Funnel Yields", desc: "Aggregated placement funnel analytics showing drop-off curves and conversion yields.", icon: Clock, formats: ["PDF", "EXCEL", "CSV"] },
-                  { title: "Candidate Skill Match & Gap Analysis", desc: "Deep-dive matrix of the most common skill gaps and requirements across applicant pools.", icon: Sparkles, formats: ["EXCEL", "CSV"] }
+                  { title: "AI Resume Screening Match Report", desc: "Cross-checks AI scores against manual evaluations to verify model alignment.", icon: Layers, formats: ["PDF", "CSV"] },
+                  { title: "Recruiter Workload & Performance", desc: "Monitors parsing volumes, candidate processing times, and caseloads.", icon: TrendingUp, formats: ["PDF", "EXCEL"] },
+                  { title: "Hiring Success Rates & Pipeline Funnel", desc: "Aggregated placement funnel analytics showing drop-off curves and conversion yields.", icon: Clock, formats: ["PDF", "EXCEL", "CSV"] },
+                  { title: "Candidate Skill Match & Gap Report", desc: "Deep-dive matrix of the most common skill gaps and requirements across applicant pools.", icon: Sparkles, formats: ["EXCEL", "CSV"] }
                 ].map((item, idx) => (
                   <div key={idx} className="p-4 bg-gray-50/50 border border-gray-200 rounded-xl hover:border-brand-blue/20 transition-all flex flex-col justify-between group">
                     <div className="space-y-1.5">
@@ -282,7 +282,7 @@ const AnalyticsScreen = () => {
         {/* Section bottom: Compilation Logs History */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
           <div className="p-5 border-b border-gray-100">
-            <h3 className="text-base font-bold text-gray-900">Executive Ingestion & Report Compiles Log</h3>
+            <h3 className="text-base font-bold text-gray-900">Upload & Report Creation Log</h3>
             <p className="text-xs text-gray-500 mt-1">Audit log of historically assembled files downloaded by administrators.</p>
           </div>
 

@@ -15,7 +15,8 @@ import {
   Search,
   FileSearch,
   Menu,
-  X
+  X,
+  UploadCloud
 } from 'lucide-react';
 
 const AdminLayout = () => {
@@ -33,8 +34,9 @@ const AdminLayout = () => {
   const menuItems = [
     { name: 'Dashboard', path: '/admin', icon: LayoutDashboard },
     { name: 'Job Description', path: '/admin/jds', icon: FileText },
+    { name: 'Upload Job Description', path: '/admin/upload-jd', icon: UploadCloud },
     { name: 'Recruiters', path: '/admin/recruiters', icon: Users },
-    { name: 'Candidates', path: '/admin/jd/JD-2026-001?tab=candidates', icon: UserCheck },
+    { name: 'Candidates', path: '/admin/candidates', icon: UserCheck },
     { name: 'Analytics', path: '/admin/analytics', icon: BarChart3 },
     { name: 'Reports', path: '/admin/analytics?report=true', icon: FileSpreadsheet },
   ];
@@ -143,8 +145,8 @@ const AdminLayout = () => {
                 A
               </div>
               <div className="hidden lg:block text-left">
-                <div className="text-sm font-bold text-gray-900 leading-tight">Admin System</div>
-                <div className="text-xs text-gray-500">admin@scanjd.com</div>
+                <div className="text-sm font-bold text-gray-900 leading-tight">Anshul Sharma</div>
+                <div className="text-xs text-gray-500">anshul.s@scanjd.com</div>
               </div>
             </div>
           </div>
