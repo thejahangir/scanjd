@@ -42,7 +42,7 @@ const AdminDashboard = () => {
             className="flex items-center gap-2 px-4 py-2.5 bg-brand-blue text-white rounded-xl font-bold text-sm hover:bg-brand-blue/90 transition-all shadow-md shadow-brand-blue/20"
           >
             <Sparkles className="w-4 h-4 text-brand-yellow" />
-            Bulk Screen Resumes
+            Scan Multiple Resumes
           </button>
         </div>
       </div>
