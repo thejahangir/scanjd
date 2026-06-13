@@ -27,7 +27,7 @@ const UploadResumeScreen = () => {
   ]);
 
   // Parameters
-  const [selectedJdId, setSelectedJdId] = useState(extendedJDs[0]?.id || '');
+  const [selectedJdId, setSelectedJdId] = useState('');
   const [parseDepth, setParseDepth] = useState('deep');
   const [minExperience, setMinExperience] = useState('all');
   const [skillsFocus, setSkillsFocus] = useState('');
