@@ -141,7 +141,7 @@ const RecruiterManagement = () => {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-gray-50/50 border-b border-gray-100 text-[11px] font-bold text-gray-500 uppercase tracking-wider">
+              <tr className="bg-gray-50/50 border-b border-gray-100 text-[11px] font-bold text-gray-700 uppercase tracking-wider">
                 <th className="p-4 pl-6">Recruiter Name</th>
                 <th className="p-4">Assigned Slot Load</th>
                 <th className="p-4">Placement Conversion</th>

@@ -16,6 +16,7 @@ import {
   Sliders
 } from 'lucide-react';
 import { extendedJDs } from '../../data/mockData';
+import SearchableSelect from '../../components/SearchableSelect';
 
 const AdminUploadResumeScreen = () => {
   const navigate = useNavigate();
@@ -114,7 +115,7 @@ const AdminUploadResumeScreen = () => {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <FileUp className="w-4 h-4 text-brand-blue" />
-            <span className="text-xs font-bold text-brand-blue uppercase tracking-wider">Resume Processing Control</span>
+            <span className="text-xs font-bold text-brand-blue uppercase tracking-wider">Resume Upload & Scan</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">Upload Resumes</h1>
           <p className="text-sm text-gray-500 mt-1">Upload multiple resumes to automatically extract candidate skills, work history, and calculate how well they match the job.</p>
@@ -127,31 +128,25 @@ const AdminUploadResumeScreen = () => {
         {/* Left column: Controls and dragzone */}
         <div className="lg:col-span-5 space-y-6 flex flex-col justify-start">
           
-          {/* Screening Configuration panel */}
+          {/* Scan Settings panel */}
           <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm space-y-5">
             <div className="flex items-center gap-2 pb-3.5 border-b border-gray-100">
               <Settings2 className="w-5 h-5 text-brand-blue" />
               <div>
-                <h3 className="text-sm font-bold text-gray-900 leading-tight">Screening Configuration</h3>
-                <p className="text-[10px] text-gray-400 mt-0.5">Parameters applied to parsed resumes</p>
+                <h3 className="text-sm font-bold text-gray-900 leading-tight">Scan Settings</h3>
+                <p className="text-[10px] text-gray-400 mt-0.5">Settings used to scan and score resumes</p>
               </div>
             </div>
 
             {/* Target Job Description Selection */}
             <div className="space-y-2">
               <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider">Target Job Description</label>
-              <select
-                value={selectedJdId}
-                onChange={(e) => setSelectedJdId(e.target.value)}
-                className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-xs font-semibold text-gray-700 focus:outline-none focus:bg-white focus:ring-2 focus:ring-brand-blue/20 transition-all cursor-pointer"
-              >
-                <option value="">None / Unassigned (Global Candidate Pool)</option>
-                {extendedJDs.map((jd) => (
-                  <option key={jd.id} value={jd.id}>
-                    {jd.title} ({jd.company}) - {jd.id}
-                  </option>
-                ))}
-              </select>
+              <SearchableSelect
+                options={extendedJDs}
+                selectedValue={selectedJdId}
+                onChange={setSelectedJdId}
+                themeColor="blue"
+              />
               <p className="text-[10px] text-gray-400">
                 {selectedJdId 
                   ? "Newly parsed resumes will be matched against this mandate's profile requirements." 
@@ -189,7 +184,7 @@ const AdminUploadResumeScreen = () => {
                   <div className="font-bold text-xs flex items-center gap-1">
                     Deep AI Screening <Sparkles className="w-3.5 h-3.5 text-brand-yellow flex-shrink-0" />
                   </div>
-                  <div className="text-[10px] text-gray-400 mt-1 leading-normal">Generates AI recommendations & coherence matches.</div>
+                  <div className="text-[10px] text-gray-400 mt-1 leading-normal">Generates AI suggestions and matching scores.</div>
                 </button>
               </div>
             </div>
@@ -249,7 +244,7 @@ const AdminUploadResumeScreen = () => {
               <div className="w-12 h-12 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center mb-3 border border-brand-blue/20">
                 <UploadCloud className="w-6 h-6" />
               </div>
-              <span className="text-xs font-bold text-gray-900 block">Drag & Drop multi-page Candidate PDF / DOCX archives</span>
+              <span className="text-xs font-bold text-gray-900 block">Drag & drop PDF or Word resumes here</span>
               <span className="text-[10px] text-gray-400 block mt-1">Reads name, contact details, work history and skills from each file automatically</span>
 
               <label className="mt-4.5 px-4 py-2 bg-white border border-gray-200 text-gray-700 hover:text-brand-blue rounded-xl text-xs font-bold cursor-pointer transition-all shadow-sm">
@@ -265,12 +260,12 @@ const AdminUploadResumeScreen = () => {
           </div>
         </div>
 
-        {/* Right column: Parsing Queue and Status list */}
+        {/* Right column: Uploaded Resumes and Status list */}
         <div className="lg:col-span-7 flex flex-col bg-white border border-gray-200 rounded-2xl p-6 shadow-sm justify-between">
           <div className="space-y-5 flex-1 flex flex-col justify-start">
             <div className="flex items-center justify-between pb-3.5 border-b border-gray-100 flex-wrap gap-3">
               <div>
-                <h3 className="text-sm font-bold text-gray-900 leading-tight">Resume Processing Queue</h3>
+                <h3 className="text-sm font-bold text-gray-900 leading-tight">Uploaded Resumes</h3>
                 <p className="text-[10px] text-gray-400 mt-0.5">Real-time status of candidate profile extractions</p>
               </div>
 

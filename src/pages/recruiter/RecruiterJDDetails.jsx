@@ -470,7 +470,7 @@ const RecruiterJDDetails = () => {
                   <span>•</span>
                   <span>{jd.department || "Core Engineering"} Department</span>
                   <span>•</span>
-                  <span>Hiring Manager: <strong className="text-gray-800">{jd.hiringManager || "Sarah Connor"}</strong></span>
+                  <span>Hiring Manager: <strong className="text-gray-800">{jd.hiringManager || "Sanjana Sen"}</strong></span>
                 </div>
               </div>
 
@@ -512,6 +512,16 @@ const RecruiterJDDetails = () => {
                 <div className="flex items-center px-4 py-1">
                   <span className="flex-1 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Experience</span>
                   <span className="text-[11px] font-bold text-gray-800">{jd.experienceRequired}</span>
+                </div>
+
+                <div className="flex items-center px-4 py-1">
+                  <span className="flex-1 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Location</span>
+                  <span className="text-[11px] font-bold text-gray-800">{jd.location || "Remote"}</span>
+                </div>
+
+                <div className="flex items-center px-4 py-1">
+                  <span className="flex-1 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Mode of Working</span>
+                  <span className="text-[11px] font-bold text-gray-800">{jd.workMode || "Hybrid"}</span>
                 </div>
 
                 <div className="flex items-center px-4 py-1">
@@ -567,7 +577,7 @@ const RecruiterJDDetails = () => {
         </div>
       </div>
 
-      {/* Grid Container for Table + Profile Deep Dive */}
+      {/* Grid Container for Table + Candidate Details */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
         {/* Left Column: Candidates Data Table Container (lg:col-span-2) */}
         <div className="lg:col-span-2 space-y-4">
@@ -575,11 +585,11 @@ const RecruiterJDDetails = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-gray-50/75 border-b border-gray-100 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                  <tr className="bg-gray-50/75 border-b border-gray-100 text-[10px] font-bold text-gray-700 uppercase tracking-wider">
                     <th className="px-6 py-4">Candidate Details</th>
                     <th className="px-6 py-4 text-center">ATS Score</th>
                     <th className="px-6 py-4 text-center">AI Match Fit</th>
-                    <th className="px-6 py-4">Screening Status</th>
+                    {filterType !== 'shortlisted' && <th className="px-6 py-4">Screening Status</th>}
                     <th className="px-6 py-4 text-right">Actions</th>
                   </tr>
                 </thead>
@@ -642,42 +652,46 @@ const RecruiterJDDetails = () => {
                           </td>
 
                           {/* Screening Status */}
-                          <td className="px-6 py-4">
-                            <div className="flex flex-col gap-1 items-start">
-                              <span className={`px-2 py-0.5 border rounded text-[10px] font-bold ${
-                                c.status === 'Shortlisted' 
-                                  ? 'bg-emerald-50 text-emerald-700 border-emerald-200' 
-                                  : c.status === 'Rejected'
-                                    ? 'bg-red-50 text-brand-red border-red-200'
-                                    : 'bg-gray-50 text-gray-600 border-gray-200'
-                              }`}>
-                                {c.status}
-                              </span>
-                              {c.badgeText && (
-                                <span className="px-1.5 py-0.5 bg-brand-purple/10 text-brand-purple rounded text-[9px] font-extrabold tracking-tight border border-brand-purple/20">
-                                  {c.badgeText}
+                          {filterType !== 'shortlisted' && (
+                            <td className="px-6 py-4">
+                              <div className="flex flex-col gap-1 items-start">
+                                <span className={`px-2 py-0.5 border rounded text-[10px] font-bold ${
+                                  c.status === 'Shortlisted' 
+                                    ? 'bg-emerald-50 text-emerald-700 border-emerald-200' 
+                                    : c.status === 'Rejected'
+                                      ? 'bg-red-50 text-brand-red border-red-200'
+                                      : 'bg-gray-50 text-gray-600 border-gray-200'
+                                }`}>
+                                  {c.status}
                                 </span>
-                              )}
-                            </div>
-                          </td>
+                                {c.badgeText && (
+                                  <span className="px-1.5 py-0.5 bg-brand-purple/10 text-brand-purple rounded text-[9px] font-extrabold tracking-tight border border-brand-purple/20">
+                                    {c.badgeText}
+                                  </span>
+                                )}
+                              </div>
+                            </td>
+                          )}
 
                           {/* Actions */}
                           <td className="px-6 py-4 text-right" onClick={(e) => e.stopPropagation()}>
                             <div className="flex items-center justify-end gap-2">
-                              <button
-                                onClick={() => {
-                                  setSelectedCandidate(c);
-                                  updateStatus(c.id, 'Shortlisted');
-                                }}
-                                className={`p-1.5 rounded-lg border transition-all cursor-pointer ${
-                                  c.status === 'Shortlisted'
-                                    ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
-                                    : 'bg-white border-gray-200 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50/50'
-                                }`}
-                                title="Shortlist Candidate"
-                              >
-                                <CheckCircle className="w-4 h-4" />
-                              </button>
+                              {filterType !== 'shortlisted' && (
+                                <button
+                                  onClick={() => {
+                                    setSelectedCandidate(c);
+                                    updateStatus(c.id, 'Shortlisted');
+                                  }}
+                                  className={`p-1.5 rounded-lg border transition-all cursor-pointer ${
+                                    c.status === 'Shortlisted'
+                                      ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
+                                      : 'bg-white border-gray-200 text-gray-400 hover:text-emerald-600 hover:bg-emerald-50/50'
+                                  }`}
+                                  title="Shortlist Candidate"
+                                >
+                                  <CheckCircle className="w-4 h-4" />
+                                </button>
+                              )}
                               <button
                                 onClick={() => {
                                   setSelectedCandidate(c);
@@ -811,7 +825,7 @@ const RecruiterJDDetails = () => {
                 <div className="flex items-start justify-between pb-4 border-b border-gray-100">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-brand-purple uppercase">Profile Deep Dive</span>
+                      <span className="text-xs font-bold text-brand-purple uppercase">Candidate Details</span>
                       <span className="px-2 py-0.5 bg-brand-yellow/10 text-brand-yellow font-bold text-[10px] rounded">
                         {selectedCandidate.match}% Match
                       </span>
@@ -897,24 +911,26 @@ const RecruiterJDDetails = () => {
                 </div>
 
                 {/* Action items bar */}
-                <div className="pt-4 border-t border-gray-100 grid grid-cols-2 gap-2">
-                  <button 
-                    onClick={() => executeAction('SHORTLIST')}
-                    className={`py-2 px-3 rounded-xl font-bold text-xs text-center border transition-all cursor-pointer ${
-                      selectedCandidate.status === 'Shortlisted'
-                        ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm shadow-emerald-500/20'
-                        : 'bg-white hover:bg-gray-50 text-gray-700 border-gray-200'
-                    }`}
-                  >
-                    {selectedCandidate.status === 'Shortlisted' ? 'Shortlisted ✓' : 'Shortlist'}
-                  </button>
-                  <button 
-                    onClick={() => executeAction('DOWNLOAD')}
-                    className="py-2 px-3 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold text-xs rounded-xl transition-all shadow-sm shadow-brand-blue/20 flex items-center justify-center gap-1 cursor-pointer"
-                  >
-                    <FileText className="w-3.5 h-3.5" /> Full CV
-                  </button>
-                </div>
+                {filterType !== 'shortlisted' && (
+                  <div className="pt-4 border-t border-gray-100 grid grid-cols-2 gap-2">
+                    <button 
+                      onClick={() => executeAction('SHORTLIST')}
+                      className={`py-2 px-3 rounded-xl font-bold text-xs text-center border transition-all cursor-pointer ${
+                        selectedCandidate.status === 'Shortlisted'
+                          ? 'bg-emerald-600 hover:bg-emerald-700 text-white border-emerald-600 shadow-sm shadow-emerald-500/20'
+                          : 'bg-brand-purple hover:bg-brand-purple/90 text-white border-brand-purple shadow-sm shadow-brand-purple/20'
+                      }`}
+                    >
+                      {selectedCandidate.status === 'Shortlisted' ? 'Shortlisted ✓' : 'Shortlist'}
+                    </button>
+                    <button 
+                      onClick={() => executeAction('DOWNLOAD')}
+                      className="py-2 px-3 bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-1 cursor-pointer"
+                    >
+                      <FileText className="w-3.5 h-3.5 text-gray-400" /> Full CV
+                    </button>
+                  </div>
+                )}
               </motion.div>
             ) : (
               <div className="bg-gray-50/50 border border-dashed border-gray-200 rounded-2xl p-8 text-center text-gray-400 text-xs font-semibold">

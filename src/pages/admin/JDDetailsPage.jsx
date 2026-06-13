@@ -203,7 +203,7 @@ const JDDetailsPage = () => {
                   <span>•</span>
                   <span>{jd.department || "Core Engineering"} Department</span>
                   <span>•</span>
-                  <span>Hiring Manager: <strong className="text-gray-800">{jd.hiringManager || "Sarah Connor"}</strong></span>
+                  <span>Hiring Manager: <strong className="text-gray-800">{jd.hiringManager || "Sanjana Sen"}</strong></span>
                 </div>
               </div>
 
@@ -245,6 +245,16 @@ const JDDetailsPage = () => {
                 <div className="flex items-center px-4 py-1">
                   <span className="flex-1 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Experience</span>
                   <span className="text-[11px] font-bold text-gray-800">{jd.experienceRequired}</span>
+                </div>
+
+                <div className="flex items-center px-4 py-1">
+                  <span className="flex-1 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Location</span>
+                  <span className="text-[11px] font-bold text-gray-800">{jd.location || "Remote"}</span>
+                </div>
+
+                <div className="flex items-center px-4 py-1">
+                  <span className="flex-1 text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Mode of Working</span>
+                  <span className="text-[11px] font-bold text-gray-800">{jd.workMode || "Hybrid"}</span>
                 </div>
 
                 <div className="flex items-center px-4 py-1">
@@ -404,7 +414,7 @@ const JDDetailsPage = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-gray-50/50 border-b border-gray-100 text-[11px] font-bold text-gray-500 uppercase tracking-wider">
+                  <tr className="bg-gray-50/50 border-b border-gray-100 text-[11px] font-bold text-gray-700 uppercase tracking-wider">
                     <th className="p-4 pl-6">Candidate</th>
                     <th className="p-4">AI Coherence</th>
                     <th className="p-4">Skills Extracted</th>
@@ -439,7 +449,7 @@ const JDDetailsPage = () => {
                               </div>
                               <div>
                                 <div className="text-gray-900 font-bold leading-tight">{c.name}</div>
-                                <div className="text-[11px] text-gray-400 font-normal">{c.resumeScore} ATS Eval</div>
+                                <div className="text-[11px] text-gray-400 font-normal">{c.resumeScore} ATS Score</div>
                               </div>
                             </div>
                           </td>
@@ -549,7 +559,7 @@ const JDDetailsPage = () => {
               <div className="flex items-start justify-between pb-4 border-b border-gray-100">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-brand-blue uppercase">Profile Deep Dive</span>
+                    <span className="text-xs font-bold text-brand-blue uppercase">Candidate Details</span>
                     <span className="px-2 py-0.5 bg-brand-yellow/10 text-brand-yellow font-bold text-[10px] rounded">
                       {selectedCandidate.match}% Match
                     </span>
@@ -621,19 +631,19 @@ const JDDetailsPage = () => {
               <div className="pt-4 border-t border-gray-100 grid grid-cols-2 gap-2">
                 <button 
                   onClick={() => handleShortlistToggle(selectedCandidate.id)}
-                  className={`py-2 px-3 rounded-xl font-bold text-xs text-center border transition-all ${
+                  className={`py-2 px-3 rounded-xl font-bold text-xs text-center border transition-all cursor-pointer ${
                     selectedCandidate.status === 'Shortlisted'
-                      ? 'bg-brand-purple text-white border-brand-purple shadow-sm shadow-brand-purple/20'
-                      : 'bg-white hover:bg-gray-50 text-gray-700 border-gray-200'
+                      ? 'bg-emerald-600 hover:bg-emerald-700 text-white border-emerald-600 shadow-sm shadow-emerald-500/20'
+                      : 'bg-brand-blue hover:bg-brand-blue/90 text-white border-brand-blue shadow-sm shadow-brand-blue/20'
                   }`}
                 >
                   {selectedCandidate.status === 'Shortlisted' ? 'Shortlisted ✓' : 'Shortlist'}
                 </button>
                 <button 
                   onClick={() => alert(`Simulated API call: Executing shareable PDF bundle view for ${selectedCandidate.name}`)}
-                  className="py-2 px-3 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold text-xs rounded-xl transition-all shadow-sm shadow-brand-blue/20 flex items-center justify-center gap-1"
+                  className="py-2 px-3 bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-1 cursor-pointer"
                 >
-                  <FileText className="w-3.5 h-3.5" /> Full CV
+                  <FileText className="w-3.5 h-3.5 text-gray-400" /> Full CV
                 </button>
               </div>
             </motion.div>

@@ -10,17 +10,52 @@ import {
   Calendar,
   SlidersHorizontal
 } from 'lucide-react';
-import { initialJobDescriptions } from '../../data/mockData';
+import { extendedJDs } from '../../data/mockData';
+
+const parseUploadDate = (dateStr) => {
+  if (!dateStr) return 0;
+  const now = new Date();
+  const str = dateStr.toLowerCase().trim();
+  
+  if (str === 'just now') {
+    return now.getTime();
+  }
+  if (str.includes('hour')) {
+    const hours = parseInt(str) || 1;
+    return now.getTime() - hours * 60 * 60 * 1000;
+  }
+  if (str.includes('yesterday')) {
+    return now.getTime() - 24 * 60 * 60 * 1000;
+  }
+  if (str.includes('day')) {
+    const days = parseInt(str) || 1;
+    return now.getTime() - days * 24 * 60 * 60 * 1000;
+  }
+  if (str.includes('week')) {
+    const weeks = parseInt(str) || 1;
+    return now.getTime() - weeks * 7 * 24 * 60 * 60 * 1000;
+  }
+  if (str.includes('month')) {
+    const months = parseInt(str) || 1;
+    return now.getTime() - months * 30 * 24 * 60 * 60 * 1000;
+  }
+  
+  const parsed = Date.parse(dateStr);
+  if (!isNaN(parsed)) {
+    return parsed;
+  }
+  return 0;
+};
 
 const RecruiterJDsPage = () => {
   const navigate = useNavigate();
   // Representing mandates accessible or assigned to recruiter operations
-  const [jds] = useState(() => initialJobDescriptions.slice(0, 5));
+  const [jds] = useState(extendedJDs);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('ALL');
 
   const filteredJDs = useMemo(() => {
-    return jds.filter(jd => {
+    let result = jds.filter(jd => {
       const matchesSearch = jd.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                             jd.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
                             jd.skillsRequired.some(s => s.toLowerCase().includes(searchQuery.toLowerCase()));
@@ -29,6 +64,9 @@ const RecruiterJDsPage = () => {
       
       return matchesSearch && matchesStatus;
     });
+
+    result.sort((a, b) => parseUploadDate(b.uploadDate) - parseUploadDate(a.uploadDate));
+    return result;
   }, [jds, searchQuery, statusFilter]);
 
   const getStatusBadge = (status) => {
@@ -124,7 +162,7 @@ const RecruiterJDsPage = () => {
                 {/* Score weights */}
                 <div className="mt-4 p-3 bg-brand-purple/5 rounded-xl border border-brand-purple/10 space-y-2">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-semibold text-gray-700">AI Screening Eval</span>
+                    <span className="font-semibold text-gray-700">AI Match Score</span>
                     <span className="font-bold text-brand-purple">{jd.matchAccuracy}% Coherence</span>
                   </div>
                   <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">

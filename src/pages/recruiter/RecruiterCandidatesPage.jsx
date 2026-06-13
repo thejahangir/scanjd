@@ -378,7 +378,7 @@ const RecruiterCandidatesPage = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-gray-50/50 border-b border-gray-100 text-[11px] font-bold text-gray-500 uppercase tracking-wider">
+                  <tr className="bg-gray-50/50 border-b border-gray-100 text-[11px] font-bold text-gray-700 uppercase tracking-wider">
                     <th className="p-4 pl-6">Candidate</th>
                     <th className="p-4">AI Coherence</th>
                     <th className="p-4">Skills</th>
@@ -507,7 +507,7 @@ const RecruiterCandidatesPage = () => {
               <div className="flex items-start justify-between pb-4 border-b border-gray-100">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-brand-purple uppercase">Profile Deep Dive</span>
+                    <span className="text-xs font-bold text-brand-purple uppercase">Candidate Details</span>
                     <span className="px-2 py-0.5 bg-brand-yellow/10 text-brand-yellow font-bold text-[10px] rounded">{selectedCandidate.match}% Match</span>
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mt-1">{selectedCandidate.name}</h3>
@@ -565,15 +565,19 @@ const RecruiterCandidatesPage = () => {
               <div className="pt-4 border-t border-gray-100 grid grid-cols-2 gap-2">
                 <button
                   onClick={() => handleShortlistToggle(selectedCandidate.id)}
-                  className={`py-2 px-3 rounded-xl font-bold text-xs text-center border transition-all ${selectedCandidate.status === 'Shortlisted' ? 'bg-brand-purple text-white border-brand-purple' : 'bg-white hover:bg-gray-50 text-gray-700 border-gray-200'}`}
+                  className={`py-2 px-3 rounded-xl font-bold text-xs text-center border transition-all ${
+                    selectedCandidate.status === 'Shortlisted'
+                      ? 'bg-emerald-600 hover:bg-emerald-700 text-white border-emerald-600 shadow-sm shadow-emerald-500/20'
+                      : 'bg-brand-purple hover:bg-brand-purple/90 text-white border-brand-purple shadow-sm shadow-brand-purple/20'
+                  }`}
                 >
                   {selectedCandidate.status === 'Shortlisted' ? 'Shortlisted ✓' : 'Shortlist'}
                 </button>
                 <button
                   onClick={() => alert(`Opening full CV for ${selectedCandidate.name}`)}
-                  className="py-2 px-3 bg-brand-purple hover:bg-brand-purple/90 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-1"
+                  className="py-2 px-3 bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-1 cursor-pointer"
                 >
-                  <FileText className="w-3.5 h-3.5" /> Full CV
+                  <FileText className="w-3.5 h-3.5 text-gray-400" /> Full CV
                 </button>
               </div>
             </motion.div>

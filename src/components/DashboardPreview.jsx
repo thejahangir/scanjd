@@ -101,11 +101,11 @@ const DashboardPreview = () => {
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="border-b border-gray-200">
-                      <th className="pb-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Candidate</th>
-                      <th className="pb-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Match Score</th>
-                      <th className="pb-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Top Skills</th>
-                      <th className="pb-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
-                      <th className="pb-3 text-xs font-semibold text-gray-500 uppercase tracking-wider"></th>
+                      <th className="pb-3 text-xs font-semibold text-gray-700 uppercase tracking-wider">Candidate</th>
+                      <th className="pb-3 text-xs font-semibold text-gray-700 uppercase tracking-wider">Match Score</th>
+                      <th className="pb-3 text-xs font-semibold text-gray-700 uppercase tracking-wider">Top Skills</th>
+                      <th className="pb-3 text-xs font-semibold text-gray-700 uppercase tracking-wider">Status</th>
+                      <th className="pb-3 text-xs font-semibold text-gray-700 uppercase tracking-wider"></th>
                     </tr>
                   </thead>
                   <tbody>

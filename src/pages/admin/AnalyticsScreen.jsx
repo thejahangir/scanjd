@@ -130,12 +130,12 @@ const AnalyticsScreen = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="p-5 bg-gradient-to-br from-brand-purple to-brand-blue text-white rounded-2xl shadow-md relative overflow-hidden"
+            className="p-5 bg-white border border-gray-200 rounded-2xl shadow-sm relative overflow-hidden"
           >
-            <span className="text-xs font-bold text-white/90 uppercase tracking-wider block">Exported PDF File Yield</span>
-            <div className="text-3xl font-bold mt-2 tracking-tight">98.4% Accuracy</div>
-            <p className="text-[11px] text-brand-yellow font-bold mt-1 flex items-center gap-1">
-              <Sparkles className="w-3 h-3" /> Fully verified vector output compliance
+            <span className="text-xs font-bold text-gray-400 uppercase tracking-wider block">Exported PDF File Yield</span>
+            <div className="text-3xl font-bold text-brand-purple mt-2 tracking-tight">98.4% Accuracy</div>
+            <p className="text-[11px] text-emerald-600 font-medium mt-1 flex items-center gap-1">
+              <Sparkles className="w-3 h-3 text-emerald-500" /> Fully verified vector output compliance
             </p>
           </motion.div>
         </div>
@@ -289,7 +289,7 @@ const AnalyticsScreen = () => {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-gray-50/60 border-b border-gray-100 text-[11px] font-bold text-gray-500 uppercase tracking-wider">
+                <tr className="bg-gray-50/60 border-b border-gray-100 text-[11px] font-bold text-gray-700 uppercase tracking-wider">
                   <th className="p-4 pl-6">Compiled Filename</th>
                   <th className="p-4">Report Category</th>
                   <th className="p-4">Time Assembled</th>
@@ -420,22 +420,22 @@ const AnalyticsScreen = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="p-5 bg-gradient-to-br from-brand-blue to-brand-purple text-white rounded-2xl shadow-md relative overflow-hidden"
+          className="p-5 bg-white border border-gray-200 rounded-2xl shadow-sm relative overflow-hidden"
         >
-          <span className="text-xs font-bold text-white/80 uppercase tracking-wider block">Total Recruiter Hours Saved</span>
+          <span className="text-xs font-bold text-gray-400 uppercase tracking-wider block">Total Recruiter Hours Saved</span>
           <div className="text-3xl font-bold mt-2 tracking-tight overflow-hidden h-9 flex items-center">
             <motion.span
               key={timeRange + "-timeSaved"}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: "spring", stiffness: 120, damping: 14 }}
-              className="inline-block text-white"
+              className="inline-block text-brand-purple"
             >
               {processingTimes.timeSaved}
             </motion.span>
           </div>
-          <p className="text-[11px] text-brand-yellow font-bold mt-1 flex items-center gap-1">
-            <Sparkles className="w-3 h-3" /> 80% screening time reduction verified
+          <p className="text-[11px] text-emerald-600 font-medium mt-1 flex items-center gap-1">
+            <Sparkles className="w-3 h-3 text-emerald-500" /> 80% screening time reduction verified
           </p>
         </motion.div>
       </div>

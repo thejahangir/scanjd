@@ -15,7 +15,7 @@ export const initialJobDescriptions = [
     badge: "High Match Rate",
     skillsRequired: ["React", "TypeScript", "Tailwind CSS", "Redux", "Next.js"],
     totalApplicants: 128,
-    hiringManager: "Sarah Connor",
+    hiringManager: "Sanjana Sen",
     department: "Core Engineering",
   },
   {
@@ -32,7 +32,7 @@ export const initialJobDescriptions = [
     badge: "Urgent Need",
     skillsRequired: ["Python", "PyTorch", "LLMs", "Transformers", "CUDA"],
     totalApplicants: 64,
-    hiringManager: "Ilya Sutskever",
+    hiringManager: "Alok Sharma",
     department: "Applied AI",
   },
   {
@@ -49,7 +49,7 @@ export const initialJobDescriptions = [
     badge: "Standard",
     skillsRequired: ["AWS", "Terraform", "Kubernetes", "Go", "Docker"],
     totalApplicants: 92,
-    hiringManager: "Werner Vogels",
+    hiringManager: "Vikram Malhotra",
     department: "Cloud Infra",
   },
   {
@@ -66,7 +66,7 @@ export const initialJobDescriptions = [
     badge: "Shortlist Ready",
     skillsRequired: ["CI/CD", "GitHub Actions", "Linux", "Ansible", "Python"],
     totalApplicants: 110,
-    hiringManager: "Mitchell Hashimoto",
+    hiringManager: "Manish Gupta",
     department: "Platform Eng",
   },
   {
@@ -83,7 +83,7 @@ export const initialJobDescriptions = [
     badge: "Executive Search",
     skillsRequired: ["SaaS Strategy", "B2B", "GTM", "Roadmap Execution", "Team Leadership"],
     totalApplicants: 45,
-    hiringManager: "Parker Conrad",
+    hiringManager: "Pankaj Saxena",
     department: "Product",
   },
   {
@@ -100,7 +100,7 @@ export const initialJobDescriptions = [
     badge: "Hired",
     skillsRequired: ["React", "Node.js", "GraphQL", "PostgreSQL", "MobX"],
     totalApplicants: 210,
-    hiringManager: "Karri Saarinen",
+    hiringManager: "Karthik Iyer",
     department: "Product",
   }
 ];

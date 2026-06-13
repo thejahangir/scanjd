@@ -34,7 +34,7 @@ const AdminDashboard = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">Admin Dashboard</h1>
-          <p className="text-sm text-gray-500 mt-1">Real-time platform overview — hiring progress and team performance.</p>
+          <p className="text-sm text-gray-500 mt-1">Real-time platform overview :: hiring progress and team performance.</p>
         </div>
         <div className="flex items-center gap-3 self-start sm:self-auto">
           <button
@@ -106,7 +106,7 @@ const AdminDashboard = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-gray-50/75 border-b border-gray-100 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                  <tr className="bg-gray-50/75 border-b border-gray-100 text-[10px] font-bold text-gray-700 uppercase tracking-wider">
                     <th className="px-4 py-3">Recruiter</th>
                     <th className="px-4 py-3 text-center">Active Jobs</th>
                     <th className="px-4 py-3 text-center">Shortlisted</th>
@@ -167,7 +167,7 @@ const AdminDashboard = () => {
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-base font-bold text-gray-900">Candidate Hiring Journey</h2>
-              <p className="text-xs text-gray-500 mt-0.5">YTD progress from resume upload to placement.</p>
+              <p className="text-xs text-gray-500 mt-0.5">This year's progress from uploading resumes to hiring candidates.</p>
             </div>
             <button
               onClick={() => navigate('/admin/analytics')}

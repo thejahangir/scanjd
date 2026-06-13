@@ -20,6 +20,41 @@ import {
 } from 'lucide-react';
 import { extendedJDs, mockRecruiters } from '../../data/mockData';
 
+const parseUploadDate = (dateStr) => {
+  if (!dateStr) return 0;
+  const now = new Date();
+  const str = dateStr.toLowerCase().trim();
+  
+  if (str === 'just now') {
+    return now.getTime();
+  }
+  if (str.includes('hour')) {
+    const hours = parseInt(str) || 1;
+    return now.getTime() - hours * 60 * 60 * 1000;
+  }
+  if (str.includes('yesterday')) {
+    return now.getTime() - 24 * 60 * 60 * 1000;
+  }
+  if (str.includes('day')) {
+    const days = parseInt(str) || 1;
+    return now.getTime() - days * 24 * 60 * 60 * 1000;
+  }
+  if (str.includes('week')) {
+    const weeks = parseInt(str) || 1;
+    return now.getTime() - weeks * 7 * 24 * 60 * 60 * 1000;
+  }
+  if (str.includes('month')) {
+    const months = parseInt(str) || 1;
+    return now.getTime() - months * 30 * 24 * 60 * 60 * 1000;
+  }
+  
+  const parsed = Date.parse(dateStr);
+  if (!isNaN(parsed)) {
+    return parsed;
+  }
+  return 0;
+};
+
 const AdminJDsPage = () => {
   const navigate = useNavigate();
   const [jds, setJds] = useState(extendedJDs);
@@ -36,7 +71,7 @@ const AdminJDsPage = () => {
   // Search and query parameters
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('Active');
-  const [sortBy, setSortBy] = useState('SCORE_DESC');
+  const [sortBy, setSortBy] = useState('LATEST');
   const [viewMode, setViewMode] = useState('GRID'); // GRID | TABLE
 
   // Pagination boundary triggers
@@ -57,7 +92,9 @@ const AdminJDsPage = () => {
     });
 
     // Sorting computation
-    if (sortBy === 'SCORE_DESC') {
+    if (sortBy === 'LATEST') {
+      result.sort((a, b) => parseUploadDate(b.uploadDate) - parseUploadDate(a.uploadDate));
+    } else if (sortBy === 'SCORE_DESC') {
       result.sort((a, b) => b.matchAccuracy - a.matchAccuracy);
     } else if (sortBy === 'RESUMES_DESC') {
       result.sort((a, b) => b.matchingResumesCount - a.matchingResumesCount);
@@ -101,7 +138,7 @@ const AdminJDsPage = () => {
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">List of Job Description</h1>
           <p className="text-sm text-gray-500 mt-1">
-            Enterprise index displaying high-density parsing pipelines, AI coherence scores, and task recruiter mapping.
+            A complete list of job descriptions showing candidate matching scores and assigned recruiters.
           </p>
         </div>
 
@@ -156,6 +193,7 @@ const AdminJDsPage = () => {
                 onChange={(e) => setSortBy(e.target.value)}
                 className="bg-transparent text-xs font-semibold text-gray-700 focus:outline-none cursor-pointer"
               >
+                <option value="LATEST">Sort: Latest Uploaded</option>
                 <option value="SCORE_DESC">Sort: Top Coherence %</option>
                 <option value="RESUMES_DESC">Sort: Resumes Count</option>
                 <option value="TITLE_ASC">Sort: Alphabetical (A-Z)</option>
@@ -281,7 +319,7 @@ const AdminJDsPage = () => {
                   {/* AI Metric Score bar */}
                   <div className="mt-4 p-3 bg-gradient-to-br from-gray-50 to-brand-blue/5 rounded-xl border border-brand-blue/10 space-y-2">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-semibold text-gray-700">AI Coherence Co-efficient</span>
+                      <span className="font-semibold text-gray-700">AI Match Score</span>
                       <span className="font-bold text-brand-blue">{jd.matchAccuracy}% Fit</span>
                     </div>
                     <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
@@ -425,7 +463,7 @@ const AdminJDsPage = () => {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-gray-50/60 border-b border-gray-100 text-[11px] font-bold text-gray-500 uppercase tracking-wider">
+                <tr className="bg-gray-50/60 border-b border-gray-100 text-[11px] font-bold text-gray-700 uppercase tracking-wider">
                   <th className="p-4 pl-6">Mandate Title & Client</th>
                   <th className="p-4">Engine Fit</th>
                   <th className="p-4">Exp Baseline</th>
