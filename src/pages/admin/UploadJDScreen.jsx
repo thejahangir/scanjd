@@ -111,7 +111,7 @@ Must possess multi-year expertise consuming TypeScript guidelines, optimizing Ta
     <div className="max-w-4xl mx-auto space-y-8 pb-12">
       {/* Banner */}
       <div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">Upload New Job Description</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">Create New Job Description</h1>
         <p className="text-sm text-gray-500 mt-1">Initialize intelligent candidate matching algorithms by submitting your job mandate details.</p>
       </div>
 

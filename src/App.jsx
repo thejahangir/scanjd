@@ -11,6 +11,8 @@ import AdminCandidatesPage from './pages/admin/AdminCandidatesPage';
 import RecruiterManagement from './pages/admin/RecruiterManagement';
 import AnalyticsScreen from './pages/admin/AnalyticsScreen';
 import UploadJDScreen from './pages/admin/UploadJDScreen';
+import AdminUploadResumeScreen from './pages/admin/AdminUploadResumeScreen';
+import AdminReviewMatchesScreen from './pages/admin/AdminReviewMatchesScreen';
 
 // Recruiter Layout & Roles
 import RecruiterLayout from './layouts/RecruiterLayout';
@@ -37,6 +39,8 @@ function App() {
         <Route path="recruiters" element={<RecruiterManagement />} />
         <Route path="analytics" element={<AnalyticsScreen />} />
         <Route path="upload-jd" element={<UploadJDScreen />} />
+        <Route path="upload-resume" element={<AdminUploadResumeScreen />} />
+        <Route path="review-matches" element={<AdminReviewMatchesScreen />} />
         {/* Dynamic catchall fallback redirecting cleanly within demo bounds */}
         <Route path="*" element={<Navigate to="/admin" replace />} />
       </Route>

@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 import { mockCandidates, extendedJDs } from '../../data/mockData';
 
-const ReviewMatchesScreen = () => {
+const AdminReviewMatchesScreen = () => {
   const navigate = useNavigate();
 
   // Load the initial set of parsed candidate profiles
@@ -138,7 +138,7 @@ const ReviewMatchesScreen = () => {
 
     showNotification('Successfully saved all approved candidates.');
     setTimeout(() => {
-      navigate('/recruiter/candidates');
+      navigate('/admin/candidates');
     }, 1500);
   };
 
@@ -155,26 +155,26 @@ const ReviewMatchesScreen = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-100 pb-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <Sparkles className="w-4 h-4 text-brand-purple animate-pulse" />
-            <span className="text-xs font-bold text-brand-purple uppercase tracking-wider">Verify Uploaded Resumes</span>
+            <Sparkles className="w-4 h-4 text-brand-blue animate-pulse" />
+            <span className="text-xs font-bold text-brand-blue uppercase tracking-wider">Verify Uploaded Resumes</span>
           </div>
           <h1 className="text-2xl font-bold text-gray-900">Review Candidate Matches</h1>
           <p className="text-xs text-gray-500 mt-0.5">Audit and edit parsed resume metadata before final candidate synchronization</p>
         </div>
 
         <button 
-          onClick={() => navigate('/recruiter/upload-resume')}
+          onClick={() => navigate('/admin/upload-resume')}
           className="flex items-center gap-2 px-4 py-2 bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 rounded-xl font-bold text-xs transition-all shadow-sm cursor-pointer self-start sm:self-auto"
         >
-          <ArrowLeft className="w-4 h-4 text-brand-purple" />
+          <ArrowLeft className="w-4 h-4 text-brand-blue" />
           Back to Upload
         </button>
       </div>
 
       {/* Review Information Banner */}
-      <div className="bg-brand-purple/5 border border-brand-purple/20 p-4 rounded-2xl flex items-start gap-3">
-        <AlertCircle className="w-5 h-5 text-brand-purple flex-shrink-0 mt-0.5" />
-        <div className="text-xs text-brand-purple font-semibold leading-relaxed">
+      <div className="bg-brand-blue/5 border border-brand-blue/20 p-4 rounded-2xl flex items-start gap-3">
+        <AlertCircle className="w-5 h-5 text-brand-blue flex-shrink-0 mt-0.5" />
+        <div className="text-xs text-brand-blue font-semibold leading-relaxed">
           <p className="font-bold">Verify Extracted Information</p>
           <p className="opacity-90 mt-0.5">We have read the details, roles, and skills from the uploaded resume files. Please verify that this information is correct, make changes or add skills if needed, and click Approve to save them to your candidate list.</p>
         </div>
@@ -186,8 +186,8 @@ const ReviewMatchesScreen = () => {
           <h3 className="text-base font-bold text-gray-800 uppercase tracking-wider mb-1">Audit Completed</h3>
           <p className="text-xs text-gray-500 leading-relaxed max-w-sm mx-auto mb-4">All uploaded profiles have been reviewed, rejected, or queued for synchronization.</p>
           <button
-            onClick={() => navigate('/recruiter/candidates')}
-            className="px-6 py-2.5 bg-brand-purple hover:bg-brand-purple/95 text-white font-bold rounded-xl text-xs shadow-md shadow-brand-purple/10 cursor-pointer"
+            onClick={() => navigate('/admin/candidates')}
+            className="px-6 py-2.5 bg-brand-blue hover:bg-brand-blue/95 text-white font-bold rounded-xl text-xs shadow-md shadow-brand-blue/10 cursor-pointer"
           >
             Go to Candidates Pool
           </button>
@@ -207,7 +207,7 @@ const ReviewMatchesScreen = () => {
                     onClick={() => setActiveIndex(idx)}
                     className={`p-3.5 rounded-xl border text-xs cursor-pointer transition-all ${
                       isActive 
-                        ? 'bg-brand-purple/5 border-brand-purple/30 shadow-sm' 
+                        ? 'bg-brand-blue/5 border-brand-blue/30 shadow-sm' 
                         : 'bg-white border-gray-100 hover:bg-gray-50'
                     }`}
                   >
@@ -228,7 +228,7 @@ const ReviewMatchesScreen = () => {
                     </div>
 
                     <div className="mt-2.5 pt-2 border-t border-gray-50 flex items-center justify-between text-[10px] text-gray-400">
-                      <span className="flex items-center gap-1 font-mono font-bold text-brand-purple bg-brand-purple/5 px-1.5 py-0.5 rounded border border-brand-purple/10">
+                      <span className="flex items-center gap-1 font-mono font-bold text-brand-blue bg-brand-blue/5 px-1.5 py-0.5 rounded border border-brand-blue/10">
                         <Sparkles className="w-2.5 h-2.5 text-brand-yellow" />
                         {c.match}% Match
                       </span>
@@ -242,7 +242,7 @@ const ReviewMatchesScreen = () => {
             {/* Sync All CTA Block */}
             <button
               onClick={handleSyncAll}
-              className="w-full py-4 bg-brand-purple hover:bg-brand-purple/95 text-white font-bold text-xs rounded-2xl shadow-lg shadow-brand-purple/20 hover:shadow-xl transition-all cursor-pointer flex items-center justify-center gap-2"
+              className="w-full py-4 bg-brand-blue hover:bg-brand-blue/95 text-white font-bold text-xs rounded-2xl shadow-lg shadow-brand-blue/20 hover:shadow-xl transition-all cursor-pointer flex items-center justify-center gap-2"
             >
               <Check className="w-4.5 h-4.5" />
               Save Approved Candidates ({candidates.filter(c => c.isApproved).length})
@@ -301,10 +301,10 @@ const ReviewMatchesScreen = () => {
                       <div>
                         <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5">Candidate Name</label>
                         <input
-                          type="text"
-                          value={activeCandidate.name}
-                          onChange={(e) => handleFieldChange('name', e.target.value)}
-                          className="w-full px-3.5 py-2.5 bg-gray-50 hover:bg-gray-50/80 focus:bg-white border border-gray-200 focus:border-brand-purple rounded-xl text-xs focus:outline-none transition-all font-semibold text-gray-800"
+                           type="text"
+                           value={activeCandidate.name}
+                           onChange={(e) => handleFieldChange('name', e.target.value)}
+                           className="w-full px-3.5 py-2.5 bg-gray-50 hover:bg-gray-50/80 focus:bg-white border border-gray-200 focus:border-brand-blue rounded-xl text-xs focus:outline-none transition-all font-semibold text-gray-800"
                         />
                       </div>
 
@@ -314,7 +314,7 @@ const ReviewMatchesScreen = () => {
                           type="text"
                           value={activeCandidate.currentRole}
                           onChange={(e) => handleFieldChange('currentRole', e.target.value)}
-                          className="w-full px-3.5 py-2.5 bg-gray-50 hover:bg-gray-50/80 focus:bg-white border border-gray-200 focus:border-brand-purple rounded-xl text-xs focus:outline-none transition-all font-semibold text-gray-800"
+                          className="w-full px-3.5 py-2.5 bg-gray-50 hover:bg-gray-50/80 focus:bg-white border border-gray-200 focus:border-brand-blue rounded-xl text-xs focus:outline-none transition-all font-semibold text-gray-800"
                         />
                       </div>
 
@@ -326,7 +326,7 @@ const ReviewMatchesScreen = () => {
                             type="email"
                             value={activeCandidate.email}
                             onChange={(e) => handleFieldChange('email', e.target.value)}
-                            className="w-full pl-10 pr-3.5 py-2.5 bg-gray-50 hover:bg-gray-50/80 focus:bg-white border border-gray-200 focus:border-brand-purple rounded-xl text-xs focus:outline-none transition-all font-semibold text-gray-800"
+                            className="w-full pl-10 pr-3.5 py-2.5 bg-gray-50 hover:bg-gray-50/80 focus:bg-white border border-gray-200 focus:border-brand-blue rounded-xl text-xs focus:outline-none transition-all font-semibold text-gray-800"
                           />
                         </div>
                       </div>
@@ -339,7 +339,7 @@ const ReviewMatchesScreen = () => {
                             type="text"
                             value={activeCandidate.phone}
                             onChange={(e) => handleFieldChange('phone', e.target.value)}
-                            className="w-full pl-10 pr-3.5 py-2.5 bg-gray-50 hover:bg-gray-50/80 focus:bg-white border border-gray-200 focus:border-brand-purple rounded-xl text-xs focus:outline-none transition-all font-semibold text-gray-800"
+                            className="w-full pl-10 pr-3.5 py-2.5 bg-gray-50 hover:bg-gray-50/80 focus:bg-white border border-gray-200 focus:border-brand-blue rounded-xl text-xs focus:outline-none transition-all font-semibold text-gray-800"
                           />
                         </div>
                       </div>
@@ -352,7 +352,7 @@ const ReviewMatchesScreen = () => {
                             type="text"
                             value={activeCandidate.experience}
                             onChange={(e) => handleFieldChange('experience', e.target.value)}
-                            className="w-full pl-10 pr-3.5 py-2.5 bg-gray-50 hover:bg-gray-50/80 focus:bg-white border border-gray-200 focus:border-brand-purple rounded-xl text-xs focus:outline-none transition-all font-semibold text-gray-800"
+                            className="w-full pl-10 pr-3.5 py-2.5 bg-gray-50 hover:bg-gray-50/80 focus:bg-white border border-gray-200 focus:border-brand-blue rounded-xl text-xs focus:outline-none transition-all font-semibold text-gray-800"
                           />
                         </div>
                       </div>
@@ -365,7 +365,7 @@ const ReviewMatchesScreen = () => {
                             type="text"
                             value={activeCandidate.resumeScore}
                             onChange={(e) => handleFieldChange('resumeScore', e.target.value)}
-                            className="w-full pl-10 pr-3.5 py-2.5 bg-gray-50 hover:bg-gray-50/80 focus:bg-white border border-gray-200 focus:border-brand-purple rounded-xl text-xs focus:outline-none transition-all font-semibold text-gray-800"
+                            className="w-full pl-10 pr-3.5 py-2.5 bg-gray-50 hover:bg-gray-50/80 focus:bg-white border border-gray-200 focus:border-brand-blue rounded-xl text-xs focus:outline-none transition-all font-semibold text-gray-800"
                           />
                         </div>
                       </div>
@@ -376,7 +376,7 @@ const ReviewMatchesScreen = () => {
                       <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider">AI Extracted Skill Tags</label>
                       <div className="flex flex-wrap gap-1.5 p-3 border border-gray-200 rounded-xl bg-gray-50/30">
                         {activeCandidate.skillsMatch.map(s => (
-                          <span key={s} className="px-2.5 py-1 bg-brand-purple/10 text-brand-purple border border-brand-purple/20 rounded-md font-semibold text-[11px] flex items-center gap-1.5">
+                          <span key={s} className="px-2.5 py-1 bg-brand-blue/10 text-brand-blue border border-brand-blue/20 rounded-md font-semibold text-[11px] flex items-center gap-1.5">
                             {s}
                             <button 
                               type="button" 
@@ -395,11 +395,11 @@ const ReviewMatchesScreen = () => {
                             placeholder="Add skill tag..."
                             value={newSkillInput}
                             onChange={(e) => setNewSkillInput(e.target.value)}
-                            className="pl-2 pr-7 py-1 bg-white border border-gray-200 rounded text-[11px] font-semibold focus:outline-none focus:border-brand-purple w-28 placeholder-gray-400 text-gray-800"
+                            className="pl-2 pr-7 py-1 bg-white border border-gray-200 rounded text-[11px] font-semibold focus:outline-none focus:border-brand-blue w-28 placeholder-gray-400 text-gray-800"
                           />
                           <button
                             type="submit"
-                            className="absolute right-1.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-brand-purple"
+                            className="absolute right-1.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-brand-blue"
                           >
                             <Plus className="w-3.5 h-3.5" />
                           </button>
@@ -415,9 +415,9 @@ const ReviewMatchesScreen = () => {
                           rows={4}
                           value={activeCandidate.aiRecommendation}
                           onChange={(e) => handleFieldChange('aiRecommendation', e.target.value)}
-                          className="w-full p-3.5 bg-gray-50 hover:bg-gray-50/80 focus:bg-white border border-gray-200 focus:border-brand-purple rounded-xl text-xs focus:outline-none transition-all leading-relaxed font-semibold italic text-gray-700 resize-none"
+                          className="w-full p-3.5 bg-gray-50 hover:bg-gray-50/80 focus:bg-white border border-gray-200 focus:border-brand-blue rounded-xl text-xs focus:outline-none transition-all leading-relaxed font-semibold italic text-gray-700 resize-none"
                         />
-                        <Sparkles className="absolute right-3.5 bottom-3.5 w-4 h-4 text-brand-purple/40 pointer-events-none" />
+                        <Sparkles className="absolute right-3.5 bottom-3.5 w-4 h-4 text-brand-blue/40 pointer-events-none" />
                       </div>
                     </div>
                   </div>
@@ -446,4 +446,4 @@ const ReviewMatchesScreen = () => {
   );
 };
 
-export default ReviewMatchesScreen;
+export default AdminReviewMatchesScreen;

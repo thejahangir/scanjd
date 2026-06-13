@@ -16,7 +16,8 @@ import {
   FileSearch,
   Menu,
   X,
-  UploadCloud
+  UploadCloud,
+  FileUp
 } from 'lucide-react';
 
 const AdminLayout = () => {
@@ -34,7 +35,7 @@ const AdminLayout = () => {
   const menuItems = [
     { name: 'Dashboard', path: '/admin', icon: LayoutDashboard },
     { name: 'Job Description', path: '/admin/jds', icon: FileText },
-    { name: 'Upload Job Description', path: '/admin/upload-jd', icon: UploadCloud },
+    { name: 'Upload Resumes', path: '/admin/upload-resume', icon: FileUp },
     { name: 'Recruiters', path: '/admin/recruiters', icon: Users },
     { name: 'Candidates', path: '/admin/candidates', icon: UserCheck },
     { name: 'Analytics', path: '/admin/analytics', icon: BarChart3 },
@@ -130,6 +131,14 @@ const AdminLayout = () => {
           </div>
 
           <div className="flex items-center gap-4">
+            {/* Quick action triggers */}
+            <button
+              onClick={() => navigate('/admin/upload-resume')}
+              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-brand-blue/10 hover:bg-brand-blue/20 text-brand-blue border border-brand-blue/30 rounded-lg text-xs font-bold transition-all"
+            >
+              <UploadCloud className="w-3.5 h-3.5" /> Upload Resumes
+            </button>
+
             {/* Realtime Notifications Simulation */}
             <button
               onClick={() => setNotificationsOpen(true)}

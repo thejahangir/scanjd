@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { extendedJDs } from '../../data/mockData';
 
-const UploadResumeScreen = () => {
+const AdminUploadResumeScreen = () => {
   const navigate = useNavigate();
   const [isDragging, setIsDragging] = useState(false);
   const [files, setFiles] = useState([
@@ -113,8 +113,8 @@ const UploadResumeScreen = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-100 pb-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <FileUp className="w-4 h-4 text-brand-purple" />
-            <span className="text-xs font-bold text-brand-purple uppercase tracking-wider">Resume Processing Control</span>
+            <FileUp className="w-4 h-4 text-brand-blue" />
+            <span className="text-xs font-bold text-brand-blue uppercase tracking-wider">Resume Processing Control</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">Upload Resumes</h1>
           <p className="text-sm text-gray-500 mt-1">Upload multiple resumes to automatically extract candidate skills, work history, and calculate how well they match the job.</p>
@@ -130,7 +130,7 @@ const UploadResumeScreen = () => {
           {/* Screening Configuration panel */}
           <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm space-y-5">
             <div className="flex items-center gap-2 pb-3.5 border-b border-gray-100">
-              <Settings2 className="w-5 h-5 text-brand-purple" />
+              <Settings2 className="w-5 h-5 text-brand-blue" />
               <div>
                 <h3 className="text-sm font-bold text-gray-900 leading-tight">Screening Configuration</h3>
                 <p className="text-[10px] text-gray-400 mt-0.5">Parameters applied to parsed resumes</p>
@@ -143,7 +143,7 @@ const UploadResumeScreen = () => {
               <select
                 value={selectedJdId}
                 onChange={(e) => setSelectedJdId(e.target.value)}
-                className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-xs font-semibold text-gray-700 focus:outline-none focus:bg-white focus:ring-2 focus:ring-brand-purple/20 transition-all cursor-pointer"
+                className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-xs font-semibold text-gray-700 focus:outline-none focus:bg-white focus:ring-2 focus:ring-brand-blue/20 transition-all cursor-pointer"
               >
                 <option value="">None / Unassigned (Global Candidate Pool)</option>
                 {extendedJDs.map((jd) => (
@@ -168,7 +168,7 @@ const UploadResumeScreen = () => {
                   onClick={() => setParseDepth('standard')}
                   className={`p-3.5 rounded-xl border text-left transition-all flex flex-col justify-between ${
                     parseDepth === 'standard'
-                      ? 'border-brand-purple bg-brand-purple/5 text-brand-purple shadow-sm'
+                      ? 'border-brand-blue bg-brand-blue/5 text-brand-blue shadow-sm'
                       : 'border-gray-200 hover:border-gray-300 bg-white text-gray-600'
                   }`}
                 >
@@ -181,7 +181,7 @@ const UploadResumeScreen = () => {
                   onClick={() => setParseDepth('deep')}
                   className={`p-3.5 rounded-xl border text-left transition-all relative overflow-hidden flex flex-col justify-between ${
                     parseDepth === 'deep'
-                      ? 'border-brand-purple bg-brand-purple/5 text-brand-purple shadow-sm'
+                      ? 'border-brand-blue bg-brand-blue/5 text-brand-blue shadow-sm'
                       : 'border-gray-200 hover:border-gray-300 bg-white text-gray-600'
                   }`}
                 >
@@ -201,7 +201,7 @@ const UploadResumeScreen = () => {
                 <select
                   value={minExperience}
                   onChange={(e) => setMinExperience(e.target.value)}
-                  className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-xs font-semibold text-gray-700 focus:outline-none focus:bg-white focus:ring-2 focus:ring-brand-purple/20 transition-all cursor-pointer"
+                  className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-xs font-semibold text-gray-700 focus:outline-none focus:bg-white focus:ring-2 focus:ring-brand-blue/20 transition-all cursor-pointer"
                 >
                   <option value="all">Show All Matches</option>
                   <option value="junior">Junior (0-2 Years)</option>
@@ -217,7 +217,7 @@ const UploadResumeScreen = () => {
                   placeholder="e.g. React, Python"
                   value={skillsFocus}
                   onChange={(e) => setSkillsFocus(e.target.value)}
-                  className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-xs focus:outline-none focus:bg-white focus:ring-2 focus:ring-brand-purple/20 transition-all text-gray-700 font-semibold"
+                  className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-xs focus:outline-none focus:bg-white focus:ring-2 focus:ring-brand-blue/20 transition-all text-gray-700 font-semibold"
                 />
               </div>
             </div>
@@ -226,13 +226,13 @@ const UploadResumeScreen = () => {
           {/* Upload Ingestion Container */}
           <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-gray-100">
-              <span className="text-xs font-bold text-brand-purple uppercase tracking-wider block flex items-center gap-1.5">
+              <span className="text-xs font-bold text-brand-blue uppercase tracking-wider block flex items-center gap-1.5">
                 <Layers className="w-4 h-4" /> Resume Upload Area
               </span>
               <button 
                 type="button" 
                 onClick={injectDummyCandidates}
-                className="text-xs font-bold text-brand-purple hover:underline"
+                className="text-xs font-bold text-brand-blue hover:underline"
               >
                 Load Sample Resumes
               </button>
@@ -243,16 +243,16 @@ const UploadResumeScreen = () => {
               onDragLeave={() => setIsDragging(false)}
               onDrop={handleDrop}
               className={`border-2 border-dashed rounded-2xl p-6 flex flex-col items-center justify-center text-center transition-all min-h-[200px] ${
-                isDragging ? 'border-brand-purple bg-brand-purple/5' : 'border-gray-200 hover:border-brand-purple/40 bg-gray-50/30'
+                isDragging ? 'border-brand-blue bg-brand-blue/5' : 'border-gray-200 hover:border-brand-blue/40 bg-gray-50/30'
               }`}
             >
-              <div className="w-12 h-12 rounded-xl bg-brand-purple/10 text-brand-purple flex items-center justify-center mb-3 border border-brand-purple/20">
+              <div className="w-12 h-12 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center mb-3 border border-brand-blue/20">
                 <UploadCloud className="w-6 h-6" />
               </div>
               <span className="text-xs font-bold text-gray-900 block">Drag & Drop multi-page Candidate PDF / DOCX archives</span>
               <span className="text-[10px] text-gray-400 block mt-1">Reads name, contact details, work history and skills from each file automatically</span>
 
-              <label className="mt-4.5 px-4 py-2 bg-white border border-gray-200 text-gray-700 hover:text-brand-purple rounded-xl text-xs font-bold cursor-pointer transition-all shadow-sm">
+              <label className="mt-4.5 px-4 py-2 bg-white border border-gray-200 text-gray-700 hover:text-brand-blue rounded-xl text-xs font-bold cursor-pointer transition-all shadow-sm">
                 Browse Resumes
                 <input 
                   type="file" 
@@ -305,7 +305,7 @@ const UploadResumeScreen = () => {
                       className="p-3 bg-gray-50/50 hover:bg-gray-50 border border-gray-100 rounded-xl flex items-start justify-between gap-3 text-xs transition-colors"
                     >
                       {/* File icon preview */}
-                      <div className="w-8 h-8 rounded-lg bg-brand-purple/10 text-brand-purple flex items-center justify-center flex-shrink-0 font-bold text-[10px]">
+                      <div className="w-8 h-8 rounded-lg bg-brand-blue/10 text-brand-blue flex items-center justify-center flex-shrink-0 font-bold text-[10px]">
                         PDF
                       </div>
 
@@ -321,7 +321,7 @@ const UploadResumeScreen = () => {
                           <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
                             <div 
                               className={`h-full rounded-full transition-all duration-500 ${
-                                f.status === 'ERROR' ? 'bg-red-500' : f.status === 'PARSED' ? 'bg-emerald-500' : 'bg-brand-purple'
+                                f.status === 'ERROR' ? 'bg-red-500' : f.status === 'PARSED' ? 'bg-emerald-500' : 'bg-brand-blue'
                               }`}
                               style={{ width: `${f.progress}%` }}
                             />
@@ -335,7 +335,7 @@ const UploadResumeScreen = () => {
                           {/* Explicit text stage status indicator */}
                           <span className="text-[10px] font-bold uppercase tracking-wider w-20 text-right flex-shrink-0">
                             {f.status === 'QUEUED' && <span className="text-gray-400">QUEUED</span>}
-                            {f.status === 'PARSING' && <span className="text-brand-purple animate-pulse">Parsing...</span>}
+                            {f.status === 'PARSING' && <span className="text-brand-blue animate-pulse">Parsing...</span>}
                             {f.status === 'PARSED' && <span className="text-emerald-600">Verified ✓</span>}
                             {f.status === 'ERROR' && <span className="text-brand-red">Error ✕</span>}
                           </span>
@@ -374,8 +374,8 @@ const UploadResumeScreen = () => {
 
             <button
               disabled={parsedCount === 0}
-              onClick={() => navigate('/recruiter/review-matches')}
-              className="w-full sm:w-auto px-6 py-3 bg-brand-purple hover:bg-brand-purple/90 text-white font-bold text-xs rounded-xl transition-all shadow-md shadow-brand-purple/20 flex items-center justify-center gap-1.5 disabled:opacity-50"
+              onClick={() => navigate('/admin/review-matches')}
+              className="w-full sm:w-auto px-6 py-3 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold text-xs rounded-xl transition-all shadow-md shadow-brand-blue/20 flex items-center justify-center gap-1.5 disabled:opacity-50"
             >
               Review Candidate Matches ({parsedCount})
               <ArrowRight className="w-4 h-4" />
@@ -388,4 +388,4 @@ const UploadResumeScreen = () => {
   );
 };
 
-export default UploadResumeScreen;
+export default AdminUploadResumeScreen;

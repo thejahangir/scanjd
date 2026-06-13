@@ -10,6 +10,7 @@ import {
   ArrowUpRight,
   Briefcase,
   BarChart3,
+  Sparkles,
 } from 'lucide-react';
 import { mockRecruiters, mockAnalytics } from '../../data/mockData';
 
@@ -34,6 +35,15 @@ const AdminDashboard = () => {
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">Admin Dashboard</h1>
           <p className="text-sm text-gray-500 mt-1">Real-time platform overview — hiring progress and team performance.</p>
+        </div>
+        <div className="flex items-center gap-3 self-start sm:self-auto">
+          <button
+            onClick={() => navigate('/admin/upload-resume')}
+            className="flex items-center gap-2 px-4 py-2.5 bg-brand-blue text-white rounded-xl font-bold text-sm hover:bg-brand-blue/90 transition-all shadow-md shadow-brand-blue/20"
+          >
+            <Sparkles className="w-4 h-4 text-brand-yellow" />
+            Bulk Screen Resumes
+          </button>
         </div>
       </div>
 
