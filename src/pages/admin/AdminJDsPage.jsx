@@ -247,10 +247,10 @@ const AdminJDsPage = () => {
         {/* Sub-strip reporting state */}
         <div className="pt-2 border-t border-gray-100 flex flex-wrap items-center justify-between text-[11px] text-gray-500">
           <div>
-            Found <strong className="text-gray-800">{processedJDs.length}</strong> corresponding mandates matching specified filter constraints
+            Found <strong className="text-gray-800">{processedJDs.length}</strong> jobs matching your filters
           </div>
           <div className="flex items-center gap-3">
-            <span>Total pool coverage: <strong>{totalResumes.toLocaleString()} resumes parsed</strong></span>
+            <span>Total resumes: <strong>{totalResumes.toLocaleString()}</strong></span>
           </div>
         </div>
       </div>
