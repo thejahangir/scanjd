@@ -16,9 +16,14 @@ import {
   ArrowUpDown,
   Briefcase,
   Users,
-  Plus
+  Plus,
+  XCircle,
+  RefreshCw,
+  X
 } from 'lucide-react';
 import { extendedJDs, mockRecruiters } from '../../data/mockData';
+import SearchableSelect from '../../components/SearchableSelect';
+import AddAnotherJDModal from '../../components/AddAnotherJDModal';
 
 const parseUploadDate = (dateStr) => {
   if (!dateStr) return 0;
@@ -59,6 +64,7 @@ const AdminJDsPage = () => {
   const navigate = useNavigate();
   const [jds, setJds] = useState(extendedJDs);
   const [activeAssignJdId, setActiveAssignJdId] = useState(null);
+  const [isAddAnotherJDModalOpen, setIsAddAnotherJDModalOpen] = useState(false);
 
   const handleUpdateRecruiter = (jdId, newRecruiter) => {
     const jdIndex = extendedJDs.findIndex(j => j.id === jdId);
@@ -70,6 +76,9 @@ const AdminJDsPage = () => {
 
   // Search and query parameters
   const [searchQuery, setSearchQuery] = useState('');
+  const [nameQuery, setNameQuery] = useState('');
+  const [primarySchool, setPrimarySchool] = useState('');
+  const [isRated, setIsRated] = useState(false);
   const [statusFilter, setStatusFilter] = useState('Active');
   const [sortBy, setSortBy] = useState('LATEST');
   const [viewMode, setViewMode] = useState('GRID'); // GRID | TABLE
@@ -81,10 +90,12 @@ const AdminJDsPage = () => {
   // Granular multidimensional map handling
   const processedJDs = useMemo(() => {
     let result = jds.filter(jd => {
-      const matchesSearch = jd.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        jd.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        jd.skillsRequired.some(s => s.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (jd.recruiterAssigned || '').toLowerCase().includes(searchQuery.toLowerCase());
+      // Here we just use nameQuery for simplicity to simulate the 'search' action
+      const queryToUse = searchQuery.toLowerCase();
+      const matchesSearch = !queryToUse || jd.title.toLowerCase().includes(queryToUse) ||
+        jd.company.toLowerCase().includes(queryToUse) ||
+        jd.skillsRequired.some(s => s.toLowerCase().includes(queryToUse)) ||
+        (jd.recruiterAssigned || '').toLowerCase().includes(queryToUse);
 
       const matchesStatus = statusFilter === 'ALL' || jd.status.toUpperCase() === statusFilter.toUpperCase();
 
@@ -159,88 +170,140 @@ const AdminJDsPage = () => {
             </div>
           </div>
 
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setIsAddAnotherJDModalOpen(true)}
+              className="flex items-center justify-center gap-2 px-5 py-3.5 bg-white border border-gray-200 hover:border-brand-blue hover:text-brand-blue text-gray-700 font-bold text-xs rounded-2xl transition-all shadow-sm active:scale-95 cursor-pointer"
+            >
+              <Plus className="w-4 h-4" />
+              Add Another JD
+            </button>
+            <button
+              onClick={() => navigate('/admin/upload-jd')}
+              className="flex items-center justify-center gap-2 px-5 py-3.5 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold text-xs rounded-2xl transition-all shadow-md shadow-brand-blue/20 hover:shadow-lg hover:shadow-brand-blue/30 active:scale-95 cursor-pointer"
+            >
+              <Plus className="w-4 h-4" />
+              Add Job Description
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* View Switcher Pill segment - Moved above the search panel */}
+      <div className="flex justify-end items-center mb-2">
+        <div className="flex items-center p-1 bg-white rounded-xl border border-gray-200 shadow-sm">
           <button
-            onClick={() => navigate('/admin/upload-jd')}
-            className="flex items-center justify-center gap-2 px-5 py-3.5 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold text-xs rounded-2xl transition-all shadow-md shadow-brand-blue/20 hover:shadow-lg hover:shadow-brand-blue/30 active:scale-95 cursor-pointer"
+            onClick={() => setViewMode('GRID')}
+            title="Rich Cards Grid View"
+            className={`flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${viewMode === 'GRID'
+                ? 'bg-brand-blue text-white shadow-sm'
+                : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+              }`}
           >
-            <Plus className="w-4 h-4" />
-            Add Job Description
+            <LayoutGrid className="w-4 h-4" />
+            <span className="hidden sm:inline">Cards View</span>
+          </button>
+          <button
+            onClick={() => setViewMode('TABLE')}
+            title="High-Density Scannable Rows"
+            className={`flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${viewMode === 'TABLE'
+                ? 'bg-brand-blue text-white shadow-sm'
+                : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+              }`}
+          >
+            <List className="w-4 h-4" />
+            <span className="hidden sm:inline">List View</span>
           </button>
         </div>
       </div>
 
-      {/* Control Strip & View Selector */}
+      {/* Control Strip & Search Panel */}
       <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm space-y-3">
-        {/* Top search inputs */}
-        <div className="flex flex-col lg:flex-row gap-3 items-center justify-between">
-          <div className="relative w-full lg:w-96">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search titles, clients, tag patterns, or assignees..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs focus:outline-none focus:bg-white transition-all font-medium text-gray-800 placeholder-gray-400"
-            />
+        {/* Top search inputs - Redesigned */}
+        <div className="flex flex-col lg:flex-row gap-4 items-center justify-between bg-gray-50/50 p-2 rounded-xl">
+          {/* Left Side: Name, Primary School, Rated, Clear */}
+          <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+            {/* Name Input */}
+            <div className="relative w-full sm:w-48">
+              <input
+                type="text"
+                placeholder="Name..."
+                value={nameQuery}
+                onChange={(e) => setNameQuery(e.target.value)}
+                className="w-full px-3 py-2.5 bg-white border border-gray-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-brand-blue/20 focus:border-brand-blue transition-all font-medium text-gray-800 placeholder-gray-400"
+              />
+            </div>
+
+            {/* Primary School Dropdown */}
+            <div className="w-full sm:w-64">
+              <SearchableSelect
+                options={[
+                  { id: '1', title: 'Delhi Public School', company: 'New Delhi' },
+                  { id: '2', title: 'The Doon School', company: 'Dehradun' },
+                  { id: '3', title: 'Mayo College', company: 'Ajmer' }
+                ]}
+                selectedValue={primarySchool}
+                onChange={setPrimarySchool}
+                placeholder="Select Primary School..."
+                themeColor="blue"
+              />
+            </div>
+
+            {/* Rated Checkbox */}
+            <label className="flex items-center gap-2 cursor-pointer group">
+              <div className="relative flex items-center justify-center w-4 h-4">
+                <input
+                  type="checkbox"
+                  checked={isRated}
+                  onChange={(e) => setIsRated(e.target.checked)}
+                  className="peer appearance-none w-4 h-4 border border-gray-300 rounded focus:ring-2 focus:ring-brand-blue/20 checked:bg-brand-blue checked:border-brand-blue transition-all cursor-pointer"
+                />
+                <svg className="absolute w-2.5 h-2.5 pointer-events-none opacity-0 peer-checked:opacity-100 text-white" viewBox="0 0 14 14" fill="none">
+                  <path d="M1 7L5 11L13 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <span className="text-xs font-semibold text-gray-700 group-hover:text-gray-900 transition-colors">Rated</span>
+            </label>
+
+            {/* Clear Icon */}
+            <button
+              onClick={() => {
+                setNameQuery('');
+                setSearchQuery('');
+                setPrimarySchool('');
+                setIsRated(false);
+              }}
+              title="Clear Filters"
+              className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors cursor-pointer flex items-center gap-1 text-xs font-bold"
+            >
+              <XCircle className="w-4 h-4" />
+              <span className="hidden sm:inline">Clear</span>
+            </button>
           </div>
 
+          {/* Right Side: Reload Data, Search Button, View Switcher */}
           <div className="flex flex-wrap items-center gap-2.5 w-full lg:w-auto justify-end">
-            {/* Sort Criteria */}
-            <div className="flex items-center gap-1.5 bg-gray-50 px-3 py-2 rounded-xl border border-gray-200">
-              <ArrowUpDown className="w-3.5 h-3.5 text-gray-400" />
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="bg-transparent text-xs font-semibold text-gray-700 focus:outline-none cursor-pointer"
-              >
-                <option value="LATEST">Sort: Latest Uploaded</option>
-                <option value="SCORE_DESC">Sort: Top Coherence %</option>
-                <option value="RESUMES_DESC">Sort: Resumes Count</option>
-                <option value="TITLE_ASC">Sort: Alphabetical (A-Z)</option>
-              </select>
-            </div>
+            <button
+              onClick={() => {
+                // Simulate reload
+                setSearchQuery(nameQuery);
+              }}
+              title="Reload the Data"
+              className="p-2.5 bg-white border border-gray-200 text-gray-500 hover:text-brand-blue hover:bg-brand-blue/5 hover:border-brand-blue/30 rounded-xl transition-all shadow-sm cursor-pointer"
+            >
+              <RefreshCw className="w-4 h-4" />
+            </button>
+            
+            <button
+              onClick={() => {
+                setSearchQuery(nameQuery);
+              }}
+              className="flex items-center gap-2 px-5 py-2.5 bg-brand-blue hover:bg-brand-blue/90 text-white font-bold text-xs rounded-xl transition-all shadow-md shadow-brand-blue/20 hover:shadow-lg hover:shadow-brand-blue/30 active:scale-95 cursor-pointer"
+            >
+              <Search className="w-3.5 h-3.5" />
+              Search
+            </button>
 
-            {/* Status Dropdown */}
-            <div className="flex items-center gap-1.5 bg-gray-50 px-3 py-2 rounded-xl border border-gray-200">
-              <SlidersHorizontal className="w-3.5 h-3.5 text-gray-400" />
-              <select
-                value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value)}
-                className="bg-transparent text-xs font-semibold text-gray-700 focus:outline-none cursor-pointer"
-              >
-                <option value="ALL">All States ({jds.length})</option>
-                <option value="Active">Active</option>
-                <option value="Reviewing">Reviewing</option>
-                <option value="Interviewing">Interviewing</option>
-                <option value="Closed">Closed</option>
-              </select>
-            </div>
-
-            {/* View Switcher Pill segment */}
-            <div className="flex items-center p-1 bg-gray-100 rounded-xl border border-gray-200/60">
-              <button
-                onClick={() => setViewMode('GRID')}
-                title="Rich Cards Grid View"
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${viewMode === 'GRID'
-                    ? 'bg-white text-brand-blue shadow-sm'
-                    : 'text-gray-500 hover:text-gray-900'
-                  }`}
-              >
-                <LayoutGrid className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Cards</span>
-              </button>
-              <button
-                onClick={() => setViewMode('TABLE')}
-                title="High-Density Scannable Rows"
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${viewMode === 'TABLE'
-                    ? 'bg-white text-brand-blue shadow-sm'
-                    : 'text-gray-500 hover:text-gray-900'
-                  }`}
-              >
-                <List className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">List</span>
-              </button>
-            </div>
           </div>
         </div>
 
@@ -660,6 +723,12 @@ const AdminJDsPage = () => {
           </div>
         </div>
       )}
+
+      {/* "Add Another JD" Modal */}
+      <AddAnotherJDModal 
+        isOpen={isAddAnotherJDModalOpen} 
+        onClose={() => setIsAddAnotherJDModalOpen(false)} 
+      />
     </div>
   );
 };

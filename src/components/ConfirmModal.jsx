@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { AlertTriangle, X } from 'lucide-react';
 
-const ConfirmModal = ({ isOpen, onClose, onConfirm, title, message, theme = 'blue' }) => {
+const ConfirmModal = ({ isOpen, onClose, onConfirm, title, message, confirmText = 'Confirm', theme = 'blue' }) => {
   const isPurple = theme === 'purple';
   const accentBg = isPurple ? 'bg-brand-purple' : 'bg-brand-blue';
   const accentHoverBg = isPurple ? 'hover:bg-brand-purple/90' : 'hover:bg-brand-blue/90';
@@ -10,7 +10,7 @@ const ConfirmModal = ({ isOpen, onClose, onConfirm, title, message, theme = 'blu
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           {/* Backdrop overlay */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -59,7 +59,7 @@ const ConfirmModal = ({ isOpen, onClose, onConfirm, title, message, theme = 'blu
                 onClick={onConfirm}
                 className={`px-4 py-2 text-white font-bold text-xs rounded-xl shadow-md transition-all focus:outline-none focus:ring-2 ${accentBg} ${accentHoverBg} ${accentRing}`}
               >
-                Yes, Logout
+                {confirmText}
               </button>
             </div>
           </motion.div>
