@@ -277,6 +277,21 @@ const JDDetailsPage = () => {
                   }`}>{jd.status}</span>
                 </div>
 
+                <div className="flex items-start px-4 py-1.5 flex-col gap-1">
+                  <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Mapped Candidates</span>
+                  <div className="text-[11px] font-bold text-gray-800 flex flex-wrap gap-1">
+                    {candidates.length > 0 ? (
+                      candidates.map((c, i) => (
+                        <span key={c.id} className="bg-brand-blue/5 text-brand-blue px-2 py-0.5 rounded border border-brand-blue/10">
+                          {c.name}
+                        </span>
+                      ))
+                    ) : (
+                      <span className="text-gray-400 font-normal">None mapped yet</span>
+                    )}
+                  </div>
+                </div>
+
                 {/* Recruiter Lead */}
                 <div className="flex items-center px-4 py-1.5 relative gap-2">
                   <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider flex-shrink-0">Recruiter</span>

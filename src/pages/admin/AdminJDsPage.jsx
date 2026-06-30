@@ -19,11 +19,18 @@ import {
   Plus,
   XCircle,
   RefreshCw,
-  X
+  X,
+  Eye,
+  Edit,
+  Map,
+  Trash2
 } from 'lucide-react';
 import { extendedJDs, mockRecruiters } from '../../data/mockData';
 import SearchableSelect from '../../components/SearchableSelect';
 import AddAnotherJDModal from '../../components/AddAnotherJDModal';
+import EditJDModal from '../../components/EditJDModal';
+import ConfirmModal from '../../components/ConfirmModal';
+import MapJDModal from '../../components/MapJDModal';
 
 const parseUploadDate = (dateStr) => {
   if (!dateStr) return 0;
@@ -64,7 +71,11 @@ const AdminJDsPage = () => {
   const navigate = useNavigate();
   const [jds, setJds] = useState(extendedJDs);
   const [activeAssignJdId, setActiveAssignJdId] = useState(null);
+  const [activeActionMenuId, setActiveActionMenuId] = useState(null);
   const [isAddAnotherJDModalOpen, setIsAddAnotherJDModalOpen] = useState(false);
+  const [jdToEdit, setJdToEdit] = useState(null);
+  const [jdToDelete, setJdToDelete] = useState(null);
+  const [jdToMap, setJdToMap] = useState(null);
 
   const handleUpdateRecruiter = (jdId, newRecruiter) => {
     const jdIndex = extendedJDs.findIndex(j => j.id === jdId);
@@ -508,13 +519,36 @@ const AdminJDsPage = () => {
                     {jd.uploadDate}
                   </span>
 
-                  <span 
-                    onClick={() => navigate(`/admin/jd/${jd.id}`)}
-                    className="flex items-center gap-1 text-xs font-bold text-brand-blue hover:text-brand-blue/90 transition-colors hover:translate-x-1 cursor-pointer"
-                  >
-                    View JD Details
-                    <ChevronRight className="w-4 h-4" />
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <button 
+                      onClick={() => navigate(`/admin/jd/${jd.id}`)}
+                      className="p-1.5 text-gray-400 hover:text-brand-blue hover:bg-brand-blue/10 rounded-lg transition-colors cursor-pointer group relative"
+                      title="View Details"
+                    >
+                      <Eye className="w-4 h-4" />
+                    </button>
+                    <button 
+                      onClick={() => setJdToEdit(jd)}
+                      className="p-1.5 text-gray-400 hover:text-brand-blue hover:bg-brand-blue/10 rounded-lg transition-colors cursor-pointer group relative"
+                      title="Edit JD"
+                    >
+                      <Edit className="w-4 h-4" />
+                    </button>
+                    <button 
+                      onClick={() => setJdToMap(jd)}
+                      className="p-1.5 text-gray-400 hover:text-brand-blue hover:bg-brand-blue/10 rounded-lg transition-colors cursor-pointer group relative"
+                      title="Map JD"
+                    >
+                      <Map className="w-4 h-4" />
+                    </button>
+                    <button 
+                      onClick={() => setJdToDelete(jd)}
+                      className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors cursor-pointer group relative"
+                      title="Delete JD"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             ))
@@ -527,13 +561,13 @@ const AdminJDsPage = () => {
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-gray-50/60 border-b border-gray-100 text-[11px] font-bold text-gray-700 uppercase tracking-wider">
-                  <th className="p-4 pl-6">Mandate Title & Client</th>
+                  <th className="p-4 pl-6">Designation & Client</th>
                   <th className="p-4">Engine Fit</th>
                   <th className="p-4">Exp Baseline</th>
                   <th className="p-4">Assigned Recruiter</th>
                   <th className="p-4">Ingested Payload</th>
                   <th className="p-4">Status</th>
-                  <th className="p-4 pr-6 text-right">Action Forward</th>
+                  <th className="p-4 pr-6 text-right">Action</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 text-xs">
@@ -659,13 +693,71 @@ const AdminJDsPage = () => {
                         </span>
                       </td>
 
-                      <td className="p-4 pr-6 text-right">
-                        <span
-                          onClick={() => navigate(`/admin/jd/${jd.id}`)}
-                          className="font-bold text-brand-blue hover:underline cursor-pointer inline-block"
+                      <td className="p-4 pr-6 text-right relative">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveActionMenuId(activeActionMenuId === jd.id ? null : jd.id);
+                          }}
+                          className="p-1 text-gray-500 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer inline-block"
                         >
-                          View JD Details →
-                        </span>
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path>
+                          </svg>
+                        </button>
+                        {activeActionMenuId === jd.id && (
+                          <>
+                            <div 
+                              className="fixed inset-0 z-10" 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setActiveActionMenuId(null);
+                              }}
+                            />
+                            <div 
+                              className="absolute top-full right-6 mt-1 z-20 w-36 bg-white border border-gray-200 rounded-xl shadow-xl py-1.5 text-xs text-gray-800 text-left"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <button
+                                onClick={() => {
+                                  navigate(`/admin/jd/${jd.id}`);
+                                  setActiveActionMenuId(null);
+                                }}
+                                className="w-full text-left px-4 py-2 hover:bg-brand-blue/5 hover:text-brand-blue transition-colors font-medium"
+                              >
+                                View
+                              </button>
+                              <button
+                                onClick={() => {
+                                  setJdToEdit(jd);
+                                  setActiveActionMenuId(null);
+                                }}
+                                className="w-full text-left px-4 py-2 hover:bg-brand-blue/5 hover:text-brand-blue transition-colors font-medium"
+                              >
+                                Edit
+                              </button>
+                              <button
+                                onClick={() => {
+                                  setJdToMap(jd);
+                                  setActiveActionMenuId(null);
+                                }}
+                                className="w-full text-left px-4 py-2 hover:bg-brand-blue/5 hover:text-brand-blue transition-colors font-medium"
+                              >
+                                Map JD
+                              </button>
+                              <button
+                                onClick={() => {
+                                  setJdToDelete(jd);
+                                  setActiveActionMenuId(null);
+                                }}
+                                className="w-full text-left px-4 py-2 hover:bg-red-50 text-red-600 transition-colors font-medium"
+                              >
+                                Delete
+                              </button>
+                            </div>
+                          </>
+                        )}
                       </td>
                     </tr>
                   ))
@@ -728,6 +820,33 @@ const AdminJDsPage = () => {
       <AddAnotherJDModal 
         isOpen={isAddAnotherJDModalOpen} 
         onClose={() => setIsAddAnotherJDModalOpen(false)} 
+      />
+
+      <EditJDModal
+        isOpen={!!jdToEdit}
+        onClose={() => setJdToEdit(null)}
+        jdData={jdToEdit}
+      />
+
+      <MapJDModal
+        isOpen={!!jdToMap}
+        onClose={() => setJdToMap(null)}
+        jdData={jdToMap}
+      />
+
+      <ConfirmModal
+        isOpen={!!jdToDelete}
+        onClose={() => setJdToDelete(null)}
+        onConfirm={() => {
+          if (jdToDelete) {
+            setJds(prev => prev.filter(j => j.id !== jdToDelete.id));
+            setJdToDelete(null);
+          }
+        }}
+        title="Delete Job Description"
+        message={`Are you sure you want to delete "${jdToDelete?.title}"? This action cannot be undone.`}
+        confirmText="Yes, Delete JD"
+        theme="blue"
       />
     </div>
   );
